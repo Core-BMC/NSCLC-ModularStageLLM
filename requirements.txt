@@ -1,0 +1,26 @@
+# Core dependencies
+pandas
+openpyxl
+pyyaml
+python-dotenv
+
+# LangChain ecosystem
+langchain
+langchain-core
+langchain-openai
+langchain-community
+langchain-experimental
+langgraph
+
+# OpenAI and LLM support
+openai
+
+# Data validation
+pydantic
+
+# Jupyter Notebook support
+ipykernel
+jupyter
+notebook
+ipywidgets
+
