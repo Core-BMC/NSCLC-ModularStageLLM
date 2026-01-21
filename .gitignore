@@ -160,3 +160,5 @@ zenodo_github_guide_complete.md
 logs/
 *.log
 
+# Project settings
+config/tnm_config.yaml
