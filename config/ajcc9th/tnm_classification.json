@@ -1,0 +1,988 @@
+{
+  "metadata": {
+    "version": "AJCC 9th edition",
+    "last_updated": "2024-12-01",
+    "system_name": "Lung Cancer Clinical TNM Staging with Modular Agent Architecture",
+    "author": "heohwon@gmail.com",
+    "github": "https://github.com/Core-BMC/NSCLC-ModularStageLLM.git"
+  },
+  "categories": {
+    "T_category": {
+      "description": "Describes the size and extent of the main tumor",
+      "subcategories": {
+        "Tis": {
+          "definition": "Carcinoma in situ",
+          "criteria": []
+        },
+        "T1": {
+          "definition": "Tumor ≤ 3 cm",
+          "criteria": [
+            "Surrounded by lung or visceral pleura",
+            "No invasion proximal to lobar bronchus"
+          ],
+          "subcategories": {
+            "T1mi": {
+              "definition": "Minimally invasive adenocarcinoma",
+              "criteria": ["≤ 3 cm with ≤ 5 mm invasion in any focus"]
+            },
+            "T1a": {
+              "tumor_size": {"max": 1, "unit": "cm"}
+            },
+            "T1b": {
+              "tumor_size": {"min": 1, "max": 2, "unit": "cm"}
+            },
+            "T1c": {
+              "tumor_size": {"min": 2, "max": 3, "unit": "cm"}
+            }
+          }
+        },
+        "T2": {
+          "definition": "Tumor > 3 cm to ≤ 5 cm or meeting specific criteria",
+          "criteria": [
+            "Involves main bronchus regardless of distance to carina",
+            "Atelectasis or obstructive pneumonitis extending to hilum",
+            "Visceral pleura invasion"
+          ],
+          "subcategories": {
+            "T2a": {
+              "tumor_size": {"min": 3, "max": 4, "unit": "cm"}
+            },
+            "T2b": {
+              "tumor_size": {"min": 4, "max": 5, "unit": "cm"}
+            }
+          }
+        },
+        "T3": {
+          "definition": "Tumor > 5 cm to ≤ 7 cm or invasion of specific structures",
+          "criteria": [
+            "Invasion of: chest wall, phrenic nerve, parietal pericardium",
+            "Separate tumor nodule(s) in the same lobe as the primary tumor"
+          ],
+          "tumor_size": {"min": 5, "max": 7, "unit": "cm"}
+        },
+        "T4": {
+          "definition": "Tumor > 7 cm or invasion of specific structures",
+          "criteria": [
+            "Invasion of: diaphragm, mediastinum, heart, great vessels, trachea, recurrent laryngeal nerve, esophagus, vertebral body, carina",
+            "Separate tumor nodule(s) in a different ipsilateral lobe"
+          ],
+          "tumor_size": {"min": 7, "unit": "cm"}
+        }
+      }
+    },
+    "N_category": {
+      "description": "Describes spread to nearby lymph nodes",
+      "subcategories": {
+        "N0": {
+          "definition": "No regional lymph node metastasis",
+          "criteria": []
+        },
+        "N1": {
+          "definition": "Metastasis in ipsilateral peribronchial and/or hilar nodes",
+          "criteria": []
+        },
+        "N2": {
+          "definition": "Metastasis in ipsilateral mediastinal and/or subcarinal nodes",
+          "subcategories": {
+            "N2a": {
+              "definition": "Metastasis in a single ipsilateral mediastinal or in the subcarinal nodal station",
+              "criteria": [
+                "Single station involvement in mediastinal nodes",
+                "OR single station involvement in subcarinal node"
+              ]
+            },
+            "N2b": {
+              "definition": "Metastases in multiple ipsilateral mediastinal nodal stations with or without involvement of the subcarinal nodal station",
+              "criteria": [
+                "Multiple station involvement in mediastinal nodes",
+                "Includes cases with or without subcarinal node involvement"
+              ]
+            }
+          },
+          "special_considerations": []
+        },
+        "N3": {
+          "definition": "Metastasis in contralateral mediastinal, contralateral hilar, ipsilateral or contralateral scalene, or supraclavicular nodes",
+          "criteria": []
+        }
+      }
+    },
+    "M_category": {
+      "description": "Describes metastasis to other parts of the body",
+      "subcategories": {
+        "M0": {
+          "definition": "No distant metastasis",
+          "criteria": []
+        },
+        "M1": {
+          "definition": "Distant metastasis",
+          "subcategories": {
+            "M1a": {
+              "definition": "Intrathoracic metastasis",
+              "criteria": [
+                "Separate tumor nodule(s) in contralateral lobe",
+                "Pleural or pericardial nodules",
+                "Malignant pleural or pericardial effusion"
+              ]
+            },
+            "M1b": {
+              "definition": "Single extrathoracic metastasis",
+              "criteria": [
+                "Single metastatic lesion in one extrathoracic organ",
+                "Including non-regional lymph nodes"
+              ]
+            },
+            "M1c": {
+              "definition": "Multiple extrathoracic metastases",
+              "subcategories": {
+                "M1c1": {
+                  "definition": "Multiple extrathoracic metastases in a single organ system",
+                  "criteria": [
+                    "Multiple metastatic lesions confined to one organ system",
+                    "Example: Multiple bone metastases count as M1c1",
+                    "Example: Multiple brain metastases count as M1c1"
+                  ],
+                  "special_notes": []
+                },
+                "M1c2": {
+                  "definition": "Multiple extrathoracic metastases in multiple organ systems",
+                  "criteria": [
+                    "Metastatic lesions in two or more different organ systems",
+                    "Example: Bone + liver metastases = M1c2",
+                    "Example: Brain + adrenal metastases = M1c2"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "stage_grouping": {
+    "description": "Combines T, N, and M categories to determine overall stage",
+    "stages": {
+      "0": {
+        "criteria": [{"T": "Tis", "N": "N0", "M": "M0"}]
+      },
+      "IA1": {
+        "criteria": [
+          {"T": "T1mi", "N": "N0", "M": "M0"},
+          {"T": "T1a", "N": "N0", "M": "M0"}
+        ]
+      },
+      "IA2": {
+        "criteria": [{"T": "T1b", "N": "N0", "M": "M0"}]
+      },
+      "IA3": {
+        "criteria": [{"T": "T1c", "N": "N0", "M": "M0"}]
+      },
+      "IB": {
+        "criteria": [{"T": "T2a", "N": "N0", "M": "M0"}]
+      },
+      "IIA": {
+        "criteria": [
+          {"T": "T2b", "N": "N0", "M": "M0"},
+          {"T": ["T1a", "T1b", "T1c"], "N": "N1", "M": "M0"}
+        ]
+      },
+      "IIB": {
+        "criteria": [
+          {"T": ["T1a", "T1b", "T1c"], "N": "N2a", "M": "M0"},
+          {"T": "T2a", "N": "N1", "M": "M0"},
+          {"T": "T2b", "N": "N1", "M": "M0"},
+          {"T": "T3", "N": "N0", "M": "M0"}
+        ]
+      },
+      "IIIA": {
+        "criteria": [
+          {"T": ["T1a", "T1b", "T1c"], "N": "N2b", "M": "M0"},
+          {"T": ["T2a"], "N": "N2a", "M": "M0"},
+          {"T": ["T2b"], "N": "N2a", "M": "M0"},
+          {"T": "T3", "N": ["N1", "N2a"], "M": "M0"},
+          {"T": "T4", "N": ["N0", "N1"], "M": "M0"}
+        ]
+      },
+      "IIIB": {
+        "criteria": [
+          {"T": ["T1a", "T1b", "T1c"], "N": "N3", "M": "M0"},
+          {"T": ["T2a", "T2b"], "N": ["N2b", "N3"], "M": "M0"},
+          {"T": "T3", "N": ["N2b"], "M": "M0"},
+          {"T": "T4", "N": ["N2a", "N2b"], "M": "M0"}
+        ]
+      },
+      "IIIC": {
+        "criteria": [
+          {"T": ["T3", "T4"], "N": "N3", "M": "M0"}
+        ]
+      },
+      "IVA": {
+        "criteria": [{"T": "Any T", "N": "Any N", "M": ["M1a", "M1b"]}]
+      },
+      "IVB": {
+        "criteria": [{"T": "Any T", "N": "Any N", "M": ["M1c1", "M1c2"]}]
+      }
+    }
+  },
+  "enums": {
+    "invasion_locations": [
+      "Chest wall",
+      "Phrenic nerve",
+      "Parietal pericardium",
+      "Diaphragm",
+      "Mediastinum",
+      "Heart",
+      "Great vessels",
+      "Trachea",
+      "Recurrent laryngeal nerve",
+      "Esophagus",
+      "Vertebral body",
+      "Carina"
+    ]
+  },
+  "special_notes": [],
+  "enums": {
+    "invasion_locations": [
+      "Chest wall",
+      "Phrenic nerve",
+      "Parietal pericardium",
+      "Diaphragm",
+      "Mediastinum",
+      "Heart",
+      "Great vessels",
+      "Trachea",
+      "Recurrent laryngeal nerve",
+      "Esophagus",
+      "Vertebral body",
+      "Carina"
+    ]
+  },
+  "histology_classification": {
+    "description": "WHO Classification of Lung Tumors (2021)",
+    "categories": {
+      "epithelial_tumors": {
+        "description": "Epithelial tumors",
+        "subcategories": {
+          "papillomas": {
+            "description": "Papillary tumors",
+            "types": [
+              {
+                "name": "Squamous cell papilloma, NOS",
+                "terms": {
+                  "en": ["squamous cell papilloma", "squamous papilloma"],
+                  "kr": ["편평세포 유두종"],
+                  "medical": ["papilloma squamosum"]
+                }
+              },
+              {
+                "name": "Squamous cell papilloma, inverted",
+                "terms": {
+                  "en": ["inverted squamous cell papilloma", "inverted papilloma"],
+                  "kr": ["내번형 편평세포 유두종"],
+                  "medical": ["papilloma squamosum inversum"]
+                }
+              },
+              {
+                "name": "Glandular papilloma",
+                "terms": {
+                  "en": ["glandular papilloma"],
+                  "kr": ["선성 유두종"],
+                  "medical": ["papilloma glandulare"]
+                }
+              },
+              {
+                "name": "Mixed squamous cell and glandular papilloma",
+                "terms": {
+                  "en": ["mixed squamous and glandular papilloma"],
+                  "kr": ["혼합형 편평선성 유두종"],
+                  "medical": ["papilloma mixtum"]
+                }
+              }
+            ]
+          },
+          "adenomas": {
+            "description": "Adenomas",
+            "types": [
+              {
+                "name": "Sclerosing pneumocytoma",
+                "terms": {
+                  "en": ["sclerosing pneumocytoma"],
+                  "kr": ["경화성 폐세포종"],
+                  "medical": ["pneumocytoma sclerosans"]
+                }
+              },
+              {
+                "name": "Alveolar adenoma",
+                "terms": {
+                  "en": ["alveolar adenoma"],
+                  "kr": ["폐포선종"],
+                  "medical": ["adenoma alveolare"]
+                }
+              },
+              {
+                "name": "Papillary adenoma",
+                "terms": {
+                  "en": ["papillary adenoma"],
+                  "kr": ["유두상 선종"],
+                  "medical": ["adenoma papillare"]
+                }
+              },
+              {
+                "name": "Bronchiolar adenoma/ciliated muconodular papillary tumor",
+                "terms": {
+                  "en": ["bronchiolar adenoma", "ciliated muconodular papillary tumor"],
+                  "kr": ["세기관지 선종"],
+                  "medical": ["adenoma bronchiolare"]
+                }
+              },
+              {
+                "name": "Mucinous cystadenoma",
+                "terms": {
+                  "en": ["mucinous cystadenoma"],
+                  "kr": ["점액성 낭선종"],
+                  "medical": ["cystadenoma mucinosum"]
+                }
+              },
+              {
+                "name": "Mucous gland adenoma",
+                "terms": {
+                  "en": ["mucous gland adenoma"],
+                  "kr": ["점액선 선종"],
+                  "medical": ["adenoma glandulae mucosae"]
+                }
+              }
+            ]
+          },
+          "precursor_glandular_lesions": {
+            "description": "Precursor glandular lesions",
+            "types": [
+              {
+                "name": "Atypical adenomatous hyperplasia",
+                "terms": {
+                  "en": ["atypical adenomatous hyperplasia"],
+                  "kr": ["비정형 선종성 과형성"],
+                  "medical": ["hyperplasia adenomatosa atypica"]
+                }
+              },
+              {
+                "name": "Adenocarcinoma in situ",
+                "subtypes": [
+                  {
+                    "name": "Adenocarcinoma in situ, nonmucinous",
+                    "terms": {
+                      "en": ["nonmucinous adenocarcinoma in situ"],
+                      "kr": ["비점액성 제자리선암종"],
+                      "medical": ["adenocarcinoma in situ non mucinosum"]
+                    }
+                  },
+                  {
+                    "name": "Adenocarcinoma in situ, mucinous",
+                    "terms": {
+                      "en": ["mucinous adenocarcinoma in situ"],
+                      "kr": ["점액성 제자리선암종"],
+                      "medical": ["adenocarcinoma in situ mucinosum"]
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "Minimally invasive adenocarcinoma",
+                "subtypes": [
+                  {
+                    "name": "Minimally invasive adenocarcinoma, nonmucinous",
+                    "terms": {
+                      "en": ["minimally invasive nonmucinous adenocarcinoma"],
+                      "kr": ["비점액성 최소침습선암종"],
+                      "medical": ["adenocarcinoma minime invasivum non mucinosum"]
+                    }
+                  },
+                  {
+                    "name": "Minimally invasive adenocarcinoma, mucinous",
+                    "terms": {
+                      "en": ["minimally invasive mucinous adenocarcinoma"],
+                      "kr": ["점액성 최소침습선암종"],
+                      "medical": ["adenocarcinoma minime invasivum mucinosum"]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "adenocarcinomas": {
+            "description": "Adenocarcinomas",
+            "types": [
+              {
+                "name": "Invasive nonmucinous adenocarcinoma",
+                "subtypes": [
+                  {
+                    "name": "Lepidic adenocarcinoma",
+                    "terms": {
+                      "en": ["lepidic adenocarcinoma"],
+                      "kr": ["피막성 선암종"],
+                      "medical": ["adenocarcinoma lepidicum"]
+                    }
+                  },
+                  {
+                    "name": "Acinar adenocarcinoma",
+                    "terms": {
+                      "en": ["acinar adenocarcinoma"],
+                      "kr": ["선방성 선암종"],
+                      "medical": ["adenocarcinoma acinare"]
+                    }
+                  },
+                  {
+                    "name": "Papillary adenocarcinoma",
+                    "terms": {
+                      "en": ["papillary adenocarcinoma"],
+                      "kr": ["유두상 선암종"],
+                      "medical": ["adenocarcinoma papillare"]
+                    }
+                  },
+                  {
+                    "name": "Micropapillary adenocarcinoma",
+                    "terms": {
+                      "en": ["micropapillary adenocarcinoma"],
+                      "kr": ["미세유두상 선암종"],
+                      "medical": ["adenocarcinoma micropapillare"]
+                    }
+                  },
+                  {
+                    "name": "Solid adenocarcinoma",
+                    "terms": {
+                      "en": ["solid adenocarcinoma"],
+                      "kr": ["고형성 선암종"],
+                      "medical": ["adenocarcinoma solidum"]
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "Invasive mucinous adenocarcinoma",
+                "terms": {
+                  "en": ["invasive mucinous adenocarcinoma"],
+                  "kr": ["침습성 점액선암종"],
+                  "medical": ["adenocarcinoma mucinosum invasivum"]
+                }
+              },
+              {
+                "name": "Mixed invasive mucinous and nonmucinous adenocarcinoma",
+                "terms": {
+                  "en": ["mixed mucinous and nonmucinous adenocarcinoma"],
+                  "kr": ["혼합형 점액성 비점액성 선암종"],
+                  "medical": ["adenocarcinoma mixtum mucinosum et non mucinosum"]
+                }
+              },
+              {
+                "name": "Colloid adenocarcinoma",
+                "terms": {
+                  "en": ["colloid adenocarcinoma"],
+                  "kr": ["교질성 선암종"],
+                  "medical": ["adenocarcinoma colloides"]
+                }
+              },
+              {
+                "name": "Fetal adenocarcinoma",
+                "terms": {
+                  "en": ["fetal adenocarcinoma"],
+                  "kr": ["태아형 선암종"],
+                  "medical": ["adenocarcinoma fetale"]
+                }
+              },
+              {
+                "name": "Enteric adenocarcinoma",
+                "terms": {
+                  "en": ["enteric adenocarcinoma", "enteric-type adenocarcinoma"],
+                  "kr": ["장형 선암종"],
+                  "medical": ["adenocarcinoma entericum"]
+                }
+              }
+            ]
+          },
+          "squamous_cell_categories": {
+            "description": "Squamous cell categories",
+            "subcategories": {
+              "squamous_precursor_lesions": {
+                "description": "Squamous precursor lesions",
+                "types": [
+                  {
+                    "name": "Squamous cell carcinoma in situ",
+                    "terms": {
+                      "en": ["squamous cell carcinoma in situ"],
+                      "kr": ["편평세포 제자리암종"],
+                      "medical": ["carcinoma planocellulare in situ"]
+                    }
+                  },
+                  {
+                    "name": "Mild squamous dysplasia",
+                    "terms": {
+                      "en": ["mild squamous dysplasia"],
+                      "kr": ["경도 편평세포 이형성"],
+                      "medical": ["dysplasia squamosa levis"]
+                    }
+                  },
+                  {
+                    "name": "Moderate squamous dysplasia",
+                    "terms": {
+                      "en": ["moderate squamous dysplasia"],
+                      "kr": ["중등도 편평세포 이형성"],
+                      "medical": ["dysplasia squamosa moderata"]
+                    }
+                  },
+                  {
+                    "name": "Severe squamous dysplasia",
+                    "terms": {
+                      "en": ["severe squamous dysplasia"],
+                      "kr": ["중증 편평세포 이형성"],
+                      "medical": ["dysplasia squamosa gravis"]
+                    }
+                  }
+                ]
+              },
+              "squamous_cell_carcinomas": {
+                "description": "Squamous cell carcinomas",
+                "types": [
+                  {
+                    "name": "Squamous cell carcinoma, keratinizing",
+                    "terms": {
+                      "en": ["keratinizing squamous cell carcinoma"],
+                      "kr": ["각화성 편평세포암종"],
+                      "medical": ["carcinoma planocellulare keratinisans"]
+                    }
+                  },
+                  {
+                    "name": "Squamous cell carcinoma, non-keratinizing",
+                    "terms": {
+                      "en": ["non-keratinizing squamous cell carcinoma"],
+                      "kr": ["비각화성 편평세포암종"],
+                      "medical": ["carcinoma planocellulare non keratinisans"]
+                    }
+                  },
+                  {
+                    "name": "Basaloid squamous cell carcinoma",
+                    "terms": {
+                      "en": ["basaloid squamous cell carcinoma"],
+                      "kr": ["기저양 편평세포암종"],
+                      "medical": ["carcinoma planocellulare basaloides"]
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "other_carcinomas": {
+            "description": "Other types of carcinomas",
+            "types": [
+              {
+                "name": "Large cell carcinoma",
+                "terms": {
+                  "en": ["large cell carcinoma", "LCC"],
+                  "kr": ["대세포암종"],
+                  "medical": ["carcinoma magnocellulare"]
+                }
+              },
+              {
+                "name": "Adenosquamous carcinoma",
+                "terms": {
+                  "en": ["adenosquamous carcinoma"],
+                  "kr": ["선편평세포암종"],
+                  "medical": ["carcinoma adenosquamosum"]
+                }
+              }
+            ]
+          },
+          "sarcomatoid_carcinomas": {
+            "description": "Sarcomatoid carcinoma types",
+            "types": [
+              {
+                "name": "Pleomorphic carcinoma",
+                "subtypes": [
+                  {
+                    "name": "Giant cell carcinoma",
+                    "terms": {
+                      "en": ["giant cell carcinoma"],
+                      "kr": ["거대세포암종"],
+                      "medical": ["carcinoma gigantocellulare"]
+                    }
+                  },
+                  {
+                    "name": "Spindle cell carcinoma",
+                    "terms": {
+                      "en": ["spindle cell carcinoma"],
+                      "kr": ["방추세포암종"],
+                      "medical": ["carcinoma fusocellulare"]
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "Pulmonary blastoma",
+                "terms": {
+                  "en": ["pulmonary blastoma"],
+                  "kr": ["폐아세포종"],
+                  "medical": ["blastoma pulmonale"]
+                }
+              },
+              {
+                "name": "Carcinosarcoma",
+                "terms": {
+                  "en": ["carcinosarcoma"],
+                  "kr": ["암육종"],
+                  "medical": ["carcinosarcoma"]
+                }
+              }
+            ]
+          },
+          "other_epithelial_tumors": {
+            "description": "Other epithelial tumor types",
+            "types": [
+              {
+                "name": "NUT carcinoma",
+                "terms": {
+                  "en": ["NUT carcinoma", "nuclear protein in testis carcinoma"],
+                  "kr": ["NUT 암종"],
+                  "medical": ["carcinoma NUT"]
+                }
+              },
+              {
+                "name": "Thoracic SMARCA4-deficient undifferentiated tumor",
+                "terms": {
+                  "en": ["SMARCA4-deficient thoracic tumor"],
+                  "kr": ["SMARCA4-결핍 흉부종양"],
+                  "medical": ["tumor thoracicus SMARCA4 deficiens"]
+                }
+              },
+              {
+                "name": "Pleomorphic adenoma",
+                "terms": {
+                  "en": ["pleomorphic adenoma"],
+                  "kr": ["다형선종"],
+                  "medical": ["adenoma pleomorphicum"]
+                }
+              }
+            ]
+          },
+          "salivary_gland_type_tumors": {
+            "description": "Salivary gland-type tumors",
+            "types": [
+              {
+                "name": "Adenoid cystic carcinoma",
+                "terms": {
+                  "en": ["adenoid cystic carcinoma"],
+                  "kr": ["선양낭성암종"],
+                  "medical": ["carcinoma adenoides cysticum"]
+                }
+              },
+              {
+                "name": "Epithelial-myoepithelial carcinoma",
+                "terms": {
+                  "en": ["epithelial-myoepithelial carcinoma"],
+                  "kr": ["상피-근상피암종"],
+                  "medical": ["carcinoma epitheliale-myoepitheliale"]
+                }
+              },
+              {
+                "name": "Mucoepidermoid carcinoma",
+                "terms": {
+                  "en": ["mucoepidermoid carcinoma"],
+                  "kr": ["점액표피모양암종"],
+                  "medical": ["carcinoma mucoepidermoides"]
+                }
+              },
+              {
+                "name": "Hyalinizing clear cell carcinoma",
+                "terms": {
+                  "en": ["hyalinizing clear cell carcinoma"],
+                  "kr": ["유리질화 투명세포암종"],
+                  "medical": ["carcinoma clarocellulare hyalinisans"]
+                }
+              },
+              {
+                "name": "Myoepithelioma",
+                "terms": {
+                  "en": ["myoepithelioma"],
+                  "kr": ["근상피종"],
+                  "medical": ["myoepithelioma"]
+                }
+              },
+              {
+                "name": "Myoepithelial carcinoma",
+                "terms": {
+                  "en": ["myoepithelial carcinoma"],
+                  "kr": ["근상피암종"],
+                  "medical": ["carcinoma myoepitheliale"]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "neuroendocrine_neoplasms": {
+        "description": "Neuroendocrine neoplasms",
+        "subcategories": {
+          "precursor_lesions": {
+            "description": "Precursor lesions",
+            "types": [
+              {
+                "name": "Diffuse idiopathic pulmonary neuroendocrine cell hyperplasia",
+                "terms": {
+                  "en": ["diffuse idiopathic pulmonary neuroendocrine cell hyperplasia", "DIPNECH"],
+                  "kr": ["미만성 특발성 폐 신경내분비세포 증식증"],
+                  "medical": ["hyperplasia neuroendocrina pulmonalis idiopathica diffusa"]
+                }
+              }
+            ]
+          },
+          "neuroendocrine_tumors": {
+            "description": "Neuroendocrine tumors",
+            "types": [
+              {
+                "name": "Typical carcinoid tumor",
+                "terms": {
+                  "en": ["typical carcinoid"],
+                  "kr": ["전형적 유암종"],
+                  "medical": ["tumor carcinoides typicus"]
+                }
+              },
+              {
+                "name": "Atypical carcinoid tumor",
+                "terms": {
+                  "en": ["atypical carcinoid"],
+                  "kr": ["비전형적 유암종"],
+                  "medical": ["tumor carcinoides atypicus"]
+                }
+              }
+            ]
+          },
+          "neuroendocrine_carcinomas": {
+            "description": "Neuroendocrine carcinomas",
+            "types": [
+              {
+                "name": "Small cell carcinoma",
+                "terms": {
+                  "en": ["small cell carcinoma", "small cell lung cancer", "SCLC"],
+                  "kr": ["소세포암종"],
+                  "medical": ["carcinoma microcellulare"]
+                }
+              },
+              {
+                "name": "Large cell neuroendocrine carcinoma",
+                "terms": {
+                  "en": ["large cell neuroendocrine carcinoma", "LCNEC"],
+                  "kr": ["대세포 신경내분비암종"],
+                  "medical": ["carcinoma neuroendocrinum magnocellulare"]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "tumors_of_ectopic_tissues": {
+        "description": "Tumors of ectopic tissues",
+        "types": [
+          {
+            "name": "Melanoma",
+            "terms": {
+              "en": ["melanoma"],
+              "kr": ["흑색종"],
+              "medical": ["melanoma"]
+            }
+          },
+          {
+            "name": "Meningioma",
+            "terms": {
+              "en": ["meningioma"],
+              "kr": ["수막종"],
+              "medical": ["meningioma"]
+            }
+          },
+          {
+            "name": "Pulmonary hamartoma",
+            "terms": {
+              "en": ["pulmonary hamartoma"],
+              "kr": ["폐과오종"],
+              "medical": ["hamartoma pulmonale"]
+            }
+          },
+          {
+            "name": "Chondroma",
+            "terms": {
+              "en": ["chondroma"],
+              "kr": ["연골종"],
+              "medical": ["chondroma"]
+            }
+          }
+        ]
+      },
+      "mesenchymal_tumors": {
+        "description": "Mesenchymal tumors specific to the lung",
+        "types": [
+          {
+            "name": "Diffuse lymphangiomatosis",
+            "terms": {
+              "en": ["diffuse lymphangiomatosis"],
+              "kr": ["미만성 림프관종증"],
+              "medical": ["lymphangiomatosis diffusa"]
+            }
+          },
+          {
+            "name": "Pleuropulmonary blastoma",
+            "terms": {
+              "en": ["pleuropulmonary blastoma"],
+              "kr": ["흉막폐 아세포종"],
+              "medical": ["blastoma pleuropulmonale"]
+            }
+          },
+          {
+            "name": "Intimal sarcoma",
+            "terms": {
+              "en": ["intimal sarcoma"],
+              "kr": ["내막육종"],
+              "medical": ["sarcoma intimale"]
+            }
+          },
+          {
+            "name": "Congenital peribronchial myofibroblastic tumor",
+            "terms": {
+              "en": ["congenital peribronchial myofibroblastic tumor"],
+              "kr": ["선천성 기관지주위 근섬유모세포종"],
+              "medical": ["tumor myofibroblasticus peribronchialis congenitus"]
+            }
+          },
+          {
+            "name": "Pulmonary myxoid sarcoma with EWSR1-CREB1 fusion",
+            "terms": {
+              "en": ["pulmonary myxoid sarcoma with EWSR1-CREB1 fusion"],
+              "kr": ["EWSR1-CREB1 융합 폐 점액육종"],
+              "medical": ["sarcoma myxoides pulmonale cum fusione EWSR1-CREB1"]
+            }
+          }
+        ]
+      },
+      "pec_tumors": {
+        "description": "PEComatous tumors",
+        "types": [
+          {
+            "name": "Lymphangioleiomyomatosis",
+            "terms": {
+              "en": ["lymphangioleiomyomatosis", "LAM"],
+              "kr": ["림프관평활근종증"],
+              "medical": ["lymphangioleiomyomatosis"]
+            }
+          },
+          {
+            "name": "PEComa, benign",
+            "terms": {
+              "en": ["benign PEComa"],
+              "kr": ["양성 PEComa"],
+              "medical": ["PEComa benignum"]
+            }
+          },
+          {
+            "name": "PEComa, malignant",
+            "terms": {
+              "en": ["malignant PEComa"],
+              "kr": ["악성 PEComa"],
+              "medical": ["PEComa malignum"]
+            }
+          }
+        ]
+      },
+      "hematolymphoid_tumors": {
+        "description": "Hematolymphoid tumors",
+        "types": [
+          {
+            "name": "MALT lymphoma",
+            "terms": {
+              "en": ["MALT lymphoma", "extranodal marginal zone lymphoma"],
+              "kr": ["MALT 림프종"],
+              "medical": ["lymphoma MALT"]
+            }
+          },
+          {
+            "name": "Diffuse large B-cell lymphoma, NOS",
+            "terms": {
+              "en": ["diffuse large B-cell lymphoma", "DLBCL"],
+              "kr": ["미만성 대B세포 림프종"],
+              "medical": ["lymphoma B-cellulare diffusum magnocellulare"]
+            }
+          },
+          {
+            "name": "Lymphomatoid granulomatosis",
+            "subtypes": [
+              {
+                "name": "Lymphomatoid granulomatosis, grade 1",
+                "terms": {
+                  "en": ["lymphomatoid granulomatosis grade 1"],
+                  "kr": ["림프종양 육아종증 1등급"],
+                  "medical": ["granulomatosis lymphomatoides gradus I"]
+                }
+              },
+              {
+                "name": "Lymphomatoid granulomatosis, grade 2",
+                "terms": {
+                  "en": ["lymphomatoid granulomatosis grade 2"],
+                  "kr": ["림프종양 육아종증 2등급"],
+                  "medical": ["granulomatosis lymphomatoides gradus II"]
+                }
+              },
+              {
+                "name": "Lymphomatoid granulomatosis, grade 3",
+                "terms": {
+                  "en": ["lymphomatoid granulomatosis grade 3"],
+                  "kr": ["림프종양 육아종증 3등급"],
+                  "medical": ["granulomatosis lymphomatoides gradus III"]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Intravascular large B-cell lymphoma",
+            "terms": {
+              "en": ["intravascular large B-cell lymphoma"],
+              "kr": ["혈관내 대B세포 림프종"],
+              "medical": ["lymphoma B-cellulare intravasculare magnocellulare"]
+            }
+          },
+          {
+            "name": "Langerhans cell histiocytosis",
+            "terms": {
+              "en": ["Langerhans cell histiocytosis", "LCH"],
+              "kr": ["랑게르한스세포 조직구증"],
+              "medical": ["histiocytosis cellularum Langerhans"]
+            }
+          },
+          {
+            "name": "Erdheim-Chester disease",
+            "terms": {
+              "en": ["Erdheim-Chester disease"],
+              "kr": ["어드하임-체스터병"],
+              "medical": ["morbus Erdheim-Chester"]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "histology_rules": [
+    {
+      "note": "Main Category Identification: 1) First identify main category from pathology report, 2) Use primary diagnosis, not descriptive terms, 3) Consider all language variations (EN/KR/Medical)",
+      "applies_to": ["histology"]
+    },
+    {
+      "note": "Default Type Assignment: 1) Use NOS type unless subtype explicitly specified, 2) Differentiation grade does not affect type selection, 3) When multiple terms present, use most specific category",
+      "applies_to": ["histology"]
+    },
+    {
+      "note": "Language Priority: 1) Medical terminology takes precedence if present, 2) Consider both Korean and English terms equally, 3) Abbreviations (SCC, ADC, etc.) treated as English terms",
+      "applies_to": ["histology"]
+    },
+    {
+      "note": "Differentiation Grading: 1) Record but do not use for classification: well/poorly/moderately, 고분화/중분화/저분화, 2) Grade does not affect NOS classification",
+      "applies_to": ["histology"]
+    },
+    {
+      "note": "Mixed or Combined Types: 1) If multiple histological types reported, use predominant type, 2) For combined small cell carcinoma, classify as small cell carcinoma, NOS",
+      "applies_to": ["histology"]
+    }
+  ]
+}

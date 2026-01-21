@@ -14,11 +14,15 @@ class MedicalReport(BaseModel):
 
     content: Optional[str] = Field(None, description="Medical report content")
 
-    @field_validator('content')
+    @field_validator('content', mode='before')
     def remove_empty_lines_and_convert_to_string(cls, v):
         """Remove empty lines and convert to string."""
         if v is None or pd.isna(v):
             return None
+        # Convert empty string to None
+        if isinstance(v, str) and not v.strip():
+            return None
+        # Convert any value (including numbers) to string
         return '\n'.join(line for line in str(v).split('\n') if line.strip())
 
 

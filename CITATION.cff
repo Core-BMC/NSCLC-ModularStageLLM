@@ -1,4 +1,4 @@
-cff-version: 1.2.0
+cff-version: 1.0.0
 message: "If you use this software, please cite it as below."
 type: software
 title: "Lung Cancer Clinical TNM Staging with Modular Agent Architecture"
@@ -9,7 +9,22 @@ authors:
     given-names: "Hwon"
     orcid: "https://orcid.org/0000-0002-6103-4680"
     affiliation: "Asan Medical Center"
-    email: "heohwon@gmail.com"
+    email: "heoh@amc.seoul.kr"
+  - family-names: "Yoon"
+    given-names: "Shinkyo"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+    affiliation: "Asan Medical Center"
+    email: "shinkyoyoon@amc.seoul.kr"
+  - family-names: "Shim"
+    given-names: "Woo Hyun"
+    orcid: "https://orcid.org/0000-0002-7251-2916"
+    affiliation: "Asan Medical Center"
+    email: "swh@amc.seoul.kr"
+  - family-names: "Kim"
+    given-names: "Tae Won"
+    orcid: "https://orcid.org/0000-0001-9522-1997"
+    affiliation: "Asan Medical Center"
+    email: "twkimmd@amc.seoul.kr"
 repository-code: "https://github.com/Core-BMC/NSCLC-ModularStageLLM.git"
 keywords:
   - lung cancer
@@ -21,7 +36,7 @@ keywords:
 license: MIT
 contact:
   - name: "Shinkyo Yoon"
-    email: "shinkyoyoon82@gmail.com"
+    email: "shinkyoyoon@amc.seoul.kr"
     affiliation: "Asan Medical Center"
     orcid: null
 
