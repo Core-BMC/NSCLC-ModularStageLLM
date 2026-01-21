@@ -109,15 +109,6 @@ $RECYCLE.BIN/
 .Trash-*
 .nfs*
 
-# Project specific
-# Output files
-output/
-*.csv
-*.json
-*.log
-!requirements.txt
-!sample.env
-
 # Cache files
 .cache/
 *.cache
@@ -160,5 +151,16 @@ zenodo_github_guide_complete.md
 logs/
 *.log
 
-# Project settings
+# Project specific settings
+# Output files
+input/
+output/
+!output/.gitkeep
+*.csv
+*.json
+*.log
 config/tnm_config.yaml
+!requirements.txt
+!sample.env
+!config/ajcc8th/tnm_classification.json
+!config/ajcc9th/tnm_classification.json
