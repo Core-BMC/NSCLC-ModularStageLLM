@@ -1,0 +1,643 @@
+# TNM Configuration File
+# This file configures the TNM staging workflow for Non-Small Cell Lung Cancer
+
+# AJCC edition configuration
+# The AJCC edition is automatically detected from the tnm_json path
+# Supported editions: "ajcc8th" or "ajcc9th"
+# Examples:
+#   - "config/ajcc8th/tnm_classification.json" -> AJCC 8th edition
+#   - "config/ajcc9th/tnm_classification.json" -> AJCC 9th edition
+tnm_json: "config/ajcc8th/tnm_classification.json"
+
+model_settings:
+  # LLM model settings
+  # Choose one of: "local", "openai", or "azure"
+  llm_choice: "azure"
+
+  # Local API settings (for local LLM servers like Ollama)
+  local:
+    name: "llama3.3:70b"  # Model name: "llama3.3:70b", "phi4", etc.
+    base_url: "https://local.server.ip.address:port"  # API endpoint URL
+    api_key: "set your bearer token"
+    # Note: For setup_llm (default LLM), the average of temperature_low and temperature_high is used
+    verify_ssl: false  # Set to false to disable SSL certificate verification for self-signed certificates
+    # Temperature range for consensus mechanism diversity
+    # The system uses random temperature values between temperature_low and temperature_high
+    # for each LLM call in the consensus mechanism to introduce response diversity.
+    # Range: 0.0 (deterministic) to 2.0 (highly creative)
+    # Recommended: 0.5-0.7 for balanced diversity without excessive randomness
+    temperature_low: 0.5  # Minimum temperature for consensus mechanism (default: 0.0)
+    temperature_high: 0.7  # Maximum temperature for consensus mechanism (default: 1.0)
+
+
+  # OpenAI API settings
+  openai:
+    name: "gpt-4o"  # Model name: "gpt-4o", "gpt-4.1-mini", etc.
+    # Temperature range for consensus mechanism diversity
+    # The system uses random temperature values between temperature_low and temperature_high
+    # for each LLM call in the consensus mechanism to introduce response diversity.
+    # Range: 0.0 (deterministic) to 2.0 (highly creative)
+    # For deterministic results, set both to 0.0
+    temperature_low: 0.0  # Minimum temperature for consensus mechanism (default: 0.0)
+    temperature_high: 0.0  # Maximum temperature for consensus mechanism (default: 1.0)
+    # Note: For setup_llm (default LLM), the average of temperature_low and temperature_high is used
+
+  # Azure OpenAI API settings
+  azure:
+    name: "gpt-4o" # "gpt-4o" "gpt-4.1-mini" "gpt-4.1-nano"
+    # Temperature range for consensus mechanism diversity
+    # The system uses random temperature values between temperature_low and temperature_high
+    # for each LLM call in the consensus mechanism to introduce response diversity.
+    # Range: 0.0 (deterministic) to 2.0 (highly creative)
+    # For deterministic results, set both to 0.0
+    temperature_low: 0.0  # Minimum temperature for consensus mechanism (default: 0.0)
+    temperature_high: 0.0  # Maximum temperature for consensus mechanism (default: 1.0)
+    # Note: For setup_llm (default LLM), the average of temperature_low and temperature_high is used
+
+
+# Consensus Mode Configuration
+# This setting controls whether the workflow uses consensus mechanism for TNM classification
+# 
+# Options:
+#   - True:  Consensus mode (default)
+#            * Collects multiple responses from LLM agents
+#            * Reaches consensus through majority voting
+#            * More reliable but slower (requires multiple LLM calls)
+#            * Uses t_classifier, n_classifier, m_classifier prompts if available
+#            * Falls back to _base prompts if main prompts not found
+#
+#   - False: Single response mode
+#            * Collects only one response from LLM agent
+#            * Faster execution (single LLM call per classification)
+#            * Uses t_classifier_base, n_classifier_base, m_classifier_base prompts
+#            * Falls back to main prompts if _base prompts not found
+#
+# Note: This setting takes priority over prompt-based auto-detection.
+#       If both t_classifier and t_classifier_base exist, this setting determines
+#       which mode to use regardless of which prompt is selected.
+#       True "majority-vote" consensus requires multiple responses in code
+#       (see MIN_RESPONSES and CONSENSUS_THRESHOLDS in src/agents/consensus.py).
+use_consensus: True
+
+# Input file configuration
+# Path to the input data file containing medical reports for TNM classification
+# 
+# Supported formats:
+#   - CSV files (.csv): UTF-8 encoded CSV files
+#   - Excel files (.xlsx, .xls): Excel files with 'data' sheet
+#
+# Required columns in input file:
+#   - hospital_id: Hospital/patient identifier
+#   - Pathology: Pathology report content
+#   - Chest CT: Chest CT scan report
+#   - Brain MR: Brain MRI report (optional)
+#   - PET: PET scan report (optional)
+#   - EBUS: EBUS report (optional)
+#   - Neck biopsy: Neck biopsy report (optional)
+#   - Bone scan: Bone scan report (optional)
+#   - Abdomen&Pelvis CT: Abdomen and pelvis CT report (optional)
+#   - Adrenal CT: Adrenal CT report (optional)
+#   - cT, cN, cM, cStage: True TNM values for accuracy evaluation (optional)
+#
+# Examples:
+#   - "input/multiple_csv_cases_ajcc_8th.csv"
+#   - "input/single_csv_ajcc_9th.csv"
+#   - "input/single_excel_ajcc_8th.xlsx"
+#   - "input/single_excel_ajcc_9th.xlsx"
+input_file: "input/single_excel_ajcc_8th.xlsx"  # "input/multiple_csv_cases_ajcc_8th.csv"
+output_file: "output/single_excel_ajcc_8th"  # output/file_name
+json_output_file: # "output/single_excel_ajcc_8th.json"  # output/specific_case_output_name.json
+log_file: # "output/single_excel_ajcc_8th.log"  # output/specific_case_output_name.log
+
+# Histology settings
+histology_settings:
+  # Maximum number of retries for LLM calls in consensus mechanism
+  max_retries: 4
+  # Language priority for histology classification
+  # The system uses the first language or medical term in the list that is found in the report
+  language_priority: ["medical", "english", "korean"]
+  # Histology classifier prompt
+  # The prompt is used to classify the histology
+  histology_classifier: |
+    You are an expert pathologist specialized in lung cancer classification. Your task is to analyze medical reports and classify them according to the WHO Classification of Lung Tumors, specifically focusing on identifying the exact tumor type.
+
+    Input medical report to analyze:
+    {reports}
+
+    WHO Classification structure:
+    {classification_structure}
+
+    Special classification rules to follow:
+    {classification_rules}
+
+    IMPORTANT GUIDELINES:
+
+    1. Classification Hierarchy and Focus:
+       - Navigate through: Main Category > Subcategory > Type > Subtype
+       - YOUR PRIMARY GOAL is to identify the TYPE level classification
+       - Example path: epithelial_tumors (Category) > adenocarcinomas (Subcategory) > "Acinar adenocarcinoma" (Type)
+       - Only go to subtype level if explicitly stated in the report
+
+    2. Language Recognition:
+       - Process terms in multiple languages (Korean/English/Latin)
+
+    3. Type Classification Process:
+
+    4. Priority Rules for Type Identification:
+
+    5. Special Considerations for Type Classification:
+
+    Analyze the provided report and return ONLY a JSON object. 
+    DO NOT use markdown format or include any text outside the JSON structure.
+    Format response as JSON:
+    {{{{
+        "main_category": "The broad category (e.g., epithelial_tumors)",
+        "subcategory": "The subcategory (e.g., adenocarcinomas)",
+        "type": "THE SPECIFIC TYPE - THIS IS YOUR PRIMARY FOCUS",
+        "confidence": "[high/medium/low]",
+        "reasoning": "Detail your path to identifying the specific type, with emphasis on why you chose this particular type classification",
+        "identified_terms": {{{{
+            "korean": ["Identified Korean terms with their location in the text"],
+            "english": ["Identified English terms with their location in the text"],
+            "medical": ["Identified medical terms with their location in the text"]
+        }}}}
+    }}}}
+
+    CRUCIAL REMINDER: Your main task is to identify the correct TYPE classification. This is more specific than the category or subcategory, but not as detailed as subtypes.
+
+
+# AJCC 8th edition prompts
+ajcc8th_prompts:
+  t_classifier: |
+    You are a specialized assistant for lung cancer T staging classification.
+    Please follow these rules in EXACT order of priority when making accurate T classification.
+    
+    TASK:
+    You will receive medical reports (Pathology, Chest CT, PET, etc.) for a patient.
+    Analyze these reports and determine the T classification based on the tumor size and characteristics.
+    
+    SIZE BASED T STAGING RULE (CT):
+      "T1a": {"max": 1, "unit": "cm"},{"value": 1, "unit": "cm"},
+      "T1b": {"min": 1, "max": 2, "unit": "cm"},{"value": 2, "unit": "cm"},
+      "T1c": {"min": 2, "max": 3, "unit": "cm"},{"value": 3, "unit": "cm"},
+      "T2a": {"min": 3, "max": 4, "unit": "cm"},{"value": 4, "unit": "cm"},
+      "T2b": {"min": 4, "max": 5, "unit": "cm"},{"value": 5, "unit": "cm"},
+      "T3": {"min": 5, "max": 7, "unit": "cm"},{"value": 7, "unit": "cm"},
+      "T4": {"min": 7, "unit": "cm"}
+    
+    Generate Response as This Format:
+    ---------------------------------
+    1. Use Thinking Scratchpad (Size Based Thinking Process)
+    <think>
+    "Write Your Decision think flows in this scratpad area by closed xml think tags."
+    </think>
+
+    2. Response Final Decision Output Format as JSON:
+    ```json
+    {{
+      "classification": "<YOUR_SELECTED_T_CLASSIFICATION>",
+      "reasoning": "Detail your path to identifying the specific T classification, with emphasis on why you chose this particular T classification"
+    }}
+    ```
+    
+    IMPORTANT:
+    - Replace "<YOUR_SELECTED_T_CLASSIFICATION>" with EXACTLY ONE of: T0, T1a, T1b, T1c, T2a, T2b, T3, or T4
+    - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
+    - The "reasoning" field should provide detailed explanation for your classification choice
+    - Example valid responses: "T1a", "T2b", "T4" (without quotes in JSON)
+    ---------------------------------    
+  
+  t_classifier_base: |
+    TASK:
+    You will receive medical reports for a patient. Analyze the reports and determine the T classification based on tumor size.
+    
+    T STAGING SIZE CLASSIFICATIONS:
+      T1a: ≤1cm
+      T1b: >1cm to ≤2cm
+      T1c: >2cm to ≤3cm
+      T2a: >3cm to ≤4cm
+      T2b: >4cm to ≤5cm
+      T3: >5cm to ≤7cm
+      T4: >7cm
+
+    Generate Response Format as JSON:
+    ```json
+    {{
+      "classification": "<YOUR_SELECTED_T_CLASSIFICATION>",
+      "reasoning": "Detail your path to identifying the specific T classification, with emphasis on why you chose this particular T classification"
+    }}
+    ```
+    
+    IMPORTANT:
+    - Replace "<YOUR_SELECTED_T_CLASSIFICATION>" with EXACTLY ONE of: T0, T1a, T1b, T1c, T2a, T2b, T3, or T4
+    - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
+    - The "reasoning" field should provide detailed explanation for your classification choice
+    - Example valid responses: "T1a", "T2b", "T4" (without quotes in JSON)
+ 
+  n_classifier: |
+    You are a specialized assistant for lung cancer N staging classification.
+    Please follow these rules in EXACT order of priority when making accurate N classification. Response Final Decision Output Format as JSON.
+    
+    TASK:
+    You will receive medical reports (EBUS, PET, Chest CT, etc.) for a patient.
+    Analyze these reports and determine the N classification based on regional lymph node involvement.
+    
+    Regional lymph node involvement
+      N0	No regional lymph node metastasis
+      N1	Metastasis in ipsilateral peribronchial and/or ipsilateral hilar lymph nodes and intrapulmonary nodes, including involvement by direct extension
+      N2	Metastasis in ipsilateral mediastinal and/or subcarinal lymph node(s)
+      N3	Metastasis in contralateral mediastinal, contralateral hilar, ipsilateral or contralateral scalene, or supraclavicular lymph node(s) 
+    
+    Generate Response as This Format:
+    ---------------------------------
+    1. Use Thinking Scratchpad
+    <think>
+    "Write Your Decision think flows in this scratpad area by closed xml think tags."
+    </think>
+
+    2. Response Final Decision Output Format as JSON:
+    ```json
+    {{
+      "classification": "<YOUR_SELECTED_N_CLASSIFICATION>",
+      "reasoning": "Detail your path to identifying the specific N classification, with emphasis on why you chose this particular N classification"
+    }}
+    ```
+    
+    IMPORTANT:
+    - Replace "<YOUR_SELECTED_N_CLASSIFICATION>" with EXACTLY ONE of: N0, N1, N2, or N3
+    - Do NOT include "MUST CHOICE ONE:" text or placeholder text in the classification value
+    - The "reasoning" field should provide detailed explanation for your classification choice
+    - Example valid responses: "N0", "N1", "N2", "N3" (without quotes in JSON)
+    ---------------------------------
+
+  n_classifier_base: |
+    TASK:
+    You will receive medical reports for a patient. Analyze the reports and determine the N classification based on regional lymph node involvement.
+    
+    Regional lymph node involvement
+      N0	No regional lymph node metastasis
+      N1	Metastasis in ipsilateral peribronchial and/or ipsilateral hilar lymph nodes and intrapulmonary nodes, including involvement by direct extension
+      N2	Metastasis in ipsilateral mediastinal and/or subcarinal lymph node(s)
+      N3	Metastasis in contralateral mediastinal, contralateral hilar, ipsilateral or contralateral scalene, or supraclavicular lymph node(s)  
+    
+    Generate Response Format as JSON:
+    ```json
+    {{
+      "classification": "<YOUR_SELECTED_N_CLASSIFICATION>",
+      "reasoning": "Detail your path to identifying the specific N classification, with emphasis on why you chose this particular N classification"
+    }}
+    ```
+    
+    IMPORTANT:
+    - Replace "<YOUR_SELECTED_N_CLASSIFICATION>" with EXACTLY ONE of: N0, N1, N2, or N3
+    - Do NOT include "MUST CHOICE ONE:" text or placeholder text in the classification value
+    - The "reasoning" field should provide detailed explanation for your classification choice
+    - Example valid responses: "N0", "N1", "N2", "N3" (without quotes in JSON)
+
+  m_classifier: |
+    You are a specialized assistant for lung cancer M staging classification.
+    Please follow these rules in EXACT order of priority when making accurate M classification. Response Final Decision Output Format as JSON.
+    
+    TASK:
+    You will receive medical reports (Brain MR, Bone scan, Abdomen&Pelvis CT, Adrenal CT, PET, etc.) for a patient.
+    Analyze these reports and determine the M classification based on distant metastasis presence.
+    
+    M: Distant metastasis
+      M0	No distant metastasis
+      M1	Distant metastasis present
+        - M1a	Separate tumor nodule(s) in a contralateral lobe; tumor with pleural or pericardial nodule(s) or malignant pleural or pericardial effusion
+        - M1b	Single extrathoracic metastasis
+        - M1c	Multiple extrathoracic metastases in one or more organs
+    
+    Generate Response as This Format:
+    ---------------------------------
+    1. Use Thinking Scratchpad
+    <think>
+    "Write Your Decision think flows in this scratpad area by closed xml think tags."
+    </think>
+
+    2. Response Final Decision Output Format as JSON:
+    ```json
+    {{
+      "classification": "<YOUR_SELECTED_M_CLASSIFICATION>",
+      "reasoning": "Detail your path to identifying the specific M classification, with emphasis on why you chose this particular M classification"
+    }}
+    ```
+    
+    IMPORTANT:
+    - Replace "<YOUR_SELECTED_M_CLASSIFICATION>" with EXACTLY ONE of: M0, M1a, M1b, or M1c
+    - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
+    - The "reasoning" field should provide detailed explanation for your classification choice
+    - Example valid responses: "M0", "M1a", "M1b", "M1c" (without quotes in JSON)
+    ---------------------------------
+
+  m_classifier_base: |
+    TASK:
+    You will receive medical reports for a patient. Analyze the reports and determine the M classification based on distant metastasis presence.
+    
+    M: Distant metastasis
+      M0	No distant metastasis
+      M1	Distant metastasis present
+        - M1a	Separate tumor nodule(s) in a contralateral lobe; tumor with pleural or pericardial nodule(s) or malignant pleural or pericardial effusion
+        - M1b	Single extrathoracic metastasis
+        - M1c	Multiple extrathoracic metastases in one or more organs     
+    
+    Generate Response Format as JSON:
+    ```json
+    {{
+      "classification": "<YOUR_SELECTED_M_CLASSIFICATION>",
+      "reasoning": "Detail your path to identifying the specific M classification, with emphasis on why you chose this particular M classification"
+    }}
+    ```
+    
+    IMPORTANT:
+    - Replace "<YOUR_SELECTED_M_CLASSIFICATION>" with EXACTLY ONE of: M0, M1a, M1b, or M1c
+    - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
+    - The "reasoning" field should provide detailed explanation for your classification choice
+    - Example valid responses: "M0", "M1a", "M1b", "M1c" (without quotes in JSON)
+
+stage_rules:
+  m_categories:
+    M1a: "IVA"
+    M1b: "IVA"
+    M1c: "IVB"
+  
+  n3_rules:
+    T3_T4: "IIIC"
+    default: "IIIB"
+  
+  n2_rules:
+    T1_T2:
+      T1a: "IIIA"
+      T1b: "IIIA"
+      T1c: "IIIA"
+      T2a: "IIIA"
+      T2b: "IIIA"
+    T3_T4: "IIIB"
+  
+  n1_rules:
+    T1_T2:
+      T1a: "IIB"
+      T1b: "IIB"
+      T1c: "IIB"
+      T2a: "IIB"
+      T2b: "IIB"
+    T3: "IIIA"
+    T4: "IIIA"
+  
+  n0_rules:
+    Tis: "0"
+    T1mi: "IA1"
+    T1a: "IA1"
+    T1b: "IA2"
+    T1c: "IA3"
+    T2a: "IB"
+    T2b: "IIA"
+    T3: "IIB"
+    T4: "IIIA"
+
+# AJCC 9th edition prompts
+ajcc9th_prompts:
+  t_classifier: |
+    You are a specialized assistant for lung cancer T staging classification.
+    Please follow these rules in EXACT order of priority when making accurate T classification.
+    
+    TASK:
+    You will receive medical reports (Pathology, Chest CT, PET, etc.) for a patient.
+    Analyze these reports and determine the T classification based on the tumor size and characteristics.
+    
+    SIZE BASED T STAGING RULE (CT):
+      "T1a": {"max": 1, "unit": "cm"},{"value": 1, "unit": "cm"},
+      "T1b": {"min": 1, "max": 2, "unit": "cm"},{"value": 2, "unit": "cm"},
+      "T1c": {"min": 2, "max": 3, "unit": "cm"},{"value": 3, "unit": "cm"},
+      "T2a": {"min": 3, "max": 4, "unit": "cm"},{"value": 4, "unit": "cm"},
+      "T2b": {"min": 4, "max": 5, "unit": "cm"},{"value": 5, "unit": "cm"},
+      "T3": {"min": 5, "max": 7, "unit": "cm"},{"value": 7, "unit": "cm"},
+      "T4": {"min": 7, "unit": "cm"}
+
+    Generate Response as This Format:
+    ---------------------------------
+    1. Use Thinking Scratchpad (Size Based Thinking Process)
+    <think>
+    "Write Your Decision think flows in this scratpad area by closed xml think tags."
+    </think>
+
+    2. Response Final Decision Output Format as JSON:
+    ```json
+    {{
+      "classification": "<YOUR_SELECTED_T_CLASSIFICATION>",
+      "reasoning": "Detail your path to identifying the specific T classification, with emphasis on why you chose this particular T classification"
+    }}
+    ```
+    
+    IMPORTANT:
+    - Replace "<YOUR_SELECTED_T_CLASSIFICATION>" with EXACTLY ONE of: T0, T1a, T1b, T1c, T2a, T2b, T3, or T4
+    - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
+    - The "reasoning" field should provide detailed explanation for your classification choice
+    - Example valid responses: "T1a", "T2b", "T4" (without quotes in JSON)
+    ---------------------------------    
+  
+  t_classifier_base: |
+    TASK:
+    You will receive medical reports for a patient. Analyze the reports and determine the T classification based on tumor size.
+    
+    T STAGING SIZE CLASSIFICATIONS:
+      T1a: ≤1cm
+      T1b: >1cm to ≤2cm
+      T1c: >2cm to ≤3cm
+      T2a: >3cm to ≤4cm
+      T2b: >4cm to ≤5cm
+      T3: >5cm to ≤7cm
+      T4: >7cm
+
+    Generate Response Format as JSON:
+    ```json
+    {{
+      "classification": "<YOUR_SELECTED_T_CLASSIFICATION>",
+      "reasoning": "Detail your path to identifying the specific T classification, with emphasis on why you chose this particular T classification"
+    }}
+    ```
+    
+    IMPORTANT:
+    - Replace "<YOUR_SELECTED_T_CLASSIFICATION>" with EXACTLY ONE of: T0, T1a, T1b, T1c, T2a, T2b, T3, or T4
+    - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
+    - The "reasoning" field should provide detailed explanation for your classification choice
+    - Example valid responses: "T1a", "T2b", "T4" (without quotes in JSON)
+ 
+  n_classifier: |
+    You are a specialized assistant for lung cancer N staging classification.
+    Please follow these rules in EXACT order of priority when making accurate N classification. Response Final Decision Output Format as JSON.
+    
+    TASK:
+    You will receive medical reports (EBUS, PET, Chest CT, etc.) for a patient.
+    Analyze these reports and determine the N classification based on regional lymph node involvement.
+    
+    Regional lymph node involvement
+      N0	No regional lymph node metastasis
+      N1	Metastasis in ipsilateral peribronchial or ipsilateral hilar or intrapulmonary lymph nodes, including involvement by direct extension
+      N2	Metastasis in ipsilateral mediastinal or subcarinal lymph node(s)
+      N2a	Metastasis(es) in a single ipsilateral mediastinal or in the subcarinal nodal station
+      N2b	Metastases in multiple ipsilateral mediastinal nodal stations with or without involvement of the subcarinal nodal station
+      N3	Metastasis in contralateral mediastinal, contralateral hilar, ipsilateral or contralateral scalene or supraclavicular lymph node(s)
+    
+    Special Considerations
+    - NO N1 upgrade without regional confirmation
+    - Any uncertainty = N0; 'r/o', 'probable', 'possible' = N0
+    
+    Generate Response as This Format:
+    ---------------------------------
+    1. Use Thinking Scratchpad
+    <think>
+    "Write Your Decision think flows in this scratpad area by closed xml think tags."
+    </think>
+
+    2. Response Final Decision Output Format as JSON:
+    ```json
+    {{
+      "classification": "<YOUR_SELECTED_N_CLASSIFICATION>",
+      "reasoning": "Detail your path to identifying the specific N classification, with emphasis on why you chose this particular N classification"
+    }}
+    ```
+    
+    IMPORTANT:
+    - Replace "<YOUR_SELECTED_N_CLASSIFICATION>" with EXACTLY ONE of: N0, N1, N2a, N2b, or N3
+    - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
+    - The "reasoning" field should provide detailed explanation for your classification choice
+    - Example valid responses: "N0", "N1", "N2a", "N2b", "N3" (without quotes in JSON)
+    ---------------------------------
+
+  n_classifier_base: |
+    TASK:
+    You will receive medical reports for a patient. Analyze the reports and determine the N classification based on regional lymph node involvement.
+    
+    Regional lymph node involvement
+      N0	No regional lymph node metastasis
+      N1	Metastasis in ipsilateral peribronchial or ipsilateral hilar or intrapulmonary lymph nodes, including involvement by direct extension
+      N2	Metastasis in ipsilateral mediastinal or subcarinal lymph node(s)
+      N2a	Metastasis(es) in a single ipsilateral mediastinal or in the subcarinal nodal station
+      N2b	Metastases in multiple ipsilateral mediastinal nodal stations with or without involvement of the subcarinal nodal station
+      N3	Metastasis in contralateral mediastinal, contralateral hilar, ipsilateral or contralateral scalene or supraclavicular lymph node(s)
+      
+    Generate Response Format as JSON:
+    ```json
+    {{
+      "classification": "<YOUR_SELECTED_N_CLASSIFICATION>",
+      "reasoning": "Detail your path to identifying the specific N classification, with emphasis on why you chose this particular N classification"
+    }}
+    ```
+    
+    IMPORTANT:
+    - Replace "<YOUR_SELECTED_N_CLASSIFICATION>" with EXACTLY ONE of: N0, N1, N2a, N2b, or N3
+    - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
+    - The "reasoning" field should provide detailed explanation for your classification choice
+    - Example valid responses: "N0", "N1", "N2a", "N2b", "N3" (without quotes in JSON)
+
+  m_classifier: |
+    You are a specialized assistant for lung cancer M staging classification.
+    Please follow these rules in EXACT order of priority when making accurate M classification. Response Final Decision Output Format as JSON.
+    
+    TASK:
+    You will receive medical reports (Brain MR, Bone scan, Abdomen&Pelvis CT, Adrenal CT, PET, etc.) for a patient.
+    Analyze these reports and determine the M classification based on distant metastasis presence.
+    
+    M: Distant metastasis
+      M0	No distant metastasis
+      M1a	Tumor with pleural or pericardial nodules or malignant pleural or pericardial effusions,* separate tumor nodule(s) in a contralateral lobe
+      M1b	Single extrathoracic metastasis in a single organ system**
+      M1c	Multiple extrathoracic metastases in a single or multiple organ system(s)
+      M1c1	Multiple extrathoracic metastases in a single organ system***
+      M1c2	Multiple extrathoracic metastasis in multiple organ systems
+      
+    Special Considerations
+    1) Pathologic confirmation REQUIRED for ANY M1 classification
+    2) Default to M0 for: uncertainty, single imaging, 'vs', 'r/o', 'probable', 'synchronous'
+    
+    Generate Response as This Format:
+    ---------------------------------
+    1. Use Thinking Scratchpad
+    <think>
+    "Write Your Decision think flows in this scratpad area by closed xml think tags."
+    </think>
+
+    2. Response Final Decision Output Format as JSON:
+    ```json
+    {{
+      "classification": "<YOUR_SELECTED_M_CLASSIFICATION>",
+      "reasoning": "Detail your path to identifying the specific M classification, with emphasis on why you chose this particular M classification"
+    }}
+    ```
+    
+    IMPORTANT:
+    - Replace "<YOUR_SELECTED_M_CLASSIFICATION>" with EXACTLY ONE of: M0, M1a, M1b, M1c1, or M1c2
+    - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
+    - The "reasoning" field should provide detailed explanation for your classification choice
+    - Example valid responses: "M0", "M1a", "M1b", "M1c1", "M1c2" (without quotes in JSON)
+    - Note: M1c1 = Multiple extrathoracic metastases in a single organ system, M1c2 = Multiple extrathoracic metastasis in multiple organ systems
+    ---------------------------------
+
+  m_classifier_base: |
+    TASK:
+    You will receive medical reports for a patient. Analyze the reports and determine the M classification based on distant metastasis presence.
+    
+    M: Distant metastasis
+      M0	No distant metastasis
+      M1a	Tumor with pleural or pericardial nodules or malignant pleural or pericardial effusions,* separate tumor nodule(s) in a contralateral lobe
+      M1b	Single extrathoracic metastasis in a single organ system**
+      M1c	Multiple extrathoracic metastases in a single or multiple organ system(s)
+      M1c1	Multiple extrathoracic metastases in a single organ system***
+      M1c2	Multiple extrathoracic metastasis in multiple organ systems
+    
+    Generate Response Format as JSON:
+    ```json
+    {{
+      "classification": "<YOUR_SELECTED_M_CLASSIFICATION>",
+      "reasoning": "Detail your path to identifying the specific M classification, with emphasis on why you chose this particular M classification"
+    }}
+    ```
+    
+    IMPORTANT:
+    - Replace "<YOUR_SELECTED_M_CLASSIFICATION>" with EXACTLY ONE of: M0, M1a, M1b, M1c1, or M1c2
+    - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
+    - The "reasoning" field should provide detailed explanation for your classification choice
+    - Example valid responses: "M0", "M1a", "M1b", "M1c1", "M1c2" (without quotes in JSON)
+    - Note: M1c1 = Multiple extrathoracic metastases in a single organ system, M1c2 = Multiple extrathoracic metastasis in multiple organ systems
+
+  stage_rules:
+    m_categories:
+      M1a: "IVA"
+      M1b: "IVA"
+      M1c1: "IVB"
+      M1c2: "IVB"
+    
+    n3_rules:
+      T3_T4: "IIIC"
+      default: "IIIB"
+    
+    n2_rules:
+      N2b: "IIIB"
+      N2a:
+        T1: "IIB"
+        default: "IIIA"
+    
+    tn_combinations:
+      N0:
+        T1mi: "IA1"
+        T1a: "IA1"
+        T1b: "IA2"
+        T1c: "IA3"
+        T2a: "IB"
+        T2b: "IIA"
+        T3: "IIB"
+        T4: "IIIA"
+      N1:
+        T1a: "IIA"
+        T1b: "IIA"
+        T1c: "IIA"
+        T2a: "IIB"
+        T2b: "IIB"
+        T3: "IIIA"
+        T4: "IIIA"
+    
+    fallback_rules:
+      T4: "IIIB"
+      default: "IIIA"

@@ -159,8 +159,9 @@ output/
 *.csv
 *.json
 *.log
-config/tnm_config.yaml
+!config/tnm_config.yaml
 !requirements.txt
 !sample.env
 !config/ajcc8th/tnm_classification.json
 !config/ajcc9th/tnm_classification.json
+*.backup

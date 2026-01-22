@@ -27,6 +27,7 @@ class AgentConsensus:
         self.MAX_ATTEMPTS = 50
 
         # Minimum responses required per classification type
+        # Note: To enable true majority-vote consensus, set these to 3+.
         self.MIN_RESPONSES = {
             "T": 1,  # T node requires 1 response
             "N": 1,  # Other nodes require 1 response
@@ -40,7 +41,8 @@ class AgentConsensus:
             "M": {'M0', 'M1a', 'M1b', 'M1c'}
         }
 
-        # Consensus thresholds (100 / number of possible classifications)
+        # Consensus thresholds (percentage). For true majority-vote, tune along
+        # with MIN_RESPONSES (e.g., 50+ for simple majority).
         self.CONSENSUS_THRESHOLDS = {
             "T": 100 / 2,
             "N": 100 / 2,
@@ -528,4 +530,3 @@ class AgentConsensus:
         )
 
         return response_details[most_common]
-
