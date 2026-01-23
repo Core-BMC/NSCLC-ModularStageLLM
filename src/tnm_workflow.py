@@ -11,7 +11,7 @@ import os
 import tempfile
 from typing import Any, Dict, Optional
 
-from langchain_core.messages import HumanMessage
+from langchain_core.messages import HumanMessage, SystemMessage
 from langgraph.graph import END, StateGraph
 
 # Import models
@@ -33,7 +33,7 @@ from src.workflow import AgentState
 
 # Import utility functions
 from src.utils.data_utils import format_input_data
-from src.utils.error_utils import create_error_state
+from src.utils.error_utils import create_error_state, extract_json_using_regex
 from src.utils.file_operations import (
     finalize_csv,
     save_to_csv_file,
@@ -79,6 +79,7 @@ class TNMClassificationWorkflow:
         self.config = config
         self.tnm_criteria = self.config.get('tnm_criteria', {})
         self.histology_workflow = HistologyClassificationWorkflow(config)
+        self.tnm_base = bool(self.config.get('tnm_base', False))
         
         # Initialize LLM settings before setting up prompts
         self.llm_default = setup_llm(self.config)
@@ -91,6 +92,8 @@ class TNMClassificationWorkflow:
         self.t_use_consensus = prompts_dict.get('t_use_consensus', True)
         self.n_use_consensus = prompts_dict.get('n_use_consensus', True)
         self.m_use_consensus = prompts_dict.get('m_use_consensus', True)
+        self.tnm_classifier_prompt = prompts_dict.get('tnm_classifier_prompt', '')
+        self.tnm_use_consensus = prompts_dict.get('tnm_use_consensus', False)
         
         # Setup agents using utility function
         agents_dict = setup_agents()
@@ -99,17 +102,23 @@ class TNMClassificationWorkflow:
         self.t_parser = agents_dict['t_parser']
         self.n_parser = agents_dict['n_parser']
         self.m_parser = agents_dict['m_parser']
+        self.tnm_parser = agents_dict['tnm_parser']
         
         # Setup workflow graph
         self.workflow = StateGraph(AgentState)
-        setup_graph(self.workflow, {
-            'histology_classifier_node': self.histology_classifier_node,
-            't_classifier_node': self.t_classifier_node,
-            'n_classifier_node': self.n_classifier_node,
-            'm_classifier_node': self.m_classifier_node,
-            'stage_classifier_node': self.stage_classifier_node,
-            'final_save_node': self.final_save_node
-        })
+        setup_graph(
+            self.workflow,
+            {
+                'histology_classifier_node': self.histology_classifier_node,
+                'tnm_classifier_node': self.tnm_classifier_node,
+                't_classifier_node': self.t_classifier_node,
+                'n_classifier_node': self.n_classifier_node,
+                'm_classifier_node': self.m_classifier_node,
+                'stage_classifier_node': self.stage_classifier_node,
+                'final_save_node': self.final_save_node
+            },
+            tnm_base=self.tnm_base
+        )
         self.consensus_agent = AgentConsensus(max_retries=4)        
         
         self.fieldnames = [
@@ -155,9 +164,10 @@ class TNMClassificationWorkflow:
                 'reasoning': histology_result['histology_reason']
             }
             
+            next_node = "tnm_classifier" if self.tnm_base else "t_classifier"
             result_state = {
                 **state,
-                "next": "t_classifier",
+                "next": next_node,
                 "histology_category": histology_result.get("histology_category"),
                 "histology_subcategory": histology_result.get("histology_subcategory", ''),
                 "histology_type": histology_result.get("histology_type"),
@@ -169,7 +179,8 @@ class TNMClassificationWorkflow:
 
         except Exception as e:
             self.logger.error(f"Error in Histology Classifier: {str(e)}", exc_info=True)
-            return create_error_state(state, "histology_classifier", str(e), "t_classifier")
+            next_node = "tnm_classifier" if self.tnm_base else "t_classifier"
+            return create_error_state(state, "histology_classifier", str(e), next_node)
 
     def t_classifier_node(self, state: AgentState) -> AgentState:
         """T classification node passing workflow instance"""
@@ -213,6 +224,90 @@ class TNMClassificationWorkflow:
         except Exception as e:
             self.logger.error(f"Error in T Classifier: {str(e)}", exc_info=True)
             return create_error_state(state, "t_classifier", str(e), "n_classifier")
+
+    def tnm_classifier_node(self, state: AgentState) -> AgentState:
+        """TNM base classification node (single-pass T+N+M)."""
+        self.logger.debug(f"TNM classifier processing case {state['input'].get('case_number')}")
+        try:
+            if not self.tnm_classifier_prompt:
+                raise ValueError("TNM classifier base prompt not found")
+
+            ordered_input = prepare_node_specific_input(
+                state['input'], 'tnm'
+            )
+
+            input_text = format_input_data(ordered_input)
+            system_message = SystemMessage(content=self.tnm_classifier_prompt)
+            human_message = HumanMessage(
+                content="Please provide the TNM classification:\n\n"
+                f"{input_text}"
+            )
+
+            llm = self._get_llm_instance()
+            response = llm.invoke([system_message, human_message])
+            if not response:
+                raise ValueError("Empty response from TNM classifier")
+
+            if hasattr(response, 'content'):
+                response_content = response.content
+            elif isinstance(response, str):
+                response_content = response
+            elif isinstance(response, dict):
+                response_content = response.get('content', str(response))
+            else:
+                response_content = str(response)
+
+            if not response_content:
+                raise ValueError("Empty response content from TNM classifier")
+
+            parsed_result = self.tnm_parser.parse(response_content)
+
+            json_payload = extract_json_using_regex(response_content) or {}
+            t_reasoning = (
+                json_payload.get('t_reasoning', '')
+                if isinstance(json_payload.get('t_reasoning', ''), str)
+                else ''
+            )
+            n_reasoning = (
+                json_payload.get('n_reasoning', '')
+                if isinstance(json_payload.get('n_reasoning', ''), str)
+                else ''
+            )
+            m_reasoning = (
+                json_payload.get('m_reasoning', '')
+                if isinstance(json_payload.get('m_reasoning', ''), str)
+                else ''
+            )
+
+            state['input']['t_classification'] = {
+                'classification': parsed_result['t_classification'],
+                'raw_output': response_content,
+                'reasoning': t_reasoning.strip()
+            }
+            state['input']['n_classification'] = {
+                'classification': parsed_result['n_classification'],
+                'raw_output': response_content,
+                'reasoning': n_reasoning.strip()
+            }
+            state['input']['m_classification'] = {
+                'classification': parsed_result['m_classification'],
+                'raw_output': response_content,
+                'reasoning': m_reasoning.strip()
+            }
+
+            result_state = {
+                **state,
+                "next": "stage_classifier",
+                "t_classification": parsed_result['t_classification'],
+                "n_classification": parsed_result['n_classification'],
+                "m_classification": parsed_result['m_classification']
+            }
+
+            return result_state
+
+        except Exception as e:
+            self.logger.error(f"Error in TNM Classifier: {str(e)}", exc_info=True)
+            return create_error_state(state, "tnm_classifier", str(e), "stage_classifier")
 
     def n_classifier_node(self, state: AgentState) -> AgentState:
         """N classification node passing workflow instance"""

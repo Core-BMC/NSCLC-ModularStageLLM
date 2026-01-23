@@ -29,6 +29,10 @@ def prepare_node_specific_input(
         "m": [
             "pathology", "brain_mr", "bone_scan", "chest_ct",
             "abdomen_pelvis_ct", "adrenal_ct", "pet", "neck_biopsy", "ebus"
+        ],
+        "tnm": [
+            "pathology", "chest_ct", "pet", "brain_mr", "ebus",
+            "neck_biopsy", "bone_scan", "abdomen_pelvis_ct", "adrenal_ct"
         ]
     }
 
@@ -54,4 +58,3 @@ def prepare_node_specific_input(
         })
 
     return ordered_input
-

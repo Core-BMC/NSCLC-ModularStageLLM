@@ -281,6 +281,43 @@ python run_workflow.py -i input/multiple_csv_cases_ajcc_8th.csv -o output/result
 python run_workflow.py -i input/sample.csv -o output/results -v
 ```
 
+### Base Mode vs Agent Mode
+
+You can switch between a single-pass base TNM workflow and the multi-agent chain.
+
+**Base Mode (single-pass T+N+M):**
+
+- Set `tnm_base: true` in `config/tnm_config.yaml`
+- Provide `tnm_classifier_base` under the matching AJCC prompt section
+- Stage is still rule-based after parsing T/N/M
+
+```yaml
+tnm_base: true
+
+ajcc8th_prompts:
+  tnm_classifier_base: |
+    ...single-pass TNM prompt...
+```
+
+**Agent Mode (T -> N -> M chain):**
+
+- Set `tnm_base: false`
+- Provide `t_classifier`/`n_classifier`/`m_classifier` (or their `_base` variants)
+- Consensus behavior is controlled by `use_consensus`
+
+```yaml
+tnm_base: false
+use_consensus: true
+
+ajcc8th_prompts:
+  t_classifier: |
+    ...T prompt...
+  n_classifier: |
+    ...N prompt...
+  m_classifier: |
+    ...M prompt...
+```
+
 ### Input File Format
 
 The input file should be a **CSV** or **Excel** file with the following columns:
@@ -415,7 +452,7 @@ If you use this software in your research, please cite:
 [Citation will be added upon publication]
 
 **Code**:  
-Heo, H. (2025). Lung Cancer Clinical TNM Staging with Modular Agent Architecture (Version 1.0.0) [Computer software]. Zenodo. <https://doi.org/10.5281/zenodo.XXXXXXX>
+Heo, H. et al. (2025). Lung Cancer Clinical TNM Staging with Modular Agent Architecture (Version 1.0.0) [Computer software]. Zenodo. <https://doi.org/10.5281/zenodo.XXXXXXX>
 
 Or use the citation information in [CITATION.cff](CITATION.cff) or the "Cite this repository" button on GitHub.
 
@@ -423,12 +460,13 @@ Or use the citation information in [CITATION.cff](CITATION.cff) or the "Cite thi
 
 **Corresponding Author**:  
 Shinkyo Yoon, MD, PhD  
-Email: <shinkyoyoon82@gmail.com>  
+Email: <shinkyoyoon@amc.seoul.kr>
+ORCID: [ORCID information to be added](https://orcid.org/0000-0000-0000-0000)  
 Affiliation: Asan Medical Center
 
 **Developer**:  
-Hwon Heo  
-Email: <heohwon@gmail.com>  
+Hwon Heo, PhD  
+Email: <heohwon@gmail.com>,<heoh@amc.seoul.kr>
 ORCID: [0000-0002-6103-4680](https://orcid.org/0000-0002-6103-4680)  
 Affiliation: Asan Medical Center
 

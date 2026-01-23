@@ -6,7 +6,12 @@ from typing import Any, Dict
 from langchain_core.tools import StructuredTool
 from langgraph.graph import END
 
-from src.parsers import TNM_M_Parser, TNM_N_Parser, TNM_T_Parser
+from src.parsers import (
+    TNM_M_Parser,
+    TNM_N_Parser,
+    TNM_T_Parser,
+    TNMOutputParser,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -21,6 +26,7 @@ def setup_prompts(config: Dict[str, Any]) -> Dict[str, Any]:
         Dictionary with prompt keys and consensus flags:
         - t_classifier_prompt, n_classifier_prompt, m_classifier_prompt
         - t_use_consensus, n_use_consensus, m_use_consensus
+        - tnm_classifier_prompt, tnm_use_consensus
 
     Raises:
         ValueError: If prompts are missing
@@ -56,8 +62,43 @@ def setup_prompts(config: Dict[str, Any]) -> Dict[str, Any]:
                     f"Consider updating config to use {prompts_key}."
                 )
         
+        tnm_base = bool(config.get('tnm_base', False))
         # Check global use_consensus setting (takes priority)
         global_use_consensus = config.get('use_consensus', None)
+
+        if tnm_base:
+            tnm_classifier_prompt = prompts.get('tnm_classifier_base', '')
+            if not tnm_classifier_prompt:
+                available_keys = list(prompts.keys())
+                raise ValueError(
+                    f"Missing tnm_classifier_base prompt in config file. "
+                    f"Available keys: {available_keys}"
+                )
+
+            logger.info(
+                f"Loading base TNM prompt (AJCC {ajcc_version} edition):"
+            )
+            prompts_source = prompts_key if config.get(prompts_key) else 'prompts (legacy)'
+            logger.info(f"Using prompts from: {prompts_source}")
+            logger.info(f"Detected AJCC edition: {ajcc_edition} (from config.get('ajcc_edition'))")
+            if global_use_consensus is not None:
+                logger.info(
+                    "Global consensus setting is ignored for tnm_base workflow"
+                )
+            logger.debug(
+                f"TNM Base Prompt length: {len(tnm_classifier_prompt)} chars"
+            )
+
+            return {
+                'tnm_classifier_prompt': tnm_classifier_prompt,
+                'tnm_use_consensus': False,
+                't_classifier_prompt': prompts.get('t_classifier', ''),
+                'n_classifier_prompt': prompts.get('n_classifier', ''),
+                'm_classifier_prompt': prompts.get('m_classifier', ''),
+                't_use_consensus': False,
+                'n_use_consensus': False,
+                'm_use_consensus': False,
+            }
         
         # Determine which prompts to use and consensus settings
         # Priority: 1) global use_consensus setting, 2) _classifier (with consensus) > _classifier_base (no consensus)
@@ -139,6 +180,8 @@ def setup_prompts(config: Dict[str, Any]) -> Dict[str, Any]:
             't_use_consensus': t_use_consensus,
             'n_use_consensus': n_use_consensus,
             'm_use_consensus': m_use_consensus,
+            'tnm_classifier_prompt': '',
+            'tnm_use_consensus': False,
         }
 
     except Exception as e:
@@ -184,13 +227,15 @@ def setup_agents() -> Dict[str, Any]:
         t_parser = TNM_T_Parser()
         n_parser = TNM_N_Parser()
         m_parser = TNM_M_Parser()
+        tnm_parser = TNMOutputParser()
 
         return {
             'tools': tools,
             'tnm_tool': tnm_tool,
             't_parser': t_parser,
             'n_parser': n_parser,
-            'm_parser': m_parser
+            'm_parser': m_parser,
+            'tnm_parser': tnm_parser
         }
 
     except Exception as e:
@@ -198,13 +243,18 @@ def setup_agents() -> Dict[str, Any]:
         raise
 
 
-def setup_graph(workflow, node_functions: Dict[str, Any]):
+def setup_graph(
+    workflow,
+    node_functions: Dict[str, Any],
+    tnm_base: bool = False
+):
     """Setup workflow graph with nodes and edges.
 
     Args:
         workflow: StateGraph instance
         node_functions: Dictionary with node function references:
             - histology_classifier_node
+            - tnm_classifier_node
             - t_classifier_node
             - n_classifier_node
             - m_classifier_node
@@ -220,20 +270,37 @@ def setup_graph(workflow, node_functions: Dict[str, Any]):
             "histology_classifier",
             node_functions['histology_classifier_node']
         )
-        workflow.add_node("t_classifier", node_functions['t_classifier_node'])
-        workflow.add_node("n_classifier", node_functions['n_classifier_node'])
-        workflow.add_node("m_classifier", node_functions['m_classifier_node'])
         workflow.add_node(
             "stage_classifier",
             node_functions['stage_classifier_node']
         )
         workflow.add_node("final_save", node_functions['final_save_node'])
 
-        # Add edges
-        workflow.add_edge("histology_classifier", "t_classifier")
-        workflow.add_edge("t_classifier", "n_classifier")
-        workflow.add_edge("n_classifier", "m_classifier")
-        workflow.add_edge("m_classifier", "stage_classifier")
+        if tnm_base:
+            workflow.add_node(
+                "tnm_classifier",
+                node_functions['tnm_classifier_node']
+            )
+            workflow.add_edge("histology_classifier", "tnm_classifier")
+            workflow.add_edge("tnm_classifier", "stage_classifier")
+        else:
+            workflow.add_node(
+                "t_classifier",
+                node_functions['t_classifier_node']
+            )
+            workflow.add_node(
+                "n_classifier",
+                node_functions['n_classifier_node']
+            )
+            workflow.add_node(
+                "m_classifier",
+                node_functions['m_classifier_node']
+            )
+            workflow.add_edge("histology_classifier", "t_classifier")
+            workflow.add_edge("t_classifier", "n_classifier")
+            workflow.add_edge("n_classifier", "m_classifier")
+            workflow.add_edge("m_classifier", "stage_classifier")
+
         workflow.add_edge("stage_classifier", "final_save")
         workflow.add_edge("final_save", END)
 
@@ -243,4 +310,3 @@ def setup_graph(workflow, node_functions: Dict[str, Any]):
     except Exception as e:
         logger.error(f"Failed to setup workflow graph: {e}")
         raise
-

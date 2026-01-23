@@ -9,6 +9,11 @@
 #   - "config/ajcc9th/tnm_classification.json" -> AJCC 9th edition
 tnm_json: "config/ajcc8th/tnm_classification.json"
 
+# Base TNM workflow (single-pass T+N+M parsing via tnm_classifier_base)
+# true  -> run base TNM node and skip T/N/M agent chain
+# false -> run T -> N -> M agents (rule-based stage at the end)
+tnm_base: true
+
 model_settings:
   # LLM model settings
   # Choose one of: "local", "openai", or "azure"
@@ -16,9 +21,9 @@ model_settings:
 
   # Local API settings (for local LLM servers like Ollama)
   local:
-    name: "llama3.3:70b"  # Model name: "llama3.3:70b", "phi4", etc.
+    name: "phi4:14b"  # Model name: "llama3.3:70b", "phi4:14b", etc.
     base_url: "https://local.server.ip.address:port"  # API endpoint URL
-    api_key: "set your bearer token"
+    api_key: "set your bearer token"  # API key for authentication
     # Note: For setup_llm (default LLM), the average of temperature_low and temperature_high is used
     verify_ssl: false  # Set to false to disable SSL certificate verification for self-signed certificates
     # Temperature range for consensus mechanism diversity
@@ -167,7 +172,52 @@ histology_settings:
 
 
 # AJCC 8th edition prompts
-ajcc8th_prompts:
+ajcc8th_prompts:   
+  tnm_classifier_base: |
+    TASK:
+    You will receive medical reports for a patient. Determine the clinical TNM classification based on the AJCC guidelines.
+    
+    T STAGING SIZE CLASSIFICATIONS:
+      T1a: ≤1cm
+      T1b: >1cm to ≤2cm
+      T1c: >2cm to ≤3cm
+      T2a: >3cm to ≤4cm
+      T2b: >4cm to ≤5cm
+      T3: >5cm to ≤7cm
+      T4: >7cm
+    
+    Regional lymph node involvement
+      N0	No regional lymph node metastasis
+      N1	Metastasis in ipsilateral peribronchial and/or ipsilateral hilar lymph nodes and intrapulmonary nodes, including involvement by direct extension
+      N2	Metastasis in ipsilateral mediastinal and/or subcarinal lymph node(s)
+      N3	Metastasis in contralateral mediastinal, contralateral hilar, ipsilateral or contralateral scalene, or supraclavicular lymph node(s)  
+    
+    Distant metastasis
+      M0	No distant metastasis      	
+      M1a	Distant metastasis present, Separate tumor nodule(s) in a contralateral lobe; tumor with pleural or pericardial nodule(s) or malignant pleural or pericardial effusion
+      M1b	Distant metastasis present, Single extrathoracic metastasis
+      M1c	Distant metastasis present, Multiple extrathoracic metastases in one or more organs 
+
+
+    Generate Response Format as JSON:
+    ```json
+    {{
+      "t_classification": "<YOUR_SELECTED_T_CLASSIFICATION>",
+      "n_classification": "<YOUR_SELECTED_N_CLASSIFICATION>",
+      "m_classification": "<YOUR_SELECTED_M_CLASSIFICATION>",
+      "t_reasoning": "Detail your path to identifying the specific T classification, with emphasis on why you chose this particular T classification",
+      "n_reasoning": "Detail your path to identifying the specific N classification, with emphasis on why you chose this particular N classification",
+      "m_reasoning": "Detail your path to identifying the specific M classification, with emphasis on why you chose this particular M classification"
+    }}
+    ```
+    
+    IMPORTANT:
+    - Replace "<YOUR_SELECTED_T_CLASSIFICATION>" with EXACTLY ONE of: T0, T1a, T1b, T1c, T2a, T2b, T3, or T4
+    - Replace "<YOUR_SELECTED_N_CLASSIFICATION>" with EXACTLY ONE of: N0, N1, N2, or N3
+    - Replace "<YOUR_SELECTED_M_CLASSIFICATION>" with EXACTLY ONE of: M0, M1a, M1b, or M1c
+    - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
+    - The "reasoning" field should provide detailed explanation for your classification choice
+  
   t_classifier: |
     You are a specialized assistant for lung cancer T staging classification.
     Please follow these rules in EXACT order of priority when making accurate T classification.
@@ -207,33 +257,6 @@ ajcc8th_prompts:
     - Example valid responses: "T1a", "T2b", "T4" (without quotes in JSON)
     ---------------------------------    
   
-  t_classifier_base: |
-    TASK:
-    You will receive medical reports for a patient. Analyze the reports and determine the T classification based on tumor size.
-    
-    T STAGING SIZE CLASSIFICATIONS:
-      T1a: ≤1cm
-      T1b: >1cm to ≤2cm
-      T1c: >2cm to ≤3cm
-      T2a: >3cm to ≤4cm
-      T2b: >4cm to ≤5cm
-      T3: >5cm to ≤7cm
-      T4: >7cm
-
-    Generate Response Format as JSON:
-    ```json
-    {{
-      "classification": "<YOUR_SELECTED_T_CLASSIFICATION>",
-      "reasoning": "Detail your path to identifying the specific T classification, with emphasis on why you chose this particular T classification"
-    }}
-    ```
-    
-    IMPORTANT:
-    - Replace "<YOUR_SELECTED_T_CLASSIFICATION>" with EXACTLY ONE of: T0, T1a, T1b, T1c, T2a, T2b, T3, or T4
-    - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
-    - The "reasoning" field should provide detailed explanation for your classification choice
-    - Example valid responses: "T1a", "T2b", "T4" (without quotes in JSON)
- 
   n_classifier: |
     You are a specialized assistant for lung cancer N staging classification.
     Please follow these rules in EXACT order of priority when making accurate N classification. Response Final Decision Output Format as JSON.
@@ -269,30 +292,6 @@ ajcc8th_prompts:
     - The "reasoning" field should provide detailed explanation for your classification choice
     - Example valid responses: "N0", "N1", "N2", "N3" (without quotes in JSON)
     ---------------------------------
-
-  n_classifier_base: |
-    TASK:
-    You will receive medical reports for a patient. Analyze the reports and determine the N classification based on regional lymph node involvement.
-    
-    Regional lymph node involvement
-      N0	No regional lymph node metastasis
-      N1	Metastasis in ipsilateral peribronchial and/or ipsilateral hilar lymph nodes and intrapulmonary nodes, including involvement by direct extension
-      N2	Metastasis in ipsilateral mediastinal and/or subcarinal lymph node(s)
-      N3	Metastasis in contralateral mediastinal, contralateral hilar, ipsilateral or contralateral scalene, or supraclavicular lymph node(s)  
-    
-    Generate Response Format as JSON:
-    ```json
-    {{
-      "classification": "<YOUR_SELECTED_N_CLASSIFICATION>",
-      "reasoning": "Detail your path to identifying the specific N classification, with emphasis on why you chose this particular N classification"
-    }}
-    ```
-    
-    IMPORTANT:
-    - Replace "<YOUR_SELECTED_N_CLASSIFICATION>" with EXACTLY ONE of: N0, N1, N2, or N3
-    - Do NOT include "MUST CHOICE ONE:" text or placeholder text in the classification value
-    - The "reasoning" field should provide detailed explanation for your classification choice
-    - Example valid responses: "N0", "N1", "N2", "N3" (without quotes in JSON)
 
   m_classifier: |
     You are a specialized assistant for lung cancer M staging classification.
@@ -330,31 +329,6 @@ ajcc8th_prompts:
     - The "reasoning" field should provide detailed explanation for your classification choice
     - Example valid responses: "M0", "M1a", "M1b", "M1c" (without quotes in JSON)
     ---------------------------------
-
-  m_classifier_base: |
-    TASK:
-    You will receive medical reports for a patient. Analyze the reports and determine the M classification based on distant metastasis presence.
-    
-    M: Distant metastasis
-      M0	No distant metastasis
-      M1	Distant metastasis present
-        - M1a	Separate tumor nodule(s) in a contralateral lobe; tumor with pleural or pericardial nodule(s) or malignant pleural or pericardial effusion
-        - M1b	Single extrathoracic metastasis
-        - M1c	Multiple extrathoracic metastases in one or more organs     
-    
-    Generate Response Format as JSON:
-    ```json
-    {{
-      "classification": "<YOUR_SELECTED_M_CLASSIFICATION>",
-      "reasoning": "Detail your path to identifying the specific M classification, with emphasis on why you chose this particular M classification"
-    }}
-    ```
-    
-    IMPORTANT:
-    - Replace "<YOUR_SELECTED_M_CLASSIFICATION>" with EXACTLY ONE of: M0, M1a, M1b, or M1c
-    - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
-    - The "reasoning" field should provide detailed explanation for your classification choice
-    - Example valid responses: "M0", "M1a", "M1b", "M1c" (without quotes in JSON)
 
 stage_rules:
   m_categories:
@@ -398,6 +372,54 @@ stage_rules:
 
 # AJCC 9th edition prompts
 ajcc9th_prompts:
+  tnm_classifier_base: |
+    TASK:
+    You will receive medical reports for a patient. Determine the clinical TNM classification based on the AJCC guidelines.
+    
+    T STAGING SIZE CLASSIFICATIONS:
+      T1a: ≤1cm
+      T1b: >1cm to ≤2cm
+      T1c: >2cm to ≤3cm
+      T2a: >3cm to ≤4cm
+      T2b: >4cm to ≤5cm
+      T3: >5cm to ≤7cm
+      T4: >7cm
+    
+    Regional lymph node involvement
+      N0	No regional lymph node metastasis
+      N1	Metastasis in ipsilateral peribronchial or ipsilateral hilar or intrapulmonary lymph nodes, including involvement by direct extension
+      N2	Metastasis in ipsilateral mediastinal or subcarinal lymph node(s)
+      N2a	Metastasis(es) in a single ipsilateral mediastinal or in the subcarinal nodal station
+      N2b	Metastases in multiple ipsilateral mediastinal nodal stations with or without involvement of the subcarinal nodal station
+      N3	Metastasis in contralateral mediastinal, contralateral hilar, ipsilateral or contralateral scalene or supraclavicular lymph node(s)
+    
+    Distant metastasis
+      M0	  No distant metastasis
+      M1a	  Tumor with pleural or pericardial nodules or malignant pleural or pericardial effusions,* separate tumor nodule(s) in a contralateral lobe
+      M1b	  Single extrathoracic metastasis in a single organ system
+      M1c	  Multiple extrathoracic metastases in a single or multiple organ system(s)
+      M1c1	Multiple extrathoracic metastases in a single organ system
+      M1c2	Multiple extrathoracic metastasis in multiple organ systems
+
+    Generate Response Format as JSON:
+    ```json
+    {{
+      "t_classification": "<YOUR_SELECTED_T_CLASSIFICATION>",
+      "n_classification": "<YOUR_SELECTED_N_CLASSIFICATION>",
+      "m_classification": "<YOUR_SELECTED_M_CLASSIFICATION>",
+      "t_reasoning": "Detail your path to identifying the specific T classification, with emphasis on why you chose this particular T classification",
+      "n_reasoning": "Detail your path to identifying the specific N classification, with emphasis on why you chose this particular N classification",
+      "m_reasoning": "Detail your path to identifying the specific M classification, with emphasis on why you chose this particular M classification"
+    }}
+    ```
+    
+    IMPORTANT:
+    - Replace "<YOUR_SELECTED_T_CLASSIFICATION>" with EXACTLY ONE of: T0, T1a, T1b, T1c, T2a, T2b, T3, or T4
+    - Replace "<YOUR_SELECTED_N_CLASSIFICATION>" with EXACTLY ONE of: N0, N1, N2a, N2b, or N3
+    - Replace "<YOUR_SELECTED_M_CLASSIFICATION>" with EXACTLY ONE of: M0, M1a, M1b, M1c1, or M1c2
+    - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
+    - The "reasoning" field should provide detailed explanation for your classification choice
+
   t_classifier: |
     You are a specialized assistant for lung cancer T staging classification.
     Please follow these rules in EXACT order of priority when making accurate T classification.
@@ -436,33 +458,6 @@ ajcc9th_prompts:
     - The "reasoning" field should provide detailed explanation for your classification choice
     - Example valid responses: "T1a", "T2b", "T4" (without quotes in JSON)
     ---------------------------------    
-  
-  t_classifier_base: |
-    TASK:
-    You will receive medical reports for a patient. Analyze the reports and determine the T classification based on tumor size.
-    
-    T STAGING SIZE CLASSIFICATIONS:
-      T1a: ≤1cm
-      T1b: >1cm to ≤2cm
-      T1c: >2cm to ≤3cm
-      T2a: >3cm to ≤4cm
-      T2b: >4cm to ≤5cm
-      T3: >5cm to ≤7cm
-      T4: >7cm
-
-    Generate Response Format as JSON:
-    ```json
-    {{
-      "classification": "<YOUR_SELECTED_T_CLASSIFICATION>",
-      "reasoning": "Detail your path to identifying the specific T classification, with emphasis on why you chose this particular T classification"
-    }}
-    ```
-    
-    IMPORTANT:
-    - Replace "<YOUR_SELECTED_T_CLASSIFICATION>" with EXACTLY ONE of: T0, T1a, T1b, T1c, T2a, T2b, T3, or T4
-    - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
-    - The "reasoning" field should provide detailed explanation for your classification choice
-    - Example valid responses: "T1a", "T2b", "T4" (without quotes in JSON)
  
   n_classifier: |
     You are a specialized assistant for lung cancer N staging classification.
@@ -506,32 +501,6 @@ ajcc9th_prompts:
     - Example valid responses: "N0", "N1", "N2a", "N2b", "N3" (without quotes in JSON)
     ---------------------------------
 
-  n_classifier_base: |
-    TASK:
-    You will receive medical reports for a patient. Analyze the reports and determine the N classification based on regional lymph node involvement.
-    
-    Regional lymph node involvement
-      N0	No regional lymph node metastasis
-      N1	Metastasis in ipsilateral peribronchial or ipsilateral hilar or intrapulmonary lymph nodes, including involvement by direct extension
-      N2	Metastasis in ipsilateral mediastinal or subcarinal lymph node(s)
-      N2a	Metastasis(es) in a single ipsilateral mediastinal or in the subcarinal nodal station
-      N2b	Metastases in multiple ipsilateral mediastinal nodal stations with or without involvement of the subcarinal nodal station
-      N3	Metastasis in contralateral mediastinal, contralateral hilar, ipsilateral or contralateral scalene or supraclavicular lymph node(s)
-      
-    Generate Response Format as JSON:
-    ```json
-    {{
-      "classification": "<YOUR_SELECTED_N_CLASSIFICATION>",
-      "reasoning": "Detail your path to identifying the specific N classification, with emphasis on why you chose this particular N classification"
-    }}
-    ```
-    
-    IMPORTANT:
-    - Replace "<YOUR_SELECTED_N_CLASSIFICATION>" with EXACTLY ONE of: N0, N1, N2a, N2b, or N3
-    - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
-    - The "reasoning" field should provide detailed explanation for your classification choice
-    - Example valid responses: "N0", "N1", "N2a", "N2b", "N3" (without quotes in JSON)
-
   m_classifier: |
     You are a specialized assistant for lung cancer M staging classification.
     Please follow these rules in EXACT order of priority when making accurate M classification. Response Final Decision Output Format as JSON.
@@ -574,33 +543,6 @@ ajcc9th_prompts:
     - Example valid responses: "M0", "M1a", "M1b", "M1c1", "M1c2" (without quotes in JSON)
     - Note: M1c1 = Multiple extrathoracic metastases in a single organ system, M1c2 = Multiple extrathoracic metastasis in multiple organ systems
     ---------------------------------
-
-  m_classifier_base: |
-    TASK:
-    You will receive medical reports for a patient. Analyze the reports and determine the M classification based on distant metastasis presence.
-    
-    M: Distant metastasis
-      M0	No distant metastasis
-      M1a	Tumor with pleural or pericardial nodules or malignant pleural or pericardial effusions,* separate tumor nodule(s) in a contralateral lobe
-      M1b	Single extrathoracic metastasis in a single organ system**
-      M1c	Multiple extrathoracic metastases in a single or multiple organ system(s)
-      M1c1	Multiple extrathoracic metastases in a single organ system***
-      M1c2	Multiple extrathoracic metastasis in multiple organ systems
-    
-    Generate Response Format as JSON:
-    ```json
-    {{
-      "classification": "<YOUR_SELECTED_M_CLASSIFICATION>",
-      "reasoning": "Detail your path to identifying the specific M classification, with emphasis on why you chose this particular M classification"
-    }}
-    ```
-    
-    IMPORTANT:
-    - Replace "<YOUR_SELECTED_M_CLASSIFICATION>" with EXACTLY ONE of: M0, M1a, M1b, M1c1, or M1c2
-    - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
-    - The "reasoning" field should provide detailed explanation for your classification choice
-    - Example valid responses: "M0", "M1a", "M1b", "M1c1", "M1c2" (without quotes in JSON)
-    - Note: M1c1 = Multiple extrathoracic metastases in a single organ system, M1c2 = Multiple extrathoracic metastasis in multiple organ systems
 
   stage_rules:
     m_categories:

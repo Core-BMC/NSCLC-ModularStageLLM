@@ -77,6 +77,30 @@ def convert_histology_to_structure(histology_json: Dict[str, Any]) -> Dict[str, 
     return structure
 
 
+def _resolve_hospital_id(row: Dict[str, Any]) -> str:
+    """Resolve hospital ID from common column names."""
+    candidate_keys = [
+        "hospital_id",
+        "hospitalNumber",
+        "hospital_number",
+        "patient_id",
+        "patientId",
+        "patientID",
+        "병원등록번호",
+        "병원 등록번호"
+    ]
+
+    for key in candidate_keys:
+        if key in row:
+            value = row.get(key)
+            if value is None or pd.isna(value):
+                continue
+            value_str = str(value).strip()
+            if value_str and value_str.lower() != "nan":
+                return value_str
+    return ""
+
+
 def format_histology_structure_for_prompt(
     histology_structure: Dict[str, Any],
     max_depth: int = 3
@@ -164,7 +188,7 @@ def validate_input(
     try:
         input_data = {
             "case_number": case_number,
-            "hospital_id": str(row.get("hospital_id", "")),
+            "hospital_id": _resolve_hospital_id(row),
             "pathology": (
                 MedicalReport(content=row.get("Pathology"))
                 if not pd.isna(row.get("Pathology")) else None
@@ -237,7 +261,7 @@ def prepare_input(
         # Validate data excluding true TNM fields from InputData class
         input_data = {
             "case_number": case_number,
-            "hospital_id": str(row.get("hospital_id", "")),
+            "hospital_id": _resolve_hospital_id(row),
             "pathology": (
                 MedicalReport(content=row.get("Pathology"))
                 if not pd.isna(row.get("Pathology")) else None
@@ -414,4 +438,3 @@ def format_input_data(data: Dict[str, Any]) -> str:
     except Exception as e:
         logger.error(f"Error formatting input data: {str(e)}")
         return str(data)  # Fallback to simple string conversion
-

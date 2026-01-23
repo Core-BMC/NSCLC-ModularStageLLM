@@ -343,16 +343,20 @@ class TNMOutputParser(BaseOutputParser[TNMClassificationDict]):
         Returns:
             Normalized N classification string
         """
+        if n_val in self.VALID_N_CLASSIFICATIONS:
+            return n_val
+
         n_upper = n_val.upper()
         format_map = {
             'N0': 'N0',
-            'N1a': 'N1',
-            'N1b': 'N1',
-            'N2a': 'N2',
-            'N2b': 'N2',
+            'N1': 'N1',
+            'N1A': 'N1a' if 'N1a' in self.VALID_N_CLASSIFICATIONS else 'N1',
+            'N1B': 'N1b' if 'N1b' in self.VALID_N_CLASSIFICATIONS else 'N1',
+            'N2': 'N2',
+            'N2A': 'N2a' if 'N2a' in self.VALID_N_CLASSIFICATIONS else 'N2',
+            'N2B': 'N2b' if 'N2b' in self.VALID_N_CLASSIFICATIONS else 'N2',
             'N3': 'N3',
-            'Nx': 'N0',
-            'NX': 'N0'  # Convert NX to N0 as per requirement
+            'NX': 'N0'
         }
         return format_map.get(n_upper, n_val)
 
@@ -695,4 +699,3 @@ class TNMOutputParser(BaseOutputParser[TNMClassificationDict]):
             n_classification=n_class,
             m_classification=m_class
         )
-
