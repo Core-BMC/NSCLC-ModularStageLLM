@@ -12,7 +12,7 @@ tnm_json: "config/ajcc8th/tnm_classification.json"
 # Base TNM workflow (single-pass T+N+M parsing via tnm_classifier_base)
 # true  -> run base TNM node and skip T/N/M agent chain
 # false -> run T -> N -> M agents (rule-based stage at the end)
-tnm_base: true
+tnm_base: false
 
 model_settings:
   # LLM model settings
@@ -21,7 +21,7 @@ model_settings:
 
   # Local API settings (for local LLM servers like Ollama)
   local:
-    name: "phi4:14b"  # Model name: "llama3.3:70b", "phi4:14b", etc.
+    name: "llama3.3:70b"  # Model name: "llama3.3:70b", "phi4:14b", etc.
     base_url: "https://local.server.ip.address:port"  # API endpoint URL
     api_key: "set your bearer token"  # API key for authentication
     # Note: For setup_llm (default LLM), the average of temperature_low and temperature_high is used
@@ -556,29 +556,45 @@ ajcc9th_prompts:
       default: "IIIB"
     
     n2_rules:
-      N2b: "IIIB"
       N2a:
-        T1: "IIB"
+        T1a: "IIB"
+        T1b: "IIB"
+        T1c: "IIB"
+        T2a: "IIIA"
+        T2b: "IIIA"
+        T3: "IIIA"
+        T4: "IIIB"
         default: "IIIA"
+      N2b:
+        T1a: "IIIA"
+        T1b: "IIIA"
+        T1c: "IIIA"
+        T2a: "IIIB"
+        T2b: "IIIB"
+        T3: "IIIB"
+        T4: "IIIB"
+        default: "IIIB"
     
-    tn_combinations:
-      N0:
-        T1mi: "IA1"
-        T1a: "IA1"
-        T1b: "IA2"
-        T1c: "IA3"
-        T2a: "IB"
-        T2b: "IIA"
-        T3: "IIB"
-        T4: "IIIA"
-      N1:
+    n1_rules:
+      T1_T2:
         T1a: "IIA"
         T1b: "IIA"
         T1c: "IIA"
         T2a: "IIB"
         T2b: "IIB"
-        T3: "IIIA"
-        T4: "IIIA"
+      T3: "IIIA"
+      T4: "IIIA"
+    
+    n0_rules:
+      Tis: "0"
+      T1mi: "IA1"
+      T1a: "IA1"
+      T1b: "IA2"
+      T1c: "IA3"
+      T2a: "IB"
+      T2b: "IIA"
+      T3: "IIB"
+      T4: "IIIA"
     
     fallback_rules:
       T4: "IIIB"
