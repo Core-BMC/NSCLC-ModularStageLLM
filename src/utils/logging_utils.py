@@ -27,8 +27,11 @@ def setup_logging(config: Dict[str, Any]):
     if log_dir and not os.path.exists(log_dir):
         os.makedirs(log_dir)
     
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.DEBUG)
+    # Attach handlers to the ROOT logger so logs from ALL modules
+    # (src.agents.consensus, src.histology, src.utils.llm_utils, etc.) propagate here.
+    # Previously used getLogger(__name__), so per-node/consensus/LLM logs never reached the file.
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)  # INFO default (all app step logs); --verbose raises to DEBUG
 
     # Remove existing handlers
     for handler in logger.handlers[:]:
@@ -60,9 +63,10 @@ def setup_logging(config: Dict[str, Any]):
     logger.addHandler(console_handler)
     logger.addHandler(file_handler)
 
-    # Set other loggers to WARNING level
-    logging.getLogger("httpx").setLevel(logging.WARNING)
-    logging.getLogger("openai").setLevel(logging.WARNING)
+    # Set noisy third-party loggers to WARNING to keep the log readable
+    for noisy in ("httpx", "httpcore", "openai", "urllib3", "asyncio",
+                  "langchain", "langchain_core", "langchain_openai"):
+        logging.getLogger(noisy).setLevel(logging.WARNING)
 
     # Additional settings for Windows environment
     if sys.platform == 'win32':

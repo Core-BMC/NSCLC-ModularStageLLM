@@ -99,8 +99,10 @@ def normalize_n_classification(n_val: str) -> str:
         'N2A': 'N2',
         'N2B': 'N2',
         'N3': 'N3',
-        'NX': 'N0',  # Convert NX to N0 as per requirement
-        'N/A': 'N0'  # Handle N/A cases
+        # 'NX' (regional nodes cannot be assessed) is NO LONGER
+        # coerced to 'N0'. Preserved as the cannot-assess category 'Nx' (already a VALID class).
+        'NX': 'Nx',
+        'N/A': 'Nx'  # unknown/not-available preserved as cannot-assess rather than N0
     }
     return format_map.get(n_upper, n_val)
 

@@ -443,12 +443,13 @@ class TNMClassificationWorkflow:
                     return parsed_result
                         
                 except ValueError as parse_error:
-                    # Increase temperature for next attempt
-                    current_temperature = min(1.0, current_temperature + 0.1)
-                    
+                    # dynamic temperature scaling disabled.
+                    # Inference is deterministic; temperature is held fixed at base_temperature across retries.
+                    current_temperature = base_temperature
+
                     self.logger.warning(
                         f"Attempt {retry_count + 1}/{max_retries}: Invalid TNM format: {str(parse_error)}\n"
-                        f"Raw response: {text_result}\nIncreasing temperature to {current_temperature}"
+                        f"Raw response: {text_result}\nRetrying at fixed temperature {current_temperature}"
                     )
                     
                     # Add error feedback to prompt
@@ -457,10 +458,11 @@ class TNMClassificationWorkflow:
                     input_data['prompt'] = original_prompt + error_feedback
                 
             except Exception as e:
-                current_temperature = min(1.0, current_temperature + 0.1)
+                # dynamic temperature scaling disabled; held fixed.
+                current_temperature = base_temperature
                 self.logger.warning(
                     f"Attempt {retry_count + 1}/{max_retries}: Error in {classification_type} "
-                    f"classification: {str(e)}\nIncreasing temperature to {current_temperature}"
+                    f"classification: {str(e)}\nRetrying at fixed temperature {current_temperature}"
                 )
             
             retry_count += 1

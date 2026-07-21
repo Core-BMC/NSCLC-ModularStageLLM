@@ -74,6 +74,7 @@ def setup_llm(config: Dict[str, Any]) -> ChatOpenAI:
                 api_key=api_key,
                 model_name=model_name,
                 temperature=temperature,
+                max_tokens=int(local_settings.get('max_tokens', 2048)),  # Ollama /v1 maps max_tokens -> num_predict
                 http_client=http_client
             )
             logger.info(
@@ -190,6 +191,7 @@ def get_llm_instance(config: Dict[str, Any]) -> ChatOpenAI:
                 model_name=os.getenv('LOCAL_API_MODEL_NAME') or
                 local_settings.get('name'),
                 temperature=temperature,
+                max_tokens=int(local_settings.get('max_tokens', 2048)),  # Ollama /v1 maps max_tokens -> num_predict
                 http_client=http_client
             )
         elif llm_choice == "azure":

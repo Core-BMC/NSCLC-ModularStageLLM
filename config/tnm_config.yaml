@@ -17,7 +17,7 @@ tnm_base: false
 model_settings:
   # LLM model settings
   # Choose one of: "local", "openai", or "azure"
-  llm_choice: "azure"
+  llm_choice: "local"
 
   # Local API settings (for local LLM servers like Ollama)
   local:
@@ -26,13 +26,14 @@ model_settings:
     api_key: "set your bearer token"  # API key for authentication
     # Note: For setup_llm (default LLM), the average of temperature_low and temperature_high is used
     verify_ssl: false  # Set to false to disable SSL certificate verification for self-signed certificates
+    max_tokens: 2048  # cap output tokens per call (Ollama /v1 maps OpenAI max_tokens -> num_predict); prevents runaway <think>
     # Temperature range for consensus mechanism diversity
     # The system uses random temperature values between temperature_low and temperature_high
     # for each LLM call in the consensus mechanism to introduce response diversity.
     # Range: 0.0 (deterministic) to 2.0 (highly creative)
     # Recommended: 0.5-0.7 for balanced diversity without excessive randomness
-    temperature_low: 0.5  # Minimum temperature for consensus mechanism (default: 0.0)
-    temperature_high: 0.7  # Maximum temperature for consensus mechanism (default: 1.0)
+    temperature_low: 0.5  # fixed temperature 0.5, standardized across all backends
+    temperature_high: 0.5  # fixed temperature 0.5, standardized across all backends
 
 
   # OpenAI API settings
@@ -43,8 +44,8 @@ model_settings:
     # for each LLM call in the consensus mechanism to introduce response diversity.
     # Range: 0.0 (deterministic) to 2.0 (highly creative)
     # For deterministic results, set both to 0.0
-    temperature_low: 0.0  # Minimum temperature for consensus mechanism (default: 0.0)
-    temperature_high: 0.0  # Maximum temperature for consensus mechanism (default: 1.0)
+    temperature_low: 0.5  # fixed temperature 0.5, standardized across all backends
+    temperature_high: 0.5  # fixed temperature 0.5, standardized across all backends
     # Note: For setup_llm (default LLM), the average of temperature_low and temperature_high is used
 
   # Azure OpenAI API settings
@@ -55,8 +56,8 @@ model_settings:
     # for each LLM call in the consensus mechanism to introduce response diversity.
     # Range: 0.0 (deterministic) to 2.0 (highly creative)
     # For deterministic results, set both to 0.0
-    temperature_low: 0.0  # Minimum temperature for consensus mechanism (default: 0.0)
-    temperature_high: 0.0  # Maximum temperature for consensus mechanism (default: 1.0)
+    temperature_low: 0.5  # fixed temperature 0.5, standardized across all backends
+    temperature_high: 0.5  # fixed temperature 0.5, standardized across all backends
     # Note: For setup_llm (default LLM), the average of temperature_low and temperature_high is used
 
 
@@ -178,6 +179,8 @@ ajcc8th_prompts:
     You will receive medical reports for a patient. Determine the clinical TNM classification based on the AJCC guidelines.
     
     T STAGING SIZE CLASSIFICATIONS:
+      Tis: adenocarcinoma in situ (AIS)
+      T1mi: minimally invasive adenocarcinoma (MIA), solid component ≤0.5cm
       T1a: ≤1cm
       T1b: >1cm to ≤2cm
       T1c: >2cm to ≤3cm
@@ -212,7 +215,7 @@ ajcc8th_prompts:
     ```
     
     IMPORTANT:
-    - Replace "<YOUR_SELECTED_T_CLASSIFICATION>" with EXACTLY ONE of: T0, T1a, T1b, T1c, T2a, T2b, T3, or T4
+    - Replace "<YOUR_SELECTED_T_CLASSIFICATION>" with EXACTLY ONE of: T0, Tis, T1mi, T1a, T1b, T1c, T2a, T2b, T3, or T4
     - Replace "<YOUR_SELECTED_N_CLASSIFICATION>" with EXACTLY ONE of: N0, N1, N2, or N3
     - Replace "<YOUR_SELECTED_M_CLASSIFICATION>" with EXACTLY ONE of: M0, M1a, M1b, or M1c
     - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
@@ -227,6 +230,8 @@ ajcc8th_prompts:
     Analyze these reports and determine the T classification based on the tumor size and characteristics.
     
     SIZE BASED T STAGING RULE (CT):
+      "Tis": adenocarcinoma in situ (AIS),
+      "T1mi": minimally invasive adenocarcinoma (MIA), solid/invasive component ≤ 0.5cm,
       "T1a": {"max": 1, "unit": "cm"},{"value": 1, "unit": "cm"},
       "T1b": {"min": 1, "max": 2, "unit": "cm"},{"value": 2, "unit": "cm"},
       "T1c": {"min": 2, "max": 3, "unit": "cm"},{"value": 3, "unit": "cm"},
@@ -251,7 +256,7 @@ ajcc8th_prompts:
     ```
     
     IMPORTANT:
-    - Replace "<YOUR_SELECTED_T_CLASSIFICATION>" with EXACTLY ONE of: T0, T1a, T1b, T1c, T2a, T2b, T3, or T4
+    - Replace "<YOUR_SELECTED_T_CLASSIFICATION>" with EXACTLY ONE of: T0, Tis, T1mi, T1a, T1b, T1c, T2a, T2b, T3, or T4
     - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
     - The "reasoning" field should provide detailed explanation for your classification choice
     - Example valid responses: "T1a", "T2b", "T4" (without quotes in JSON)
@@ -377,6 +382,8 @@ ajcc9th_prompts:
     You will receive medical reports for a patient. Determine the clinical TNM classification based on the AJCC guidelines.
     
     T STAGING SIZE CLASSIFICATIONS:
+      Tis: adenocarcinoma in situ (AIS)
+      T1mi: minimally invasive adenocarcinoma (MIA), solid component ≤0.5cm
       T1a: ≤1cm
       T1b: >1cm to ≤2cm
       T1c: >2cm to ≤3cm
@@ -414,9 +421,10 @@ ajcc9th_prompts:
     ```
     
     IMPORTANT:
-    - Replace "<YOUR_SELECTED_T_CLASSIFICATION>" with EXACTLY ONE of: T0, T1a, T1b, T1c, T2a, T2b, T3, or T4
+    - Replace "<YOUR_SELECTED_T_CLASSIFICATION>" with EXACTLY ONE of: T0, Tis, T1mi, T1a, T1b, T1c, T2a, T2b, T3, or T4
     - Replace "<YOUR_SELECTED_N_CLASSIFICATION>" with EXACTLY ONE of: N0, N1, N2a, N2b, or N3
     - Replace "<YOUR_SELECTED_M_CLASSIFICATION>" with EXACTLY ONE of: M0, M1a, M1b, M1c1, or M1c2
+    - CRITICAL (AJCC 9th): N2 and M1c are umbrella categories ONLY. Never output bare "N2" or "M1c"; always report the subcategory (N2a/N2b, M1c1/M1c2). N2a = single mediastinal/subcarinal station, N2b = multiple stations; M1c1 = one organ system, M1c2 = multiple organ systems.
     - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
     - The "reasoning" field should provide detailed explanation for your classification choice
 
@@ -429,6 +437,8 @@ ajcc9th_prompts:
     Analyze these reports and determine the T classification based on the tumor size and characteristics.
     
     SIZE BASED T STAGING RULE (CT):
+      "Tis": adenocarcinoma in situ (AIS),
+      "T1mi": minimally invasive adenocarcinoma (MIA), solid/invasive component ≤ 0.5cm,
       "T1a": {"max": 1, "unit": "cm"},{"value": 1, "unit": "cm"},
       "T1b": {"min": 1, "max": 2, "unit": "cm"},{"value": 2, "unit": "cm"},
       "T1c": {"min": 2, "max": 3, "unit": "cm"},{"value": 3, "unit": "cm"},
@@ -453,7 +463,7 @@ ajcc9th_prompts:
     ```
     
     IMPORTANT:
-    - Replace "<YOUR_SELECTED_T_CLASSIFICATION>" with EXACTLY ONE of: T0, T1a, T1b, T1c, T2a, T2b, T3, or T4
+    - Replace "<YOUR_SELECTED_T_CLASSIFICATION>" with EXACTLY ONE of: T0, Tis, T1mi, T1a, T1b, T1c, T2a, T2b, T3, or T4
     - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
     - The "reasoning" field should provide detailed explanation for your classification choice
     - Example valid responses: "T1a", "T2b", "T4" (without quotes in JSON)
@@ -499,6 +509,7 @@ ajcc9th_prompts:
     - Do NOT include placeholder text or "MUST CHOICE ONE:" text in the classification value
     - The "reasoning" field should provide detailed explanation for your classification choice
     - Example valid responses: "N0", "N1", "N2a", "N2b", "N3" (without quotes in JSON)
+    - CRITICAL (AJCC 9th): "N2" is an umbrella category ONLY. Never output bare "N2"; always report N2a or N2b. N2a = a single ipsilateral mediastinal or subcarinal station; N2b = multiple ipsilateral mediastinal stations (with or without subcarinal involvement).
     ---------------------------------
 
   m_classifier: |
@@ -518,7 +529,7 @@ ajcc9th_prompts:
       M1c2	Multiple extrathoracic metastasis in multiple organ systems
       
     Special Considerations
-    1) Pathologic confirmation REQUIRED for ANY M1 classification
+    1) Clinical cM1 may be assigned from imaging (PET-CT, brain MRI, bone scan); pathologic confirmation is NOT required for clinical (cM) staging
     2) Default to M0 for: uncertainty, single imaging, 'vs', 'r/o', 'probable', 'synchronous'
     
     Generate Response as This Format:
@@ -542,6 +553,7 @@ ajcc9th_prompts:
     - The "reasoning" field should provide detailed explanation for your classification choice
     - Example valid responses: "M0", "M1a", "M1b", "M1c1", "M1c2" (without quotes in JSON)
     - Note: M1c1 = Multiple extrathoracic metastases in a single organ system, M1c2 = Multiple extrathoracic metastasis in multiple organ systems
+    - CRITICAL (AJCC 9th): "M1c" is an umbrella category ONLY. Never output bare "M1c"; always report M1c1 or M1c2. M1c1 = multiple metastases confined to one organ system; M1c2 = metastases across multiple organ systems.
     ---------------------------------
 
   stage_rules:

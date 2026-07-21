@@ -26,20 +26,17 @@ class AgentConsensus:
         self.logger = logging.getLogger(__name__)
         self.MAX_ATTEMPTS = 50
 
-        # Minimum responses required per classification type
-        # Note: To enable true majority-vote consensus, set these to 3+.
-        self.MIN_RESPONSES = {
-            "T": 1,  # T node requires 1 response
-            "N": 1,  # Other nodes require 1 response
-            "M": 1
-        }
+        # majority-vote consensus restored (was 1 = single pass).
+        # Best-of-3 with early termination: a classification is decided by the FIRST
+        # category to reach MAJORITY_VOTES concordant responses (2-of-3). Unanimous cases
+        # stop after 2 calls; if the responses tie (e.g., 1-1-1) sampling continues until
+        # a category reaches 2 votes or MAX_ATTEMPTS is hit.
+        self.MAJORITY_VOTES = {"T": 2, "N": 2, "M": 2}
+        # (Legacy field, superseded by MAJORITY_VOTES; retained for compatibility.)
+        self.MIN_RESPONSES = {"T": 2, "N": 2, "M": 2}
 
-        # Valid classifications per type
-        self.VALID_CLASSIFICATIONS = {
-            "T": {'T0', 'T1a', 'T1b', 'T1c', 'T2a', 'T2b', 'T3', 'T4'},
-            "N": {'N0', 'N1', 'N2', 'N3'},
-            "M": {'M0', 'M1a', 'M1b', 'M1c'}
-        }
+        # Category validity is enforced edition-aware in the parsers
+        # (e.g. N2a/N2b and M1c1/M1c2 for AJCC 9th); see src/parsers/tnm_parsers.py.
 
         # Consensus thresholds (percentage). For true majority-vote, tune along
         # with MIN_RESPONSES (e.g., 50+ for simple majority).
@@ -73,87 +70,72 @@ class AgentConsensus:
         valid_responses = []
         total_attempts = 0
 
-        # Determine minimum responses based on consensus mode
-        if use_consensus:
-            required_responses = self.MIN_RESPONSES.get(agent_type, 3)
-        else:
-            # Single response mode: only need 1 response
-            required_responses = 1
-
-        self.logger.info(f"\n{'='*50}")
-        mode_str = "CONSENSUS MODE" if use_consensus else "SINGLE RESPONSE MODE"
-        self.logger.info(f"Starting {mode_str} for {agent_type}")
-        self.logger.info(f"Required responses: {required_responses}")
-
-        # Step 1: Collect required number of valid responses
-        while (len(valid_responses) < required_responses and
-               total_attempts < self.MAX_ATTEMPTS):
-            self.logger.info(
-                f"\nAttempt {total_attempts + 1}/{self.MAX_ATTEMPTS}"
-            )
-            response = self._get_single_response(
-                workflow, input_data, parser, agent_type
-            )
-            if response:
-                valid_responses.append(response)
-                self.logger.info(
-                    f"Valid responses collected: "
-                    f"{len(valid_responses)}/{required_responses}"
+        # Single response mode: return the first valid response (no voting).
+        if not use_consensus:
+            while total_attempts < self.MAX_ATTEMPTS:
+                total_attempts += 1
+                response = self._get_single_response(
+                    workflow, input_data, parser, agent_type
                 )
-            total_attempts += 1
-
-        # Check minimum response count
-        if len(valid_responses) < required_responses:
-            self.logger.error(
-                f"Failed to collect minimum {required_responses} "
-                f"valid responses for {agent_type}. "
-                f"Only collected: {len(valid_responses)}"
-            )
+                if response:
+                    self.logger.info(
+                        f"Single response mode for {agent_type}: "
+                        f"{response['classification']}"
+                    )
+                    return response
+            self.logger.error(f"No valid response collected for {agent_type}")
             return None
 
-        # If single response mode, return the first valid response
-        if not use_consensus:
-            if valid_responses:
-                result = valid_responses[0]
-                self.logger.info(
-                    f"Single response mode: Returning first valid response "
-                    f"for {agent_type}: {result['classification']}"
-                )
-                return result
-            else:
-                self.logger.error(f"No valid responses collected for {agent_type}")
-                return None
-
-        # Step 2: Try to reach consensus (only in consensus mode)
+        # Consensus mode - best-of-3 majority vote with early
+        # termination. Sample sequentially at the fixed temperature; the FIRST category to
+        # receive `required_votes` (=2) concordant responses wins (a 2-of-3 majority the
+        # remaining response cannot overturn), so unanimous cases stop after 2 calls. If the
+        # responses tie (e.g., 1-1-1), sampling continues until a category reaches 2 votes.
+        required_votes = self.MAJORITY_VOTES.get(agent_type, 2)
+        self.logger.info(f"\n{'='*50}")
+        self.logger.info(
+            f"Starting CONSENSUS MODE (best-of-3, early stop at {required_votes} votes) "
+            f"for {agent_type}"
+        )
         while total_attempts < self.MAX_ATTEMPTS:
-            consensus = self._try_reach_consensus(valid_responses, agent_type)
-            if consensus:
-                self.logger.info(
-                    f"Consensus reached for {agent_type}: "
-                    f"{consensus['classification']}"
-                )
-                return consensus
-
-            # Collect additional response if consensus failed
-            self.logger.info(
-                "No consensus reached, collecting additional response"
-            )
+            total_attempts += 1
+            self.logger.info(f"\nAttempt {total_attempts}/{self.MAX_ATTEMPTS}")
             response = self._get_single_response(
                 workflow, input_data, parser, agent_type
             )
-            if response:
-                valid_responses.append(response)
-                self.logger.info(
-                    f"Added new response. Total responses: "
-                    f"{len(valid_responses)}"
+            if not response:
+                continue
+            valid_responses.append(response)
+            counts = {}
+            for r in valid_responses:
+                cls = r['classification']
+                counts[cls] = counts.get(cls, 0) + 1
+            top_class = max(counts, key=counts.get)
+            top_n = counts[top_class]
+            self.logger.info(
+                f"{agent_type}: {len(valid_responses)} valid responses; "
+                f"leader {top_class} = {top_n}/{required_votes}"
+            )
+            if top_n >= required_votes:
+                winner = next(
+                    r for r in valid_responses
+                    if r['classification'] == top_class
                 )
-            total_attempts += 1
+                self.logger.info(
+                    f"Consensus reached for {agent_type}: {top_class} "
+                    f"({top_n} concordant responses)"
+                )
+                return winner
 
-        # Step 3: Return majority vote if max attempts reached
+        # MAX_ATTEMPTS reached without a 2-vote majority - fall back to plurality vote.
         self.logger.warning(
-            f"Max attempts ({self.MAX_ATTEMPTS}) reached. Using majority vote."
+            f"Max attempts ({self.MAX_ATTEMPTS}) reached for {agent_type}; "
+            f"using plurality majority vote."
         )
-        return self._get_majority_vote(valid_responses, agent_type)
+        if valid_responses:
+            return self._get_majority_vote(valid_responses, agent_type)
+        self.logger.error(f"No valid responses collected for {agent_type}")
+        return None
 
     def _get_single_response(
         self,
@@ -177,19 +159,16 @@ class AgentConsensus:
             # Get appropriate prompt based on agent type
             agent_type = agent_type.upper()
             if agent_type == "T":
-                base_parser = "T0/T1a/T1b/T1c/T2a/T2b/T3/T4"
                 base_prompt = workflow.t_classifier_prompt
                 if not base_prompt:
                     raise ValueError("T classifier prompt not found")
 
             elif agent_type == "N":
-                base_parser = "N0/N1/N2/N3"
                 base_prompt = workflow.n_classifier_prompt
                 if not base_prompt:
                     raise ValueError("N classifier prompt not found")
 
             elif agent_type == "M":
-                base_parser = "M0/M1a/M1b/M1c"
                 base_prompt = workflow.m_classifier_prompt
                 if not base_prompt:
                     raise ValueError("M classifier prompt not found")

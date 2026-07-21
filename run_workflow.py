@@ -124,11 +124,12 @@ def main():
         # Override input file in config
         config.set_input_file(args.input_file)
         
-        # Setup logging
-        logger = setup_logging(config)
-        
-        # Setup output paths
+        # Setup output paths FIRST so config['log_file'] = <output_prefix>.log
+        # is set before logging binds its file handler (per-run log file).
         setup_output_paths(config, args.output_prefix, args.log_file)
+
+        # Setup logging (file handler -> per-run <output_prefix>.log)
+        logger = setup_logging(config)
         
         # Set log level if verbose
         if args.verbose:

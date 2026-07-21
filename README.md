@@ -1,7 +1,5 @@
 # Lung Cancer Clinical TNM Staging with Modular Agent Architecture
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
-
 A modular, agent-based system for automated TNM staging classification of Non-Small Cell Lung Cancer (NSCLC) using Large Language Models (LLMs). This system processes medical reports and automatically classifies cancer stages according to AJCC (American Joint Committee on Cancer) guidelines.
 
 ## Overview
@@ -128,8 +126,8 @@ The system follows a sequential workflow where each step builds upon the previou
 
 The system uses a consensus mechanism to improve classification accuracy:
 
-1. **Multiple Responses**: Collects multiple responses from the LLM (typically 3-5 responses)
-2. **Temperature Variation**: Uses different temperature settings for each response to introduce diversity
+1. **Multiple Responses (best-of-3)**: Decides each classification by a best-of-3 majority vote — the first category to receive two concordant responses — drawing additional samples only if the first three responses disagree
+2. **Fixed Temperature**: All models sample at a fixed temperature of 0.5, standardized across models (no per-response temperature variation)
 3. **Majority Voting**: Selects the most common classification among valid responses
 4. **Validation**: Ensures all responses follow the correct format before voting
 5. **Retry Logic**: Automatically retries if consensus cannot be reached
@@ -216,23 +214,24 @@ tnm_json: "config/ajcc8th/tnm_classification.json"  # or "config/ajcc9th/tnm_cla
 ```yaml
 model_settings:
   llm_choice: "azure"  # Options: "local", "openai", or "azure"
-  
+
+  # Standardized to a fixed temperature of 0.5 across all backends
   azure:
     name: "gpt-4o"
-    temperature_low: 0.0
-    temperature_high: 0.0
-  
+    temperature_low: 0.5
+    temperature_high: 0.5
+
   openai:
     name: "gpt-4o"
-    temperature_low: 0.0
-    temperature_high: 0.0
-  
+    temperature_low: 0.5
+    temperature_high: 0.5
+
   local:
     name: "llama3.3:70b"
     base_url: "https://local.server.ip.address:port"
     api_key: "your_bearer_token"
-    temperature_low: 0.8
-    temperature_high: 1.0
+    temperature_low: 0.5
+    temperature_high: 0.5
 ```
 
 ### Consensus Mode
@@ -451,22 +450,18 @@ If you use this software in your research, please cite:
 **Paper**:  
 [Citation will be added upon publication]
 
-**Code**:  
-Heo, H. et al. (2025). Lung Cancer Clinical TNM Staging with Modular Agent Architecture (Version 1.0.0) [Computer software]. Zenodo. <https://doi.org/10.5281/zenodo.XXXXXXX>
-
-Or use the citation information in [CITATION.cff](CITATION.cff) or the "Cite this repository" button on GitHub.
+Please use the citation metadata in [CITATION.cff](CITATION.cff) or the "Cite this repository" button on GitHub.
 
 ## Contact
 
 **Corresponding Author**:  
 Shinkyo Yoon, MD, PhD  
-Email: <shinkyoyoon@amc.seoul.kr>
-ORCID: [ORCID information to be added](https://orcid.org/0000-0000-0000-0000)  
+Email: <shinkyoyoon@amc.seoul.kr>  
 Affiliation: Asan Medical Center
 
 **Developer**:  
 Hwon Heo, PhD  
-Email: <heohwon@gmail.com>,<heoh@amc.seoul.kr>
+Email: <heoh@amc.seoul.kr>  
 ORCID: [0000-0002-6103-4680](https://orcid.org/0000-0002-6103-4680)  
 Affiliation: Asan Medical Center
 

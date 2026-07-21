@@ -133,7 +133,8 @@ class TNM_N_Parser(BaseTNMParser):
             'N2A': 'N2a' if 'N2a' in self.VALID_N_CLASSIFICATIONS else 'N2',
             'N2B': 'N2b' if 'N2b' in self.VALID_N_CLASSIFICATIONS else 'N2',
             'N3': 'N3',
-            'NX': 'N0',
+            # 'NX' preserved as 'Nx' (cannot-assess), not coerced to 'N0'.
+            'NX': 'Nx',
         }
         
         # Use format_map if available
@@ -218,8 +219,9 @@ class TNM_M_Parser(BaseTNMParser):
             'M1C': 'M1c',
             'M1C1': 'M1c1',
             'M1C2': 'M1c2',
-            'MX': 'M0',
-            'Mx': 'M0',
+            # 'MX' is NO LONGER coerced to 'M0'; preserved as 'Mx' (already a VALID class).
+            'MX': 'Mx',
+            'Mx': 'Mx',
             'M1': 'M1a',
         }
         # Check if already a valid classification (preserve exact format)
@@ -312,14 +314,18 @@ class TNMOutputParser(BaseOutputParser[TNMClassificationDict]):
 
         format_map = {
             'T0': 'T0',
-            'TX': 'T0',
-            'Tx': 'T0',
-            'T1': 'T1a',
-            'T2': 'T2a',
-            'TIS': 'T1a',
-            'T1MI': 'T1a',
-            'Tis': 'T1a',
-            'T1mi': 'T1a'
+            # 'TX'/'Tx' (primary tumour cannot be assessed) is NO LONGER
+            # coerced to 'T0' (no evidence of primary tumour). Preserved as 'Tx' (already a VALID class).
+            'TX': 'Tx',
+            'Tx': 'Tx',
+            # incomplete outputs 'T1'/'T2' are NO LONGER auto-promoted
+            # to 'T1a'/'T2a'; they fall through unchanged and are scored as non-matches (not silently corrected).
+            # adenocarcinoma in situ (Tis) and minimally invasive
+            # adenocarcinoma (T1mi) are preserved as distinct categories (previously collapsed to T1a).
+            'TIS': 'Tis',
+            'T1MI': 'T1mi',
+            'Tis': 'Tis',
+            'T1mi': 'T1mi'
         }
 
         normalized = format_map.get(t_upper)
@@ -356,7 +362,8 @@ class TNMOutputParser(BaseOutputParser[TNMClassificationDict]):
             'N2A': 'N2a' if 'N2a' in self.VALID_N_CLASSIFICATIONS else 'N2',
             'N2B': 'N2b' if 'N2b' in self.VALID_N_CLASSIFICATIONS else 'N2',
             'N3': 'N3',
-            'NX': 'N0'
+            # 'NX' preserved as 'Nx' (cannot-assess), not coerced to 'N0'.
+            'NX': 'Nx'
         }
         return format_map.get(n_upper, n_val)
 
@@ -377,8 +384,9 @@ class TNMOutputParser(BaseOutputParser[TNMClassificationDict]):
             'M1C': 'M1c',
             'M1C1': 'M1c1',
             'M1C2': 'M1c2',
-            'MX': 'M0',
-            'Mx': 'M0',
+            # 'MX' is NO LONGER coerced to 'M0'; preserved as 'Mx' (already a VALID class).
+            'MX': 'Mx',
+            'Mx': 'Mx',
             'M1': 'M1a',
         }
         # Preserve M1c1 and M1c2 format (M1c1, M1c2)
@@ -398,9 +406,9 @@ class TNMOutputParser(BaseOutputParser[TNMClassificationDict]):
 
     Format your response as JSON:
     {{
-      "t_classification": "CHOOSE ONE: T0/T1a/T1b/T1c/T2a/T2b/T3/T4",
-      "n_classification": "CHOOSE ONE: N0/N1/N2/N3",
-      "m_classification": "CHOOSE ONE: M0/M1a/M1b/M1c"
+      "t_classification": "CHOOSE ONE: T0/Tis/T1mi/T1a/T1b/T1c/T2a/T2b/T3/T4",
+      "n_classification": "CHOOSE ONE: N0/N1/N2a/N2b/N3 (AJCC 9th) or N0/N1/N2/N3 (AJCC 8th)",
+      "m_classification": "CHOOSE ONE: M0/M1a/M1b/M1c1/M1c2 (AJCC 9th) or M0/M1a/M1b/M1c (AJCC 8th)"
     }}
 
     Note:
