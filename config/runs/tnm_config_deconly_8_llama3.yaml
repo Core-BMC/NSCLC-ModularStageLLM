@@ -1,3 +1,13 @@
+# Run configuration: decomposition-only ablation
+#   Model    : LLaMA 3.3 70B
+#   Edition  : AJCC 8th
+#   Condition: T/N/M agent chain WITH majority voting disabled
+#              (tnm_base: false + use_consensus: False)
+#
+# Derived verbatim from config/tnm_config.yaml; only the backend, the
+# AJCC edition, the consensus flag and the input/output paths differ.
+# See config/runs/README.md before running.
+
 # TNM Configuration File
 # This file configures the TNM staging workflow for Non-Small Cell Lung Cancer
 
@@ -21,7 +31,7 @@ model_settings:
 
   # Local API settings (for local LLM servers like Ollama)
   local:
-    name: "llama3.3:70b"  # Model name: "llama3.3:70b", "phi4:14b", etc.
+    name: "llama3.3-ctx8k:latest"   # num_ctx=8192 derived build, as used in the reported evaluation (native context is offloaded to CPU and does not fit the GPU)
     base_url: "https://local.server.ip.address:port"  # API endpoint URL
     api_key: "set your bearer token"  # API key for authentication
     # Note: For setup_llm (default LLM), the average of temperature_low and temperature_high is used
@@ -83,7 +93,7 @@ model_settings:
 #       which mode to use regardless of which prompt is selected.
 #       True "majority-vote" consensus requires multiple responses in code
 #       (see MIN_RESPONSES and CONSENSUS_THRESHOLDS in src/agents/consensus.py).
-use_consensus: True
+use_consensus: False
 
 # Input file configuration
 # Path to the input data file containing medical reports for TNM classification
@@ -111,7 +121,7 @@ use_consensus: True
 #   - "input/single_excel_ajcc_8th.xlsx"
 #   - "input/single_excel_ajcc_9th.xlsx"
 input_file: "input/single_excel_ajcc_8th.xlsx"  # "input/multiple_csv_cases_ajcc_8th.csv"
-output_file: "output/single_excel_ajcc_8th"  # output/file_name
+output_file: "output/deconly_ajcc8th"  # output/file_name
 json_output_file: # "output/single_excel_ajcc_8th.json"  # output/specific_case_output_name.json
 log_file: # "output/single_excel_ajcc_8th.log"  # output/specific_case_output_name.log
 
@@ -534,8 +544,7 @@ ajcc9th_prompts:
       
     Special Considerations
     1) Clinical cM1 may be assigned from imaging (PET-CT, brain MRI, bone scan); pathologic confirmation is NOT required for clinical (cM) staging
-    2) Default to M0 when the reports do not support a distant metastasis: uncertainty, 'vs', 'r/o', 'probable', 'synchronous'.
-       A finding reported on a single imaging study is not by itself a reason to default to M0; rule (1) governs it.
+    2) Default to M0 for: uncertainty, single imaging, 'vs', 'r/o', 'probable', 'synchronous'
     
     Generate Response as This Format:
     ---------------------------------

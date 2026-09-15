@@ -14,6 +14,8 @@ langgraph
 
 # OpenAI and LLM support
 openai
+# Imported directly by src/utils/llm_utils.py and src/histology/workflow.py
+httpx
 
 # Data validation
 pydantic
@@ -24,3 +26,16 @@ jupyter
 notebook
 ipywidgets
 
+# Analysis and verification scripts (analysis/)
+# numpy is imported directly by five scripts under analysis/:
+# analyze_results.py, compute_sig.py, make_bootstrap_deposit.py,
+# make_figure2_main.py and make_figures.py.
+# It also arrives with pandas, but it is declared here because those
+# scripts import it themselves.
+numpy
+
+# matplotlib is optional: analyze_results.py, make_figures.py and
+# make_figure2_main.py write the tables and CSVs and skip the PNGs on a host
+# without it (see analysis/README.md), so a reader who only checks the numbers
+# does not need it.
+# matplotlib

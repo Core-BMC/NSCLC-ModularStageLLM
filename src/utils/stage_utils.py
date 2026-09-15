@@ -72,6 +72,12 @@ def determine_stage_from_tnm(
             # Check T1_T2 rules
             t1_t2_rules = n2_rules.get('T1_T2', {})
             if isinstance(t1_t2_rules, dict):
+                if t_class not in t1_t2_rules:
+                    logger.warning(
+                        "No n2_rules.T1_T2 entry for T=%s; falling back to "
+                        "IIIA. Add the category to config/tnm_config.yaml.",
+                        t_class
+                    )
                 return t1_t2_rules.get(t_class, 'IIIA')
 
             return 'IIIA'
@@ -88,6 +94,12 @@ def determine_stage_from_tnm(
             # Check T1_T2 rules
             t1_t2_rules = n1_rules.get('T1_T2', {})
             if isinstance(t1_t2_rules, dict):
+                if t_class not in t1_t2_rules:
+                    logger.warning(
+                        "No n1_rules.T1_T2 entry for T=%s; falling back to "
+                        "IIB. Add the category to config/tnm_config.yaml.",
+                        t_class
+                    )
                 return t1_t2_rules.get(t_class, 'IIB')
 
             return 'IIB'

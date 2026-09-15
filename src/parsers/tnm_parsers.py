@@ -22,6 +22,10 @@ logger = logging.getLogger(__name__)
 class TNM_T_Parser(BaseTNMParser):
     """Parser for T category classification."""
 
+    # 'T0' stays in the RECOGNISED set although it has been removed from the
+    # permitted set in every prompt: the reported runs produced it twice, and a
+    # parser that rejected it could not reproduce or score those runs. It is not
+    # offered to the model anywhere.
     VALID_T_CLASSIFICATIONS: ClassVar[Set[str]] = {
         'T0', 'Tis', 'T1mi', 'T1a', 'T1b', 'T1c', 'T2a', 'T2b',
         'T3', 'T4', 'T1', 'T2', 'Tx'
@@ -287,6 +291,10 @@ class TNMOutputParser(BaseOutputParser[TNMClassificationDict]):
 
     logger: ClassVar[logging.Logger] = logging.getLogger(__name__)
 
+    # 'T0' stays in the RECOGNISED set although it has been removed from the
+    # permitted set in every prompt: the reported runs produced it twice, and a
+    # parser that rejected it could not reproduce or score those runs. It is not
+    # offered to the model anywhere.
     VALID_T_CLASSIFICATIONS: ClassVar[Set[str]] = {
         'T0', 'Tis', 'T1mi', 'T1a', 'T1b', 'T1c', 'T2a', 'T2b',
         'T3', 'T4', 'T1', 'T2', 'Tx'
@@ -406,7 +414,7 @@ class TNMOutputParser(BaseOutputParser[TNMClassificationDict]):
 
     Format your response as JSON:
     {{
-      "t_classification": "CHOOSE ONE: T0/Tis/T1mi/T1a/T1b/T1c/T2a/T2b/T3/T4",
+      "t_classification": "CHOOSE ONE: Tis/T1mi/T1a/T1b/T1c/T2a/T2b/T3/T4",
       "n_classification": "CHOOSE ONE: N0/N1/N2a/N2b/N3 (AJCC 9th) or N0/N1/N2/N3 (AJCC 8th)",
       "m_classification": "CHOOSE ONE: M0/M1a/M1b/M1c1/M1c2 (AJCC 9th) or M0/M1a/M1b/M1c (AJCC 8th)"
     }}

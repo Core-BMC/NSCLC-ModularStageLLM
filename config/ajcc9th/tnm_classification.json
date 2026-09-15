@@ -3,7 +3,7 @@
     "version": "AJCC 9th edition",
     "last_updated": "2024-12-01",
     "system_name": "Lung Cancer Clinical TNM Staging with Modular Agent Architecture",
-    "author": "heohwon@gmail.com",
+    "author": "Biomedical Computing Core Lab, Asan Medical Center",
     "github": "https://github.com/Core-BMC/NSCLC-ModularStageLLM.git"
   },
   "categories": {

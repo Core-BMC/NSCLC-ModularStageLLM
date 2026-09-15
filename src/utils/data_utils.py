@@ -1,5 +1,6 @@
 """Data processing utilities for TNM staging workflow."""
 
+import os
 import json
 import logging
 from typing import TYPE_CHECKING, Any, Dict, List
@@ -11,6 +12,56 @@ if TYPE_CHECKING:
 
 
 logger = logging.getLogger(__name__)
+
+
+def _lookup_column(row: Any, name: str) -> Any:
+    """Fetch a column value from ``row`` ignoring case and outer whitespace.
+
+    The bundled input templates and the README use different capitalisation for
+    some columns (e.g. "neck biopsy" vs "Neck biopsy"). Exact, case-sensitive
+    lookups silently returned ``None`` for those fields, so an input file that
+    followed the README lost that report. Matching is therefore normalised.
+
+    Args:
+        row: Mapping-like row (dict or pandas Series) holding the input columns.
+        name: Column name to look up.
+
+    Returns:
+        The column value, or ``None`` when no column matches.
+    """
+    try:
+        keys = list(row.keys())
+    except AttributeError:
+        return None
+    target = str(name).strip().lower()
+    for key in keys:
+        if str(key).strip().lower() == target:
+            return row[key]
+    return None
+
+
+def _report_field(row: Any, name: str) -> Any:
+    """Build a ``MedicalReport`` for ``name`` if the column holds a value.
+
+    Args:
+        row: Mapping-like row holding the input columns.
+        name: Column name to read (case-insensitive).
+
+    Returns:
+        A ``MedicalReport`` instance, or ``None`` when the column is absent or
+        empty.
+    """
+    from src.models import MedicalReport
+
+    value = _lookup_column(row, name)
+    if value is None:
+        return None
+    try:
+        if pd.isna(value):
+            return None
+    except (TypeError, ValueError):
+        pass
+    return MedicalReport(content=value)
 
 
 def convert_histology_to_structure(histology_json: Dict[str, Any]) -> Dict[str, Any]:
@@ -189,42 +240,15 @@ def validate_input(
         input_data = {
             "case_number": case_number,
             "hospital_id": _resolve_hospital_id(row),
-            "pathology": (
-                MedicalReport(content=row.get("Pathology"))
-                if not pd.isna(row.get("Pathology")) else None
-            ),
-            "chest_ct": (
-                MedicalReport(content=row.get("Chest CT"))
-                if not pd.isna(row.get("Chest CT")) else None
-            ),
-            "brain_mr": (
-                MedicalReport(content=row.get("Brain MR"))
-                if not pd.isna(row.get("Brain MR")) else None
-            ),
-            "pet": (
-                MedicalReport(content=row.get("PET"))
-                if not pd.isna(row.get("PET")) else None
-            ),
-            "ebus": (
-                MedicalReport(content=row.get("EBUS"))
-                if not pd.isna(row.get("EBUS")) else None
-            ),
-            "neck_biopsy": (
-                MedicalReport(content=row.get("neck biopsy"))
-                if not pd.isna(row.get("neck biopsy")) else None
-            ),
-            "bone_scan": (
-                MedicalReport(content=row.get("Bone scan"))
-                if not pd.isna(row.get("Bone scan")) else None
-            ),
-            "abdomen_pelvis_ct": (
-                MedicalReport(content=row.get("Abdomen&Pelvis CT"))
-                if not pd.isna(row.get("Abdomen&Pelvis CT")) else None
-            ),
-            "adrenal_ct": (
-                MedicalReport(content=row.get("Adrenal CT"))
-                if not pd.isna(row.get("Adrenal CT")) else None
-            )
+            "pathology": _report_field(row, "Pathology"),
+            "chest_ct": _report_field(row, "Chest CT"),
+            "brain_mr": _report_field(row, "Brain MR"),
+            "pet": _report_field(row, "PET"),
+            "ebus": _report_field(row, "EBUS"),
+            "neck_biopsy": _report_field(row, "neck biopsy"),
+            "bone_scan": _report_field(row, "Bone scan"),
+            "abdomen_pelvis_ct": _report_field(row, "Abdomen&Pelvis CT"),
+            "adrenal_ct": _report_field(row, "Adrenal CT")
         }
         validated_data = InputData(**input_data)
         logger.info(f"Input data validated for case {case_number}")
@@ -262,42 +286,15 @@ def prepare_input(
         input_data = {
             "case_number": case_number,
             "hospital_id": _resolve_hospital_id(row),
-            "pathology": (
-                MedicalReport(content=row.get("Pathology"))
-                if not pd.isna(row.get("Pathology")) else None
-            ),
-            "chest_ct": (
-                MedicalReport(content=row.get("Chest CT"))
-                if not pd.isna(row.get("Chest CT")) else None
-            ),
-            "brain_mr": (
-                MedicalReport(content=row.get("Brain MR"))
-                if not pd.isna(row.get("Brain MR")) else None
-            ),
-            "pet": (
-                MedicalReport(content=row.get("PET"))
-                if not pd.isna(row.get("PET")) else None
-            ),
-            "ebus": (
-                MedicalReport(content=row.get("EBUS"))
-                if not pd.isna(row.get("EBUS")) else None
-            ),
-            "neck_biopsy": (
-                MedicalReport(content=row.get("neck biopsy"))
-                if not pd.isna(row.get("neck biopsy")) else None
-            ),
-            "bone_scan": (
-                MedicalReport(content=row.get("Bone scan"))
-                if not pd.isna(row.get("Bone scan")) else None
-            ),
-            "abdomen_pelvis_ct": (
-                MedicalReport(content=row.get("Abdomen&Pelvis CT"))
-                if not pd.isna(row.get("Abdomen&Pelvis CT")) else None
-            ),
-            "adrenal_ct": (
-                MedicalReport(content=row.get("Adrenal CT"))
-                if not pd.isna(row.get("Adrenal CT")) else None
-            ),
+            "pathology": _report_field(row, "Pathology"),
+            "chest_ct": _report_field(row, "Chest CT"),
+            "brain_mr": _report_field(row, "Brain MR"),
+            "pet": _report_field(row, "PET"),
+            "ebus": _report_field(row, "EBUS"),
+            "neck_biopsy": _report_field(row, "neck biopsy"),
+            "bone_scan": _report_field(row, "Bone scan"),
+            "abdomen_pelvis_ct": _report_field(row, "Abdomen&Pelvis CT"),
+            "adrenal_ct": _report_field(row, "Adrenal CT"),
         }
         validated_data = InputData(**input_data)
         processed_data = validated_data.model_dump(
@@ -396,11 +393,13 @@ def format_input_data(data: Dict[str, Any]) -> str:
 
         # Add basic info
         case_number = data.get('case_number')
-        hospital_id = data.get('hospital_id')
 
         if case_number is not None:
             formatted.append(f"Case Number: {case_number}")
-        if hospital_id:
+        # Optional private reconstruction of historical evaluation inputs.
+        # Disabled by default; released configurations must not enable it.
+        hospital_id = data.get('hospital_id')
+        if hospital_id and os.environ.get("INCLUDE_HOSPITAL_ID") == "1":
             formatted.append(f"Hospital ID: {hospital_id}")
 
         # Add reports in a structured way

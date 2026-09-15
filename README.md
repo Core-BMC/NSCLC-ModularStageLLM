@@ -2,18 +2,28 @@
 
 A modular, agent-based system for automated TNM staging classification of Non-Small Cell Lung Cancer (NSCLC) using Large Language Models (LLMs). This system processes medical reports and automatically classifies cancer stages according to AJCC (American Joint Committee on Cancer) guidelines.
 
+## What you can check
+
+1. **Recompute the reported tables:** Run `python3 analysis/recompute_tables.py` from the repository root. It uses the three deposited aggregate files and the Python standard library; no model API or patient records are required. See the [analysis README](analysis/README.md).
+2. **Run a fictional example:** Install the inference dependencies and configure your model/API, then use the included synthetic Excel files in the examples below. These examples demonstrate execution and do not reproduce the study results.
+3. **Re-evaluate the original cohort:** This cannot be done from the public files alone because the patient-level inputs are not distributed. Aggregate table recomputation does not re-run patient-level inference.
+
+## Analysis and aggregate data
+
+See the [analysis README](analysis/README.md#aggregate-data-and-patient-level-data) for the institutional data-sharing policy, the three aggregate files (including bootstrap statistics), and instructions for reproducing Tables 4 to 6. These files contain no individual patient records or patient-by-patient reference and prediction data.
+
 ## Overview
 
-This project provides an intelligent workflow that analyzes medical reports (pathology, CT scans, MRI, PET scans, etc.) and automatically determines the TNM staging for lung cancer patients. The system uses a modular architecture with specialized agents for each classification component (T, N, M, and Stage), ensuring accurate and explainable results.
+This research workflow processes medical reports to predict clinical T, N and M categories, then assigns the overall stage group using deterministic AJCC rules. It supports Single Prompt, decomposition-only and MAA configurations. Performance depends on the model and configuration; generated rationales have not been validated as explanations for clinical decision-making.
 
 ### Key Features
 
-- **Modular Agent Architecture**: Separate specialized agents for histology, T, N, M, and Stage classification
-- **Consensus Mechanism**: Multiple LLM responses with majority voting for improved accuracy
+- **Workflow configurations**: A combined T/N/M prompt or separate T, N and M classifiers, followed by deterministic stage grouping. An initial histology call is present in all configurations, but its output is not used by the staging components.
+- **Consensus Mechanism**: Optional repeated sampling and voting for T/N/M classification; the evaluated comparisons do not isolate a benefit from voting.
 - **AJCC Support**: Supports both AJCC 8th and 9th edition staging guidelines
 - **Multiple LLM Backends**: Works with OpenAI, Azure OpenAI, or local LLM servers (e.g., Ollama)
 - **Comprehensive Input Support**: Processes various medical report types (Pathology, CT, MRI, PET, EBUS, etc.)
-- **Explainable Results**: Provides detailed reasoning for each classification decision
+- **Generated Rationales**: Records model-generated reasoning for review; this does not establish the correctness or clinical usefulness of the reasoning.
 - **Batch Processing**: Handles multiple cases from CSV or Excel files
 - **Performance Metrics**: Calculates accuracy and confusion matrices when true TNM values are provided
 
@@ -63,7 +73,7 @@ NSCLC-ModularStageLLM/
 
 ### Workflow Overview
 
-The system follows a sequential workflow where each step builds upon the previous one:
+The modular path executes the following nodes sequentially. T, N and M classifiers receive all available reports in component-specific context order; the initial histology label is excluded from their input. Single Prompt replaces the three T/N/M classifier nodes with one combined query. Stage grouping is deterministic in both paths:
 
 ```bash
 1. Histology Classification
@@ -74,7 +84,7 @@ The system follows a sequential workflow where each step builds upon the previou
    ↓
 4. M Classification (Metastasis)
    ↓
-5. Stage Classification (Final stage determination)
+5. Rule-based Stage Grouping (no LLM call)
    ↓
 6. Final Save (Results output)
 ```
@@ -86,27 +96,28 @@ The system follows a sequential workflow where each step builds upon the previou
 - Analyzes pathology reports to identify cancer type
 - Classifies according to WHO Classification of Lung Tumors
 - Determines category, subcategory, and type
-- Provides confidence score and reasoning
+- Records model-generated confidence and reasoning
+- The histology classifier was not validated against a reference standard; its label is excluded from staging context. The manuscript cohort histology was established separately from pathology reports and clinician review.
 
 #### 2. T Classification
 
 - Analyzes tumor size, location, and local invasion
 - Reviews CT scans, pathology reports, and other relevant imaging
-- Classifies as T0, T1a, T1b, T1c, T2a, T2b, T3, or T4
-- Uses consensus mechanism for improved accuracy
+- Permitted clinical T categories include Tis, T1mi, T1a, T1b, T1c, T2a, T2b, T3 and T4; T0 has been removed from the prompt output set. Indeterminate Tx is distinct from a parsing failure.
+- Uses repeated sampling and voting when MAA is selected; decomposition-only disables voting.
 
 #### 3. N Classification
 
 - Evaluates lymph node involvement
 - Reviews CT scans, PET scans, EBUS reports, and biopsy results
-- Classifies as N0, N1, N2, or N3
+- Uses N0, N1, N2 and N3 under the 8th edition; the 9th edition subdivides N2 into N2a and N2b. Indeterminate Nx is retained.
 - Considers regional lymph node stations
 
 #### 4. M Classification
 
 - Assesses distant metastasis
 - Reviews brain MRI, PET scans, bone scans, and other imaging
-- Classifies as M0, M1a, M1b, or M1c
+- Uses M0, M1a, M1b and M1c under the 8th edition; the 9th edition subdivides M1c into M1c1 and M1c2. Indeterminate Mx is retained.
 - Distinguishes between different metastatic sites
 
 #### 5. Stage Classification
@@ -114,7 +125,7 @@ The system follows a sequential workflow where each step builds upon the previou
 - Rule-based stage determination using TNM combinations
 - Follows AJCC staging tables
 - Supports both AJCC 8th and 9th editions
-- Generates final stage (IA1, IA2, IA3, IB, IIA, IIB, IIIA, IIIB, IIIC, IVA, IVB)
+- Assigns stage 0, IA1, IA2, IA3, IB, IIA, IIB, IIIA, IIIB, IIIC, IVA or IVB where the TNM combination has a defined rule; an unresolved combination is not a valid stage assignment.
 
 #### 6. Final Save
 
@@ -124,21 +135,19 @@ The system follows a sequential workflow where each step builds upon the previou
 
 ### Consensus Mechanism
 
-The system uses a consensus mechanism to improve classification accuracy:
+In MAA, each T/N/M classification is sampled at temperature 0.5 until one parsed label receives two concordant votes, with a maximum of 50 attempts. Unparseable responses count toward the attempt limit but not toward votes. A three-way disagreement can therefore require more than three attempts. At the limit, the most frequent parsed label is returned; if no response is parsed, no classification is returned.
 
-1. **Multiple Responses (best-of-3)**: Decides each classification by a best-of-3 majority vote — the first category to receive two concordant responses — drawing additional samples only if the first three responses disagree
-2. **Fixed Temperature**: All models sample at a fixed temperature of 0.5, standardized across models (no per-response temperature variation)
-3. **Majority Voting**: Selects the most common classification among valid responses
-4. **Validation**: Ensures all responses follow the correct format before voting
-5. **Retry Logic**: Automatically retries if consensus cannot be reached
+Single Prompt issues one combined staging query without pipeline retry. Decomposition-only uses separate T/N/M queries without voting; two component calls required a retry in the reported evaluation. All three configurations also make an initial histology call. The comparisons involve decomposition, voting and output handling; ninth-edition comparisons additionally differ in prompt wording and do not isolate the effect of architecture or voting.
 
-This approach significantly improves accuracy compared to single-response methods.
+The stored-output audit covered 17,820 component outputs from the two agent configurations, all yielding labels through the agent JSON path. That path includes direct classification-field extraction and does not establish strict JSON validity. Among 2,970 combined Single Prompt outputs, 2,951 used the JSON path and 18 used regex fallback. One further output had no stored generated text, so its original parsing path could not be verified; it was recorded as no label and scored as incorrect.
+
+Discarded generations were not retained, so this audit cannot establish the parsing-failure or resampling rate across all attempted generations. Explicit Tx/Nx/Mx labels and an undetermined overall stage are distinct from a missing extracted label. The N/M extraction functions return no result on an unmatched output rather than silently assigning N0 or M0.
 
 ## Installation
 
 ### Prerequisites
 
-- Python 3.8 or higher
+- Python 3.9 or higher
 - pip package manager
 
 ### Step 1: Clone the Repository
@@ -232,18 +241,34 @@ model_settings:
     api_key: "your_bearer_token"
     temperature_low: 0.5
     temperature_high: 0.5
+    max_tokens: 2048  # output-token cap for local backends
 ```
 
-### Consensus Mode
+`max_tokens` caps the generated output for local backends (Ollama maps it to
+`num_predict`). The evaluation reported in the accompanying manuscript was run
+at **2048**; raising it changes generation behaviour and any re-run should be
+described as such.
 
-```yaml
-use_consensus: True  # True for consensus mode, False for single response
-```
+### Evaluation context window
+
+The `*-ctx8k` names are local deployment aliases configured with `num_ctx=8192`. To use the provided configurations, create these aliases from the corresponding base models (`phi4:14b` and `llama3.3:70b`), or update the model names to your deployment names and configure the context window to 8,192 tokens. Downloading a base model does not automatically create these aliases.
+
+The local models used a context window of 8,192 tokens (num_ctx=8192), separate from the output limit of 2,048 tokens (max_tokens=2048). Whether any evaluation inputs were truncated at the context limit has not been established. This clarification does not change the reported results. See [the analysis README](analysis/README.md#local-context-window-and-output-limit) for details.
+
+### Configuration Selection
+
+| Configuration | tnm_base | use_consensus |
+|---|---|---|
+| Single Prompt | true | false |
+| Decomposition only | false | false |
+| MAA | false | true |
+
+Setting use_consensus to false alone does not select Single Prompt; tnm_base controls whether the combined node is used.
 
 ### Input/Output Files
 
 ```yaml
-input_file: "input/single_excel_ajcc_8th.xlsx"
+input_file: "input/synthetic_single_excel_ajcc_8th.xlsx"
 output_file: "output/results"
 json_output_file: "output/results.json"
 log_file: "output/results.log"
@@ -256,7 +281,7 @@ log_file: "output/results.log"
 The easiest way to run the workflow is using the command-line interface:
 
 ```bash
-python run_workflow.py -i input/sample_cases.csv -o output/results
+python run_workflow.py -i input/synthetic_single_excel_ajcc_8th.xlsx -o output/results
 ```
 
 **Options:**
@@ -271,13 +296,13 @@ python run_workflow.py -i input/sample_cases.csv -o output/results
 
 ```bash
 # Process Excel file
-python run_workflow.py -i input/single_excel_ajcc_9th.xlsx -o output/results
+python run_workflow.py -i input/synthetic_single_excel_ajcc_8th.xlsx -o output/results --config config/tnm_config.yaml
 
-# Process CSV file with custom config
-python run_workflow.py -i input/multiple_csv_cases_ajcc_8th.csv -o output/results --config config/custom_config.yaml
+# Process the AJCC 9th edition synthetic example (configure this model/API first)
+python run_workflow.py -i input/synthetic_single_excel_ajcc_9th.xlsx -o output/results_ajcc9 --config config/runs/tnm_config_deconly_9_phi4.yaml
 
 # Enable verbose logging
-python run_workflow.py -i input/sample.csv -o output/results -v
+python run_workflow.py -i input/synthetic_single_excel_ajcc_8th.xlsx -o output/results -v
 ```
 
 ### Base Mode vs Agent Mode
@@ -297,6 +322,15 @@ ajcc8th_prompts:
   tnm_classifier_base: |
     ...single-pass TNM prompt...
 ```
+
+> **Note.** The single-prompt configuration reported in the accompanying manuscript
+> is selected by `tnm_base: true`, not by `use_consensus: false`. Setting
+> `use_consensus: false` while `tnm_base: false` gives a third configuration:
+> the T/N/M agent chain with majority voting disabled. The manuscript calls these
+> three the single combined prompt, decomposition-only, and the full MAA; the word
+> "baseline" is not used for any of them.
+>
+> The current template differs from the configurations used in the reported evaluation. Its ninth-edition M prompt was corrected so that a finding on a single imaging study is not, by itself, a reason to default to M0. The six decomposition-only configurations in config/runs/ retain the earlier wording used for their reported results. The original MAA prompts also differ from the decomposition-only prompts in handling equivocal N/M findings. Multimedia Appendix 1, Section 8 documents these differences. The corrected template has not been evaluated on the study cohort, and no new performance claim follows from the code correction.
 
 **Agent Mode (T -> N -> M chain):**
 
@@ -332,7 +366,8 @@ The input file should be a **CSV** or **Excel** file with the following columns:
 - `Brain MR`: Brain MRI report
 - `PET`: PET scan report
 - `EBUS`: EBUS report
-- `Neck biopsy`: Neck biopsy report
+- `Neck biopsy`: Neck biopsy report (written `neck biopsy` in the bundled
+  templates; column names are matched case-insensitively, so either works)
 - `Bone scan`: Bone scan report
 - `Abdomen&Pelvis CT`: Abdomen and pelvis CT report
 - `Adrenal CT`: Adrenal CT report
@@ -376,12 +411,7 @@ The system uses LangGraph to manage the workflow state:
 histology_classifier → t_classifier → n_classifier → m_classifier → stage_classifier → final_save
 ```
 
-Each node:
-
-1. Receives the current state
-2. Performs its classification task
-3. Updates the state with results
-4. Passes control to the next node
+The graph above describes the modular path. Single Prompt uses a combined staging node instead of separate T/N/M nodes. The stage_classifier node applies deterministic rules and final_save writes outputs; neither is a separate LLM classification agent.
 
 ### Error Handling
 
@@ -416,7 +446,7 @@ Metrics are displayed in the console and included in log files.
 See the `input/` directory for sample input files:
 
 - `single_csv_ajcc_9th.csv`: Single case CSV example
-- `single_excel_ajcc_8th.xlsx`: Single case Excel example
+- `synthetic_single_excel_ajcc_8th.xlsx`: Single case Excel example
 - `multiple_csv_cases_ajcc_8th.csv`: Multiple cases CSV example
 
 See `Example_Notebook_Modular_cTNM_Staging.ipynb` for a Jupyter notebook example.
@@ -429,14 +459,29 @@ See `Example_Notebook_Modular_cTNM_Staging.ipynb` for a Jupyter notebook example
 2. **File Not Found**: Check that input file paths are correct and files exist
 3. **Import Errors**: Ensure all dependencies are installed (`pip install -r requirements.txt`)
 4. **LLM Timeout**: Increase timeout settings in configuration or check network connectivity
-5. **Consensus Failures**: Try adjusting temperature settings or reducing consensus requirements
+5. **Consensus Failures**: Inspect parsing and backend errors in the logs. Changing temperature or voting thresholds defines a different configuration and does not reproduce the reported evaluation.
 
 ### Debug Mode
 
 Enable verbose logging for detailed debugging:
 
 ```bash
-python run_workflow.py -i input/sample.csv -o output/results -v
+python run_workflow.py -i input/synthetic_single_excel_ajcc_8th.xlsx -o output/results -v
+```
+
+## Tests
+
+`tests/test_revision_fixes.py` checks the behaviours corrected in the 2026
+revision: unparseable N/M output is recorded as no result rather than coerced to
+the majority class, the AJCC 9th-edition stage tables cover Tis and T1mi, T0 is
+not offered as an output, and input column lookup is case-insensitive.
+
+```bash
+python3 tests/test_revision_fixes.py
+
+# Optional pytest runner:
+python3 -m pip install pytest
+python3 -m pytest tests/
 ```
 
 ## License

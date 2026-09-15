@@ -1,0 +1,2387 @@
+edition,model,configuration,component,reference_label,predicted_label,n
+AJCC8th,GPT-4o,baseline,cT,T1a,T1a,9
+AJCC8th,GPT-4o,baseline,cT,T1a,T1b,8
+AJCC8th,GPT-4o,baseline,cT,T1a,T1c,1
+AJCC8th,GPT-4o,baseline,cT,T1a,T1mi,1
+AJCC8th,GPT-4o,baseline,cT,T1b,T1a,1
+AJCC8th,GPT-4o,baseline,cT,T1b,T1b,96
+AJCC8th,GPT-4o,baseline,cT,T1b,T1c,6
+AJCC8th,GPT-4o,baseline,cT,T1b,T2a,2
+AJCC8th,GPT-4o,baseline,cT,T1c,T1b,15
+AJCC8th,GPT-4o,baseline,cT,T1c,T1c,101
+AJCC8th,GPT-4o,baseline,cT,T1c,T2a,5
+AJCC8th,GPT-4o,baseline,cT,T1c,T2b,1
+AJCC8th,GPT-4o,baseline,cT,T1mi,T1a,1
+AJCC8th,GPT-4o,baseline,cT,T1mi,T1mi,3
+AJCC8th,GPT-4o,baseline,cT,T2a,T1c,5
+AJCC8th,GPT-4o,baseline,cT,T2a,T2a,98
+AJCC8th,GPT-4o,baseline,cT,T2a,T3,1
+AJCC8th,GPT-4o,baseline,cT,T2a,T4,1
+AJCC8th,GPT-4o,baseline,cT,T2b,T2a,5
+AJCC8th,GPT-4o,baseline,cT,T2b,T2b,31
+AJCC8th,GPT-4o,baseline,cT,T2b,T3,1
+AJCC8th,GPT-4o,baseline,cT,T3,T1b,1
+AJCC8th,GPT-4o,baseline,cT,T3,T2a,3
+AJCC8th,GPT-4o,baseline,cT,T3,T2b,3
+AJCC8th,GPT-4o,baseline,cT,T3,T3,55
+AJCC8th,GPT-4o,baseline,cT,T4,T1c,3
+AJCC8th,GPT-4o,baseline,cT,T4,T2a,2
+AJCC8th,GPT-4o,baseline,cT,T4,T2b,1
+AJCC8th,GPT-4o,baseline,cT,T4,T3,2
+AJCC8th,GPT-4o,baseline,cT,T4,T4,29
+AJCC8th,GPT-4o,baseline,cT,Tis,T1a,1
+AJCC8th,GPT-4o,baseline,cT,Tis,T1mi,1
+AJCC8th,GPT-4o,baseline,cT,Tis,Tis,2
+AJCC8th,GPT-4o,baseline,cN,N0,N0,296
+AJCC8th,GPT-4o,baseline,cN,N0,N1,25
+AJCC8th,GPT-4o,baseline,cN,N0,N2,9
+AJCC8th,GPT-4o,baseline,cN,N0,N3,6
+AJCC8th,GPT-4o,baseline,cN,N1,N0,5
+AJCC8th,GPT-4o,baseline,cN,N1,N1,26
+AJCC8th,GPT-4o,baseline,cN,N1,N2,14
+AJCC8th,GPT-4o,baseline,cN,N1,N3,2
+AJCC8th,GPT-4o,baseline,cN,N2,N0,2
+AJCC8th,GPT-4o,baseline,cN,N2,N1,8
+AJCC8th,GPT-4o,baseline,cN,N2,N2,62
+AJCC8th,GPT-4o,baseline,cN,N2,N3,6
+AJCC8th,GPT-4o,baseline,cN,N3,N2,6
+AJCC8th,GPT-4o,baseline,cN,N3,N3,28
+AJCC8th,GPT-4o,baseline,cM,M0,M0,396
+AJCC8th,GPT-4o,baseline,cM,M0,M1a,6
+AJCC8th,GPT-4o,baseline,cM,M0,M1b,12
+AJCC8th,GPT-4o,baseline,cM,M1a,M0,13
+AJCC8th,GPT-4o,baseline,cM,M1a,M1a,14
+AJCC8th,GPT-4o,baseline,cM,M1b,M0,4
+AJCC8th,GPT-4o,baseline,cM,M1b,M1a,1
+AJCC8th,GPT-4o,baseline,cM,M1b,M1b,18
+AJCC8th,GPT-4o,baseline,cM,M1c,M0,2
+AJCC8th,GPT-4o,baseline,cM,M1c,M1a,4
+AJCC8th,GPT-4o,baseline,cM,M1c,M1b,5
+AJCC8th,GPT-4o,baseline,cM,M1c,M1c,20
+AJCC8th,GPT-4o,baseline,stage group,0,0,2
+AJCC8th,GPT-4o,baseline,stage group,0,IA1,2
+AJCC8th,GPT-4o,baseline,stage group,IA1,IA1,13
+AJCC8th,GPT-4o,baseline,stage group,IA1,IA2,7
+AJCC8th,GPT-4o,baseline,stage group,IA1,IA3,1
+AJCC8th,GPT-4o,baseline,stage group,IA1,IIB,2
+AJCC8th,GPT-4o,baseline,stage group,IA2,IA1,1
+AJCC8th,GPT-4o,baseline,stage group,IA2,IA2,68
+AJCC8th,GPT-4o,baseline,stage group,IA2,IA3,5
+AJCC8th,GPT-4o,baseline,stage group,IA2,IB,2
+AJCC8th,GPT-4o,baseline,stage group,IA2,IIB,5
+AJCC8th,GPT-4o,baseline,stage group,IA2,IIIA,2
+AJCC8th,GPT-4o,baseline,stage group,IA2,IVA,3
+AJCC8th,GPT-4o,baseline,stage group,IA3,IA2,8
+AJCC8th,GPT-4o,baseline,stage group,IA3,IA3,59
+AJCC8th,GPT-4o,baseline,stage group,IA3,IB,2
+AJCC8th,GPT-4o,baseline,stage group,IA3,IIA,1
+AJCC8th,GPT-4o,baseline,stage group,IA3,IIB,6
+AJCC8th,GPT-4o,baseline,stage group,IA3,IIIA,2
+AJCC8th,GPT-4o,baseline,stage group,IA3,IIIB,1
+AJCC8th,GPT-4o,baseline,stage group,IA3,IVA,6
+AJCC8th,GPT-4o,baseline,stage group,IB,IA3,3
+AJCC8th,GPT-4o,baseline,stage group,IB,IB,49
+AJCC8th,GPT-4o,baseline,stage group,IB,IIB,6
+AJCC8th,GPT-4o,baseline,stage group,IB,IIIA,1
+AJCC8th,GPT-4o,baseline,stage group,IB,IVA,1
+AJCC8th,GPT-4o,baseline,stage group,IIA,IB,1
+AJCC8th,GPT-4o,baseline,stage group,IIA,IIA,12
+AJCC8th,GPT-4o,baseline,stage group,IIA,IIB,2
+AJCC8th,GPT-4o,baseline,stage group,IIA,IIIB,1
+AJCC8th,GPT-4o,baseline,stage group,IIA,IVA,3
+AJCC8th,GPT-4o,baseline,stage group,IIB,IA2,2
+AJCC8th,GPT-4o,baseline,stage group,IIB,IB,2
+AJCC8th,GPT-4o,baseline,stage group,IIB,IIA,2
+AJCC8th,GPT-4o,baseline,stage group,IIB,IIB,32
+AJCC8th,GPT-4o,baseline,stage group,IIB,IIIA,9
+AJCC8th,GPT-4o,baseline,stage group,IIB,IIIB,3
+AJCC8th,GPT-4o,baseline,stage group,IIB,IIIC,1
+AJCC8th,GPT-4o,baseline,stage group,IIB,IVA,1
+AJCC8th,GPT-4o,baseline,stage group,IIIA,IA3,3
+AJCC8th,GPT-4o,baseline,stage group,IIIA,IIB,5
+AJCC8th,GPT-4o,baseline,stage group,IIIA,IIIA,42
+AJCC8th,GPT-4o,baseline,stage group,IIIA,IIIB,6
+AJCC8th,GPT-4o,baseline,stage group,IIIA,IIIC,1
+AJCC8th,GPT-4o,baseline,stage group,IIIA,IVA,3
+AJCC8th,GPT-4o,baseline,stage group,IIIB,IIIA,3
+AJCC8th,GPT-4o,baseline,stage group,IIIB,IIIB,16
+AJCC8th,GPT-4o,baseline,stage group,IIIB,IVA,1
+AJCC8th,GPT-4o,baseline,stage group,IIIC,IIIB,2
+AJCC8th,GPT-4o,baseline,stage group,IIIC,IIIC,3
+AJCC8th,GPT-4o,baseline,stage group,IVA,IA3,1
+AJCC8th,GPT-4o,baseline,stage group,IVA,IB,1
+AJCC8th,GPT-4o,baseline,stage group,IVA,IIB,2
+AJCC8th,GPT-4o,baseline,stage group,IVA,IIIA,5
+AJCC8th,GPT-4o,baseline,stage group,IVA,IIIB,6
+AJCC8th,GPT-4o,baseline,stage group,IVA,IIIC,2
+AJCC8th,GPT-4o,baseline,stage group,IVA,IVA,33
+AJCC8th,GPT-4o,baseline,stage group,IVB,IA2,1
+AJCC8th,GPT-4o,baseline,stage group,IVB,IA3,1
+AJCC8th,GPT-4o,baseline,stage group,IVB,IVA,9
+AJCC8th,GPT-4o,baseline,stage group,IVB,IVB,20
+AJCC8th,GPT-4o,decomposition-only,cT,T1a,T1a,11
+AJCC8th,GPT-4o,decomposition-only,cT,T1a,T1b,5
+AJCC8th,GPT-4o,decomposition-only,cT,T1a,T1c,3
+AJCC8th,GPT-4o,decomposition-only,cT,T1b,T1b,93
+AJCC8th,GPT-4o,decomposition-only,cT,T1b,T1c,9
+AJCC8th,GPT-4o,decomposition-only,cT,T1b,T2a,1
+AJCC8th,GPT-4o,decomposition-only,cT,T1b,Tis,2
+AJCC8th,GPT-4o,decomposition-only,cT,T1c,T1b,3
+AJCC8th,GPT-4o,decomposition-only,cT,T1c,T1c,115
+AJCC8th,GPT-4o,decomposition-only,cT,T1c,T2a,4
+AJCC8th,GPT-4o,decomposition-only,cT,T1mi,T1a,1
+AJCC8th,GPT-4o,decomposition-only,cT,T1mi,T1mi,3
+AJCC8th,GPT-4o,decomposition-only,cT,T2a,T1b,2
+AJCC8th,GPT-4o,decomposition-only,cT,T2a,T1c,8
+AJCC8th,GPT-4o,decomposition-only,cT,T2a,T2a,92
+AJCC8th,GPT-4o,decomposition-only,cT,T2a,T2b,2
+AJCC8th,GPT-4o,decomposition-only,cT,T2a,T4,1
+AJCC8th,GPT-4o,decomposition-only,cT,T2b,T2a,1
+AJCC8th,GPT-4o,decomposition-only,cT,T2b,T2b,35
+AJCC8th,GPT-4o,decomposition-only,cT,T2b,T3,1
+AJCC8th,GPT-4o,decomposition-only,cT,T3,T1b,1
+AJCC8th,GPT-4o,decomposition-only,cT,T3,T2a,3
+AJCC8th,GPT-4o,decomposition-only,cT,T3,T2b,2
+AJCC8th,GPT-4o,decomposition-only,cT,T3,T3,54
+AJCC8th,GPT-4o,decomposition-only,cT,T3,T4,2
+AJCC8th,GPT-4o,decomposition-only,cT,T4,T1c,5
+AJCC8th,GPT-4o,decomposition-only,cT,T4,T2a,5
+AJCC8th,GPT-4o,decomposition-only,cT,T4,T2b,1
+AJCC8th,GPT-4o,decomposition-only,cT,T4,T4,26
+AJCC8th,GPT-4o,decomposition-only,cT,Tis,T1a,2
+AJCC8th,GPT-4o,decomposition-only,cT,Tis,Tis,2
+AJCC8th,GPT-4o,decomposition-only,cN,N0,N0,289
+AJCC8th,GPT-4o,decomposition-only,cN,N0,N1,25
+AJCC8th,GPT-4o,decomposition-only,cN,N0,N2,10
+AJCC8th,GPT-4o,decomposition-only,cN,N0,N3,12
+AJCC8th,GPT-4o,decomposition-only,cN,N1,N0,3
+AJCC8th,GPT-4o,decomposition-only,cN,N1,N1,36
+AJCC8th,GPT-4o,decomposition-only,cN,N1,N2,7
+AJCC8th,GPT-4o,decomposition-only,cN,N1,N3,1
+AJCC8th,GPT-4o,decomposition-only,cN,N2,N0,2
+AJCC8th,GPT-4o,decomposition-only,cN,N2,N1,8
+AJCC8th,GPT-4o,decomposition-only,cN,N2,N2,63
+AJCC8th,GPT-4o,decomposition-only,cN,N2,N3,5
+AJCC8th,GPT-4o,decomposition-only,cN,N3,N2,4
+AJCC8th,GPT-4o,decomposition-only,cN,N3,N3,30
+AJCC8th,GPT-4o,decomposition-only,cM,M0,M0,396
+AJCC8th,GPT-4o,decomposition-only,cM,M0,M1a,10
+AJCC8th,GPT-4o,decomposition-only,cM,M0,M1b,6
+AJCC8th,GPT-4o,decomposition-only,cM,M0,M1c,2
+AJCC8th,GPT-4o,decomposition-only,cM,M1a,M0,6
+AJCC8th,GPT-4o,decomposition-only,cM,M1a,M1a,21
+AJCC8th,GPT-4o,decomposition-only,cM,M1b,M0,6
+AJCC8th,GPT-4o,decomposition-only,cM,M1b,M1b,15
+AJCC8th,GPT-4o,decomposition-only,cM,M1b,M1c,2
+AJCC8th,GPT-4o,decomposition-only,cM,M1c,M0,2
+AJCC8th,GPT-4o,decomposition-only,cM,M1c,M1a,2
+AJCC8th,GPT-4o,decomposition-only,cM,M1c,M1b,6
+AJCC8th,GPT-4o,decomposition-only,cM,M1c,M1c,21
+AJCC8th,GPT-4o,decomposition-only,stage group,0,0,2
+AJCC8th,GPT-4o,decomposition-only,stage group,0,IA1,1
+AJCC8th,GPT-4o,decomposition-only,stage group,0,IIB,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IA1,IA1,12
+AJCC8th,GPT-4o,decomposition-only,stage group,IA1,IA2,3
+AJCC8th,GPT-4o,decomposition-only,stage group,IA1,IA3,3
+AJCC8th,GPT-4o,decomposition-only,stage group,IA1,IIB,2
+AJCC8th,GPT-4o,decomposition-only,stage group,IA1,IIIA,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IA1,IVA,2
+AJCC8th,GPT-4o,decomposition-only,stage group,IA2,0,2
+AJCC8th,GPT-4o,decomposition-only,stage group,IA2,IA2,68
+AJCC8th,GPT-4o,decomposition-only,stage group,IA2,IA3,6
+AJCC8th,GPT-4o,decomposition-only,stage group,IA2,IB,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IA2,IIB,5
+AJCC8th,GPT-4o,decomposition-only,stage group,IA2,IIIA,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IA2,IIIB,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IA2,IVA,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IA2,IVB,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IA3,IA2,2
+AJCC8th,GPT-4o,decomposition-only,stage group,IA3,IA3,62
+AJCC8th,GPT-4o,decomposition-only,stage group,IA3,IB,3
+AJCC8th,GPT-4o,decomposition-only,stage group,IA3,IIB,6
+AJCC8th,GPT-4o,decomposition-only,stage group,IA3,IIIA,3
+AJCC8th,GPT-4o,decomposition-only,stage group,IA3,IIIB,4
+AJCC8th,GPT-4o,decomposition-only,stage group,IA3,IVA,4
+AJCC8th,GPT-4o,decomposition-only,stage group,IA3,IVB,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IB,IA2,2
+AJCC8th,GPT-4o,decomposition-only,stage group,IB,IA3,3
+AJCC8th,GPT-4o,decomposition-only,stage group,IB,IB,42
+AJCC8th,GPT-4o,decomposition-only,stage group,IB,IIA,2
+AJCC8th,GPT-4o,decomposition-only,stage group,IB,IIB,5
+AJCC8th,GPT-4o,decomposition-only,stage group,IB,IIIA,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IB,IIIB,2
+AJCC8th,GPT-4o,decomposition-only,stage group,IB,IVA,3
+AJCC8th,GPT-4o,decomposition-only,stage group,IIA,IIA,16
+AJCC8th,GPT-4o,decomposition-only,stage group,IIA,IIB,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IIA,IIIB,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IIA,IVA,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IIB,IA2,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IIB,IB,3
+AJCC8th,GPT-4o,decomposition-only,stage group,IIB,IIA,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IIB,IIB,38
+AJCC8th,GPT-4o,decomposition-only,stage group,IIB,IIIA,5
+AJCC8th,GPT-4o,decomposition-only,stage group,IIB,IIIB,2
+AJCC8th,GPT-4o,decomposition-only,stage group,IIB,IIIC,2
+AJCC8th,GPT-4o,decomposition-only,stage group,IIIA,IA3,3
+AJCC8th,GPT-4o,decomposition-only,stage group,IIIA,IB,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IIIA,IIB,4
+AJCC8th,GPT-4o,decomposition-only,stage group,IIIA,IIIA,42
+AJCC8th,GPT-4o,decomposition-only,stage group,IIIA,IIIB,7
+AJCC8th,GPT-4o,decomposition-only,stage group,IIIA,IVA,3
+AJCC8th,GPT-4o,decomposition-only,stage group,IIIB,IIIA,5
+AJCC8th,GPT-4o,decomposition-only,stage group,IIIB,IIIB,13
+AJCC8th,GPT-4o,decomposition-only,stage group,IIIB,IVA,2
+AJCC8th,GPT-4o,decomposition-only,stage group,IIIC,IIIA,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IIIC,IIIC,4
+AJCC8th,GPT-4o,decomposition-only,stage group,IVA,IA3,2
+AJCC8th,GPT-4o,decomposition-only,stage group,IVA,IIIA,7
+AJCC8th,GPT-4o,decomposition-only,stage group,IVA,IIIB,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IVA,IIIC,2
+AJCC8th,GPT-4o,decomposition-only,stage group,IVA,IVA,36
+AJCC8th,GPT-4o,decomposition-only,stage group,IVA,IVB,2
+AJCC8th,GPT-4o,decomposition-only,stage group,IVB,IA2,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IVB,IA3,1
+AJCC8th,GPT-4o,decomposition-only,stage group,IVB,IVA,8
+AJCC8th,GPT-4o,decomposition-only,stage group,IVB,IVB,21
+AJCC8th,GPT-4o,MAA,cT,T1a,T1a,17
+AJCC8th,GPT-4o,MAA,cT,T1a,T1b,1
+AJCC8th,GPT-4o,MAA,cT,T1a,T1c,1
+AJCC8th,GPT-4o,MAA,cT,T1b,T1b,95
+AJCC8th,GPT-4o,MAA,cT,T1b,T1c,8
+AJCC8th,GPT-4o,MAA,cT,T1b,T2a,1
+AJCC8th,GPT-4o,MAA,cT,T1b,Tis,1
+AJCC8th,GPT-4o,MAA,cT,T1c,T1c,119
+AJCC8th,GPT-4o,MAA,cT,T1c,T2a,3
+AJCC8th,GPT-4o,MAA,cT,T1mi,T1mi,4
+AJCC8th,GPT-4o,MAA,cT,T2a,T1b,2
+AJCC8th,GPT-4o,MAA,cT,T2a,T1c,8
+AJCC8th,GPT-4o,MAA,cT,T2a,T2a,92
+AJCC8th,GPT-4o,MAA,cT,T2a,T2b,2
+AJCC8th,GPT-4o,MAA,cT,T2a,T4,1
+AJCC8th,GPT-4o,MAA,cT,T2b,T2a,1
+AJCC8th,GPT-4o,MAA,cT,T2b,T2b,36
+AJCC8th,GPT-4o,MAA,cT,T3,T1b,1
+AJCC8th,GPT-4o,MAA,cT,T3,T2a,3
+AJCC8th,GPT-4o,MAA,cT,T3,T2b,4
+AJCC8th,GPT-4o,MAA,cT,T3,T3,53
+AJCC8th,GPT-4o,MAA,cT,T3,T4,1
+AJCC8th,GPT-4o,MAA,cT,T4,T0,1
+AJCC8th,GPT-4o,MAA,cT,T4,T1c,5
+AJCC8th,GPT-4o,MAA,cT,T4,T2a,3
+AJCC8th,GPT-4o,MAA,cT,T4,T3,1
+AJCC8th,GPT-4o,MAA,cT,T4,T4,27
+AJCC8th,GPT-4o,MAA,cT,Tis,T1a,1
+AJCC8th,GPT-4o,MAA,cT,Tis,Tis,3
+AJCC8th,GPT-4o,MAA,cN,N0,N0,291
+AJCC8th,GPT-4o,MAA,cN,N0,N1,23
+AJCC8th,GPT-4o,MAA,cN,N0,N2,12
+AJCC8th,GPT-4o,MAA,cN,N0,N3,10
+AJCC8th,GPT-4o,MAA,cN,N1,N0,2
+AJCC8th,GPT-4o,MAA,cN,N1,N1,33
+AJCC8th,GPT-4o,MAA,cN,N1,N2,10
+AJCC8th,GPT-4o,MAA,cN,N1,N3,2
+AJCC8th,GPT-4o,MAA,cN,N2,N0,1
+AJCC8th,GPT-4o,MAA,cN,N2,N1,6
+AJCC8th,GPT-4o,MAA,cN,N2,N2,63
+AJCC8th,GPT-4o,MAA,cN,N2,N3,8
+AJCC8th,GPT-4o,MAA,cN,N3,N2,4
+AJCC8th,GPT-4o,MAA,cN,N3,N3,30
+AJCC8th,GPT-4o,MAA,cM,M0,M0,399
+AJCC8th,GPT-4o,MAA,cM,M0,M1a,9
+AJCC8th,GPT-4o,MAA,cM,M0,M1b,5
+AJCC8th,GPT-4o,MAA,cM,M0,M1c,1
+AJCC8th,GPT-4o,MAA,cM,M1a,M0,9
+AJCC8th,GPT-4o,MAA,cM,M1a,M1a,18
+AJCC8th,GPT-4o,MAA,cM,M1b,M0,5
+AJCC8th,GPT-4o,MAA,cM,M1b,M1a,1
+AJCC8th,GPT-4o,MAA,cM,M1b,M1b,17
+AJCC8th,GPT-4o,MAA,cM,M1c,M0,1
+AJCC8th,GPT-4o,MAA,cM,M1c,M1a,3
+AJCC8th,GPT-4o,MAA,cM,M1c,M1b,7
+AJCC8th,GPT-4o,MAA,cM,M1c,M1c,20
+AJCC8th,GPT-4o,MAA,stage group,0,0,3
+AJCC8th,GPT-4o,MAA,stage group,0,IA1,1
+AJCC8th,GPT-4o,MAA,stage group,IA1,IA1,18
+AJCC8th,GPT-4o,MAA,stage group,IA1,IA2,1
+AJCC8th,GPT-4o,MAA,stage group,IA1,IA3,1
+AJCC8th,GPT-4o,MAA,stage group,IA1,IIIA,1
+AJCC8th,GPT-4o,MAA,stage group,IA1,IVA,2
+AJCC8th,GPT-4o,MAA,stage group,IA2,0,1
+AJCC8th,GPT-4o,MAA,stage group,IA2,IA2,68
+AJCC8th,GPT-4o,MAA,stage group,IA2,IA3,5
+AJCC8th,GPT-4o,MAA,stage group,IA2,IB,1
+AJCC8th,GPT-4o,MAA,stage group,IA2,IIB,6
+AJCC8th,GPT-4o,MAA,stage group,IA2,IIIA,2
+AJCC8th,GPT-4o,MAA,stage group,IA2,IVA,2
+AJCC8th,GPT-4o,MAA,stage group,IA2,IVB,1
+AJCC8th,GPT-4o,MAA,stage group,IA3,IA3,68
+AJCC8th,GPT-4o,MAA,stage group,IA3,IB,1
+AJCC8th,GPT-4o,MAA,stage group,IA3,IIB,6
+AJCC8th,GPT-4o,MAA,stage group,IA3,IIIA,2
+AJCC8th,GPT-4o,MAA,stage group,IA3,IIIB,3
+AJCC8th,GPT-4o,MAA,stage group,IA3,IVA,5
+AJCC8th,GPT-4o,MAA,stage group,IB,IA2,2
+AJCC8th,GPT-4o,MAA,stage group,IB,IA3,3
+AJCC8th,GPT-4o,MAA,stage group,IB,IB,44
+AJCC8th,GPT-4o,MAA,stage group,IB,IIA,2
+AJCC8th,GPT-4o,MAA,stage group,IB,IIB,5
+AJCC8th,GPT-4o,MAA,stage group,IB,IIIA,1
+AJCC8th,GPT-4o,MAA,stage group,IB,IIIB,2
+AJCC8th,GPT-4o,MAA,stage group,IB,IVA,1
+AJCC8th,GPT-4o,MAA,stage group,IIA,IIA,17
+AJCC8th,GPT-4o,MAA,stage group,IIA,IIIB,1
+AJCC8th,GPT-4o,MAA,stage group,IIA,IVA,1
+AJCC8th,GPT-4o,MAA,stage group,IIB,IA2,1
+AJCC8th,GPT-4o,MAA,stage group,IIB,IB,2
+AJCC8th,GPT-4o,MAA,stage group,IIB,IIA,3
+AJCC8th,GPT-4o,MAA,stage group,IIB,IIB,34
+AJCC8th,GPT-4o,MAA,stage group,IIB,IIIA,5
+AJCC8th,GPT-4o,MAA,stage group,IIB,IIIB,6
+AJCC8th,GPT-4o,MAA,stage group,IIB,IIIC,1
+AJCC8th,GPT-4o,MAA,stage group,IIIA,IA3,3
+AJCC8th,GPT-4o,MAA,stage group,IIIA,IIB,4
+AJCC8th,GPT-4o,MAA,stage group,IIIA,IIIA,44
+AJCC8th,GPT-4o,MAA,stage group,IIIA,IIIB,7
+AJCC8th,GPT-4o,MAA,stage group,IIIA,IVA,2
+AJCC8th,GPT-4o,MAA,stage group,IIIB,IIIA,4
+AJCC8th,GPT-4o,MAA,stage group,IIIB,IIIB,14
+AJCC8th,GPT-4o,MAA,stage group,IIIB,IIIC,1
+AJCC8th,GPT-4o,MAA,stage group,IIIB,IVA,1
+AJCC8th,GPT-4o,MAA,stage group,IIIC,IIIA,1
+AJCC8th,GPT-4o,MAA,stage group,IIIC,IIIC,4
+AJCC8th,GPT-4o,MAA,stage group,IVA,IIB,2
+AJCC8th,GPT-4o,MAA,stage group,IVA,IIIA,6
+AJCC8th,GPT-4o,MAA,stage group,IVA,IIIB,3
+AJCC8th,GPT-4o,MAA,stage group,IVA,IIIC,3
+AJCC8th,GPT-4o,MAA,stage group,IVA,IVA,36
+AJCC8th,GPT-4o,MAA,stage group,IVB,IA3,1
+AJCC8th,GPT-4o,MAA,stage group,IVB,IVA,10
+AJCC8th,GPT-4o,MAA,stage group,IVB,IVB,20
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T1a,T1a,18
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T1a,T1b,1
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T1b,T1a,26
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T1b,T1b,76
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T1b,T1c,1
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T1b,T1mi,1
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T1b,T2a,1
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T1c,T1a,2
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T1c,T1b,35
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T1c,T1c,76
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T1c,T2a,9
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T1mi,T1a,3
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T1mi,T1mi,1
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T2a,T1b,3
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T2a,T1c,3
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T2a,T2,2
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T2a,T2a,94
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T2a,T3,1
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T2a,T4,2
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T2b,T1c,1
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T2b,T2a,8
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T2b,T2b,28
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T3,T1b,1
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T3,T2a,2
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T3,T2b,9
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T3,T3,47
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T3,T4,3
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T4,T1c,1
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T4,T2a,3
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T4,T2b,1
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T4,T3,1
+AJCC8th,LLaMA 3.3 70B,baseline,cT,T4,T4,31
+AJCC8th,LLaMA 3.3 70B,baseline,cT,Tis,T1a,1
+AJCC8th,LLaMA 3.3 70B,baseline,cT,Tis,T1mi,2
+AJCC8th,LLaMA 3.3 70B,baseline,cT,Tis,Tis,1
+AJCC8th,LLaMA 3.3 70B,baseline,cN,N0,N0,258
+AJCC8th,LLaMA 3.3 70B,baseline,cN,N0,N1,51
+AJCC8th,LLaMA 3.3 70B,baseline,cN,N0,N2,10
+AJCC8th,LLaMA 3.3 70B,baseline,cN,N0,N3,17
+AJCC8th,LLaMA 3.3 70B,baseline,cN,N1,N0,2
+AJCC8th,LLaMA 3.3 70B,baseline,cN,N1,N1,28
+AJCC8th,LLaMA 3.3 70B,baseline,cN,N1,N2,13
+AJCC8th,LLaMA 3.3 70B,baseline,cN,N1,N3,4
+AJCC8th,LLaMA 3.3 70B,baseline,cN,N2,N0,1
+AJCC8th,LLaMA 3.3 70B,baseline,cN,N2,N1,11
+AJCC8th,LLaMA 3.3 70B,baseline,cN,N2,N2,50
+AJCC8th,LLaMA 3.3 70B,baseline,cN,N2,N3,16
+AJCC8th,LLaMA 3.3 70B,baseline,cN,N3,N2,1
+AJCC8th,LLaMA 3.3 70B,baseline,cN,N3,N3,33
+AJCC8th,LLaMA 3.3 70B,baseline,cM,M0,M0,352
+AJCC8th,LLaMA 3.3 70B,baseline,cM,M0,M1a,15
+AJCC8th,LLaMA 3.3 70B,baseline,cM,M0,M1b,24
+AJCC8th,LLaMA 3.3 70B,baseline,cM,M0,M1c,23
+AJCC8th,LLaMA 3.3 70B,baseline,cM,M1a,M0,6
+AJCC8th,LLaMA 3.3 70B,baseline,cM,M1a,M1a,18
+AJCC8th,LLaMA 3.3 70B,baseline,cM,M1a,M1b,2
+AJCC8th,LLaMA 3.3 70B,baseline,cM,M1a,M1c,1
+AJCC8th,LLaMA 3.3 70B,baseline,cM,M1b,M0,2
+AJCC8th,LLaMA 3.3 70B,baseline,cM,M1b,M1b,7
+AJCC8th,LLaMA 3.3 70B,baseline,cM,M1b,M1c,14
+AJCC8th,LLaMA 3.3 70B,baseline,cM,M1c,M0,1
+AJCC8th,LLaMA 3.3 70B,baseline,cM,M1c,M1a,6
+AJCC8th,LLaMA 3.3 70B,baseline,cM,M1c,M1b,4
+AJCC8th,LLaMA 3.3 70B,baseline,cM,M1c,M1c,20
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,0,0,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,0,IA1,2
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,0,IVB,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA1,IA1,18
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA1,IIB,4
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA1,IVA,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA2,IA1,20
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA2,IA2,44
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA2,IA3,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA2,IB,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA2,IIB,9
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA2,IIIA,2
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA2,IIIB,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA2,IVA,6
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA2,IVB,2
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA3,IA1,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA3,IA2,21
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA3,IA3,33
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA3,IB,5
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA3,IIB,9
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA3,IIIA,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA3,IIIB,4
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA3,IVA,6
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IA3,IVB,5
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IB,IA2,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IB,IA3,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IB,IB,31
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IB,IIB,12
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IB,IIIA,2
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IB,IIIB,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IB,IVA,9
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IB,IVB,2
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IB,Unknown,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIA,IB,3
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIA,IIA,8
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIA,IIB,3
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIA,IIIB,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIA,IVA,2
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIA,IVB,2
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIB,IA2,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIB,IB,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIB,IIA,2
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIB,IIB,26
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIB,IIIA,9
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIB,IIIB,5
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIB,IIIC,2
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIB,IVA,3
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIB,IVB,3
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIIA,IA3,2
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIIA,IB,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIIA,IIB,9
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIIA,IIIA,32
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIIA,IIIB,6
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIIA,IIIC,2
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIIA,IVA,5
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIIA,IVB,3
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIIB,IIIA,3
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIIB,IIIB,8
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIIB,IIIC,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIIB,IVA,4
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIIB,IVB,4
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIIC,IIIC,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIIC,IVA,3
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IIIC,IVB,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IVA,IIB,2
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IVA,IIIA,3
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IVA,IIIB,3
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IVA,IVA,27
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IVA,IVB,15
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IVB,IA3,1
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IVB,IVA,10
+AJCC8th,LLaMA 3.3 70B,baseline,stage group,IVB,IVB,20
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T1a,T1a,13
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T1a,T1b,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T1a,T1c,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T1a,T1mi,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T1a,T2a,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T1b,T1a,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T1b,T1b,100
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T1b,T1c,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T1b,T2a,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T1c,T1b,7
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T1c,T1c,112
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T1c,T2a,3
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T1mi,T1a,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T1mi,T1b,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T2a,T1b,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T2a,T1c,13
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T2a,T2a,89
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T2a,T2b,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T2a,T4,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T2b,T2a,12
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T2b,T2b,25
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T3,T1b,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T3,T2a,6
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T3,T2b,6
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T3,T3,47
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T3,T4,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T4,T1c,5
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T4,T2a,5
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T4,T2b,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T4,T3,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,T4,T4,24
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cT,Tis,T1a,4
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cN,N0,N0,278
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cN,N0,N1,36
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cN,N0,N2,12
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cN,N0,N3,10
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cN,N1,N0,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cN,N1,N1,34
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cN,N1,N2,12
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cN,N2,N0,3
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cN,N2,N1,10
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cN,N2,N2,60
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cN,N2,N3,5
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cN,N3,N2,6
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cN,N3,N3,28
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cM,M0,M0,391
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cM,M0,M1a,5
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cM,M0,M1b,17
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cM,M0,M1c,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cM,M1a,M0,11
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cM,M1a,M1a,16
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cM,M1b,M0,3
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cM,M1b,M1b,19
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cM,M1b,M1c,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cM,M1c,M0,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cM,M1c,M1a,3
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cM,M1c,M1b,5
+AJCC8th,LLaMA 3.3 70B,decomposition-only,cM,M1c,M1c,22
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,0,IA1,4
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA1,IA1,15
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA1,IA2,3
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA1,IA3,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA1,IB,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA1,IIB,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA1,IIIA,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA1,IVA,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA2,IA1,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA2,IA2,69
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA2,IA3,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA2,IB,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA2,IIB,7
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA2,IIIA,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA2,IIIB,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA2,IVA,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA3,IA2,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA3,IA3,66
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA3,IB,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA3,IIB,8
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA3,IIIA,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA3,IIIB,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IA3,IVA,4
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IB,IA2,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IB,IA3,6
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IB,IB,37
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IB,IIA,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IB,IIB,9
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IB,IIIA,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IB,IIIB,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IB,IVA,3
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIA,IB,4
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIA,IIA,10
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIA,IIB,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIA,IIIA,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIA,IIIB,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIA,IVA,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIB,IA2,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIB,IB,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIB,IIA,3
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIB,IIB,30
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIB,IIIA,11
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIB,IIIB,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIB,IIIC,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIB,IVA,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIB,IVB,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIIA,IA2,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIIA,IA3,3
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIIA,IB,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIIA,IIB,6
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIIA,IIIA,42
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIIA,IIIB,4
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIIA,IVA,3
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIIB,IIIA,4
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIIB,IIIB,9
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIIB,IIIC,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIIB,IVA,6
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIIC,IIIA,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIIC,IIIB,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IIIC,IIIC,2
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IVA,IA3,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IVA,IIB,3
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IVA,IIIA,5
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IVA,IIIB,4
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IVA,IIIC,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IVA,IVA,35
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IVA,IVB,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IVB,IIB,1
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IVB,IVA,8
+AJCC8th,LLaMA 3.3 70B,decomposition-only,stage group,IVB,IVB,22
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T1a,T1a,14
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T1a,T1b,2
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T1a,T1c,3
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T1b,T1a,4
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T1b,T1b,97
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T1b,T1c,3
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T1b,T2a,1
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T1c,T1b,11
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T1c,T1c,106
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T1c,T2a,5
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T1mi,T1a,2
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T1mi,T1b,1
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T1mi,T1mi,1
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T2a,T1b,1
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T2a,T1c,10
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T2a,T2a,92
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T2a,T2b,1
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T2a,T4,1
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T2b,T2a,16
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T2b,T2b,21
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T3,T1b,1
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T3,T2a,4
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T3,T2b,3
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T3,T3,51
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T3,T4,3
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T4,T1c,4
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T4,T2a,5
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T4,T2b,1
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T4,T3,2
+AJCC8th,LLaMA 3.3 70B,MAA,cT,T4,T4,25
+AJCC8th,LLaMA 3.3 70B,MAA,cT,Tis,T1a,4
+AJCC8th,LLaMA 3.3 70B,MAA,cN,N0,N0,276
+AJCC8th,LLaMA 3.3 70B,MAA,cN,N0,N1,36
+AJCC8th,LLaMA 3.3 70B,MAA,cN,N0,N2,15
+AJCC8th,LLaMA 3.3 70B,MAA,cN,N0,N3,9
+AJCC8th,LLaMA 3.3 70B,MAA,cN,N1,N0,1
+AJCC8th,LLaMA 3.3 70B,MAA,cN,N1,N1,35
+AJCC8th,LLaMA 3.3 70B,MAA,cN,N1,N2,11
+AJCC8th,LLaMA 3.3 70B,MAA,cN,N2,N0,1
+AJCC8th,LLaMA 3.3 70B,MAA,cN,N2,N1,11
+AJCC8th,LLaMA 3.3 70B,MAA,cN,N2,N2,62
+AJCC8th,LLaMA 3.3 70B,MAA,cN,N2,N3,4
+AJCC8th,LLaMA 3.3 70B,MAA,cN,N3,N2,5
+AJCC8th,LLaMA 3.3 70B,MAA,cN,N3,N3,29
+AJCC8th,LLaMA 3.3 70B,MAA,cM,M0,M0,395
+AJCC8th,LLaMA 3.3 70B,MAA,cM,M0,M1a,2
+AJCC8th,LLaMA 3.3 70B,MAA,cM,M0,M1b,15
+AJCC8th,LLaMA 3.3 70B,MAA,cM,M0,M1c,2
+AJCC8th,LLaMA 3.3 70B,MAA,cM,M1a,M0,14
+AJCC8th,LLaMA 3.3 70B,MAA,cM,M1a,M1a,13
+AJCC8th,LLaMA 3.3 70B,MAA,cM,M1b,M0,2
+AJCC8th,LLaMA 3.3 70B,MAA,cM,M1b,M1b,21
+AJCC8th,LLaMA 3.3 70B,MAA,cM,M1c,M0,1
+AJCC8th,LLaMA 3.3 70B,MAA,cM,M1c,M1a,2
+AJCC8th,LLaMA 3.3 70B,MAA,cM,M1c,M1b,7
+AJCC8th,LLaMA 3.3 70B,MAA,cM,M1c,M1c,21
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,0,IA1,4
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA1,IA1,16
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA1,IA2,3
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA1,IA3,2
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA1,IIB,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA1,IIIA,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA2,IA1,4
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA2,IA2,67
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA2,IA3,2
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA2,IB,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA2,IIB,8
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA2,IIIA,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA2,IIIB,2
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA2,IVA,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA3,IA2,7
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA3,IA3,58
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA3,IB,3
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA3,IIB,6
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA3,IIIA,3
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA3,IIIB,2
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA3,IVA,4
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IA3,IVB,2
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IB,IA2,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IB,IA3,3
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IB,IB,40
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IB,IIA,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IB,IIB,10
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IB,IIIA,3
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IB,IIIB,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IB,IVA,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIA,IB,6
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIA,IIA,9
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIA,IIB,2
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIA,IIIA,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIA,IIIB,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIB,IA2,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIB,IB,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIB,IIA,2
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIB,IIB,32
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIB,IIIA,8
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIB,IIIB,3
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIB,IIIC,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIB,IVA,4
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIIA,IA3,2
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIIA,IB,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIIA,IIB,9
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIIA,IIIA,42
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIIA,IIIB,4
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIIA,IVA,2
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIIB,IIIA,3
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIIB,IIIB,11
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIIB,IIIC,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIIB,IVA,5
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIIC,IIIA,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IIIC,IIIC,4
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IVA,IA3,2
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IVA,IB,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IVA,IIA,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IVA,IIB,3
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IVA,IIIA,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IVA,IIIB,6
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IVA,IIIC,2
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IVA,IVA,34
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IVB,IB,1
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IVB,IVA,9
+AJCC8th,LLaMA 3.3 70B,MAA,stage group,IVB,IVB,21
+AJCC8th,Phi-4 14B,baseline,cT,T1a,T1a,15
+AJCC8th,Phi-4 14B,baseline,cT,T1a,T1b,3
+AJCC8th,Phi-4 14B,baseline,cT,T1a,T1c,1
+AJCC8th,Phi-4 14B,baseline,cT,T1b,T1,1
+AJCC8th,Phi-4 14B,baseline,cT,T1b,T1a,17
+AJCC8th,Phi-4 14B,baseline,cT,T1b,T1b,79
+AJCC8th,Phi-4 14B,baseline,cT,T1b,T1c,3
+AJCC8th,Phi-4 14B,baseline,cT,T1b,T1mi,1
+AJCC8th,Phi-4 14B,baseline,cT,T1b,T2a,2
+AJCC8th,Phi-4 14B,baseline,cT,T1b,Tis,2
+AJCC8th,Phi-4 14B,baseline,cT,T1c,T1a,1
+AJCC8th,Phi-4 14B,baseline,cT,T1c,T1b,37
+AJCC8th,Phi-4 14B,baseline,cT,T1c,T1c,78
+AJCC8th,Phi-4 14B,baseline,cT,T1c,T2a,5
+AJCC8th,Phi-4 14B,baseline,cT,T1c,Tis,1
+AJCC8th,Phi-4 14B,baseline,cT,T1mi,T1a,1
+AJCC8th,Phi-4 14B,baseline,cT,T1mi,T1mi,3
+AJCC8th,Phi-4 14B,baseline,cT,T2a,T1b,3
+AJCC8th,Phi-4 14B,baseline,cT,T2a,T1c,5
+AJCC8th,Phi-4 14B,baseline,cT,T2a,T2a,96
+AJCC8th,Phi-4 14B,baseline,cT,T2a,T4,1
+AJCC8th,Phi-4 14B,baseline,cT,T2b,T1c,1
+AJCC8th,Phi-4 14B,baseline,cT,T2b,T2a,9
+AJCC8th,Phi-4 14B,baseline,cT,T2b,T2b,27
+AJCC8th,Phi-4 14B,baseline,cT,T3,T2a,3
+AJCC8th,Phi-4 14B,baseline,cT,T3,T2b,7
+AJCC8th,Phi-4 14B,baseline,cT,T3,T3,51
+AJCC8th,Phi-4 14B,baseline,cT,T3,T4,1
+AJCC8th,Phi-4 14B,baseline,cT,T4,T1b,1
+AJCC8th,Phi-4 14B,baseline,cT,T4,T1c,2
+AJCC8th,Phi-4 14B,baseline,cT,T4,T2a,4
+AJCC8th,Phi-4 14B,baseline,cT,T4,T2b,3
+AJCC8th,Phi-4 14B,baseline,cT,T4,T3,1
+AJCC8th,Phi-4 14B,baseline,cT,T4,T4,26
+AJCC8th,Phi-4 14B,baseline,cT,Tis,T1a,2
+AJCC8th,Phi-4 14B,baseline,cT,Tis,T1mi,2
+AJCC8th,Phi-4 14B,baseline,cN,N0,N0,302
+AJCC8th,Phi-4 14B,baseline,cN,N0,N1,15
+AJCC8th,Phi-4 14B,baseline,cN,N0,N2,15
+AJCC8th,Phi-4 14B,baseline,cN,N0,N3,4
+AJCC8th,Phi-4 14B,baseline,cN,N1,N0,12
+AJCC8th,Phi-4 14B,baseline,cN,N1,N1,15
+AJCC8th,Phi-4 14B,baseline,cN,N1,N2,20
+AJCC8th,Phi-4 14B,baseline,cN,N2,N0,8
+AJCC8th,Phi-4 14B,baseline,cN,N2,N1,8
+AJCC8th,Phi-4 14B,baseline,cN,N2,N2,58
+AJCC8th,Phi-4 14B,baseline,cN,N2,N3,4
+AJCC8th,Phi-4 14B,baseline,cN,N3,N2,14
+AJCC8th,Phi-4 14B,baseline,cN,N3,N3,20
+AJCC8th,Phi-4 14B,baseline,cM,M0,M0,326
+AJCC8th,Phi-4 14B,baseline,cM,M0,M1a,5
+AJCC8th,Phi-4 14B,baseline,cM,M0,M1b,4
+AJCC8th,Phi-4 14B,baseline,cM,M0,M1c,1
+AJCC8th,Phi-4 14B,baseline,cM,M0,Mx,78
+AJCC8th,Phi-4 14B,baseline,cM,M1a,M0,12
+AJCC8th,Phi-4 14B,baseline,cM,M1a,M1a,13
+AJCC8th,Phi-4 14B,baseline,cM,M1a,M1c,1
+AJCC8th,Phi-4 14B,baseline,cM,M1a,Mx,1
+AJCC8th,Phi-4 14B,baseline,cM,M1b,M0,6
+AJCC8th,Phi-4 14B,baseline,cM,M1b,M1a,2
+AJCC8th,Phi-4 14B,baseline,cM,M1b,M1b,10
+AJCC8th,Phi-4 14B,baseline,cM,M1b,M1c,4
+AJCC8th,Phi-4 14B,baseline,cM,M1b,Mx,1
+AJCC8th,Phi-4 14B,baseline,cM,M1c,M0,2
+AJCC8th,Phi-4 14B,baseline,cM,M1c,M1a,6
+AJCC8th,Phi-4 14B,baseline,cM,M1c,M1b,7
+AJCC8th,Phi-4 14B,baseline,cM,M1c,M1c,14
+AJCC8th,Phi-4 14B,baseline,cM,M1c,Mx,2
+AJCC8th,Phi-4 14B,baseline,stage group,0,IA1,4
+AJCC8th,Phi-4 14B,baseline,stage group,IA1,IA1,19
+AJCC8th,Phi-4 14B,baseline,stage group,IA1,IA2,3
+AJCC8th,Phi-4 14B,baseline,stage group,IA1,IA3,1
+AJCC8th,Phi-4 14B,baseline,stage group,IA2,0,2
+AJCC8th,Phi-4 14B,baseline,stage group,IA2,IA1,16
+AJCC8th,Phi-4 14B,baseline,stage group,IA2,IA2,60
+AJCC8th,Phi-4 14B,baseline,stage group,IA2,IA3,3
+AJCC8th,Phi-4 14B,baseline,stage group,IA2,IB,1
+AJCC8th,Phi-4 14B,baseline,stage group,IA2,IIB,2
+AJCC8th,Phi-4 14B,baseline,stage group,IA2,IVA,2
+AJCC8th,Phi-4 14B,baseline,stage group,IA3,0,1
+AJCC8th,Phi-4 14B,baseline,stage group,IA3,IA1,1
+AJCC8th,Phi-4 14B,baseline,stage group,IA3,IA2,25
+AJCC8th,Phi-4 14B,baseline,stage group,IA3,IA3,42
+AJCC8th,Phi-4 14B,baseline,stage group,IA3,IB,4
+AJCC8th,Phi-4 14B,baseline,stage group,IA3,IIB,2
+AJCC8th,Phi-4 14B,baseline,stage group,IA3,IIIA,8
+AJCC8th,Phi-4 14B,baseline,stage group,IA3,IVA,2
+AJCC8th,Phi-4 14B,baseline,stage group,IB,IA2,2
+AJCC8th,Phi-4 14B,baseline,stage group,IB,IA3,3
+AJCC8th,Phi-4 14B,baseline,stage group,IB,IB,45
+AJCC8th,Phi-4 14B,baseline,stage group,IB,IIB,3
+AJCC8th,Phi-4 14B,baseline,stage group,IB,IIIA,2
+AJCC8th,Phi-4 14B,baseline,stage group,IB,IIIB,2
+AJCC8th,Phi-4 14B,baseline,stage group,IB,IVA,2
+AJCC8th,Phi-4 14B,baseline,stage group,IB,IVB,1
+AJCC8th,Phi-4 14B,baseline,stage group,IIA,IB,4
+AJCC8th,Phi-4 14B,baseline,stage group,IIA,IIA,11
+AJCC8th,Phi-4 14B,baseline,stage group,IIA,IIB,1
+AJCC8th,Phi-4 14B,baseline,stage group,IIA,IIIA,1
+AJCC8th,Phi-4 14B,baseline,stage group,IIA,IVA,2
+AJCC8th,Phi-4 14B,baseline,stage group,IIB,IA2,2
+AJCC8th,Phi-4 14B,baseline,stage group,IIB,IA3,1
+AJCC8th,Phi-4 14B,baseline,stage group,IIB,IB,5
+AJCC8th,Phi-4 14B,baseline,stage group,IIB,IIA,1
+AJCC8th,Phi-4 14B,baseline,stage group,IIB,IIB,26
+AJCC8th,Phi-4 14B,baseline,stage group,IIB,IIIA,15
+AJCC8th,Phi-4 14B,baseline,stage group,IIB,IIIB,2
+AJCC8th,Phi-4 14B,baseline,stage group,IIIA,IA1,1
+AJCC8th,Phi-4 14B,baseline,stage group,IIIA,IA3,3
+AJCC8th,Phi-4 14B,baseline,stage group,IIIA,IB,3
+AJCC8th,Phi-4 14B,baseline,stage group,IIIA,IIB,8
+AJCC8th,Phi-4 14B,baseline,stage group,IIIA,IIIA,35
+AJCC8th,Phi-4 14B,baseline,stage group,IIIA,IIIB,8
+AJCC8th,Phi-4 14B,baseline,stage group,IIIA,IIIC,1
+AJCC8th,Phi-4 14B,baseline,stage group,IIIA,IVA,1
+AJCC8th,Phi-4 14B,baseline,stage group,IIIB,IIB,1
+AJCC8th,Phi-4 14B,baseline,stage group,IIIB,IIIA,4
+AJCC8th,Phi-4 14B,baseline,stage group,IIIB,IIIB,15
+AJCC8th,Phi-4 14B,baseline,stage group,IIIC,IIIA,1
+AJCC8th,Phi-4 14B,baseline,stage group,IIIC,IIIB,2
+AJCC8th,Phi-4 14B,baseline,stage group,IIIC,IIIC,2
+AJCC8th,Phi-4 14B,baseline,stage group,IVA,IA3,1
+AJCC8th,Phi-4 14B,baseline,stage group,IVA,IB,2
+AJCC8th,Phi-4 14B,baseline,stage group,IVA,IIA,1
+AJCC8th,Phi-4 14B,baseline,stage group,IVA,IIB,2
+AJCC8th,Phi-4 14B,baseline,stage group,IVA,IIIA,7
+AJCC8th,Phi-4 14B,baseline,stage group,IVA,IIIB,5
+AJCC8th,Phi-4 14B,baseline,stage group,IVA,IIIC,2
+AJCC8th,Phi-4 14B,baseline,stage group,IVA,IVA,25
+AJCC8th,Phi-4 14B,baseline,stage group,IVA,IVB,5
+AJCC8th,Phi-4 14B,baseline,stage group,IVB,IA2,1
+AJCC8th,Phi-4 14B,baseline,stage group,IVB,IA3,1
+AJCC8th,Phi-4 14B,baseline,stage group,IVB,IIIA,1
+AJCC8th,Phi-4 14B,baseline,stage group,IVB,IIIB,1
+AJCC8th,Phi-4 14B,baseline,stage group,IVB,IVA,13
+AJCC8th,Phi-4 14B,baseline,stage group,IVB,IVB,14
+AJCC8th,Phi-4 14B,decomposition-only,cT,T1a,T1a,14
+AJCC8th,Phi-4 14B,decomposition-only,cT,T1a,T1b,5
+AJCC8th,Phi-4 14B,decomposition-only,cT,T1b,T1a,15
+AJCC8th,Phi-4 14B,decomposition-only,cT,T1b,T1b,84
+AJCC8th,Phi-4 14B,decomposition-only,cT,T1b,T1c,3
+AJCC8th,Phi-4 14B,decomposition-only,cT,T1b,T2a,3
+AJCC8th,Phi-4 14B,decomposition-only,cT,T1c,T1a,1
+AJCC8th,Phi-4 14B,decomposition-only,cT,T1c,T1b,36
+AJCC8th,Phi-4 14B,decomposition-only,cT,T1c,T1c,74
+AJCC8th,Phi-4 14B,decomposition-only,cT,T1c,T2a,10
+AJCC8th,Phi-4 14B,decomposition-only,cT,T1c,T3,1
+AJCC8th,Phi-4 14B,decomposition-only,cT,T1mi,T1a,2
+AJCC8th,Phi-4 14B,decomposition-only,cT,T1mi,T1mi,2
+AJCC8th,Phi-4 14B,decomposition-only,cT,T2a,T1b,1
+AJCC8th,Phi-4 14B,decomposition-only,cT,T2a,T1c,4
+AJCC8th,Phi-4 14B,decomposition-only,cT,T2a,T2a,94
+AJCC8th,Phi-4 14B,decomposition-only,cT,T2a,T3,5
+AJCC8th,Phi-4 14B,decomposition-only,cT,T2a,T4,1
+AJCC8th,Phi-4 14B,decomposition-only,cT,T2b,T1c,1
+AJCC8th,Phi-4 14B,decomposition-only,cT,T2b,T2a,8
+AJCC8th,Phi-4 14B,decomposition-only,cT,T2b,T2b,26
+AJCC8th,Phi-4 14B,decomposition-only,cT,T2b,T3,2
+AJCC8th,Phi-4 14B,decomposition-only,cT,T3,T2a,4
+AJCC8th,Phi-4 14B,decomposition-only,cT,T3,T2b,5
+AJCC8th,Phi-4 14B,decomposition-only,cT,T3,T3,52
+AJCC8th,Phi-4 14B,decomposition-only,cT,T3,T4,1
+AJCC8th,Phi-4 14B,decomposition-only,cT,T4,T1c,2
+AJCC8th,Phi-4 14B,decomposition-only,cT,T4,T2a,3
+AJCC8th,Phi-4 14B,decomposition-only,cT,T4,T2b,1
+AJCC8th,Phi-4 14B,decomposition-only,cT,T4,T3,3
+AJCC8th,Phi-4 14B,decomposition-only,cT,T4,T4,28
+AJCC8th,Phi-4 14B,decomposition-only,cT,Tis,T1a,3
+AJCC8th,Phi-4 14B,decomposition-only,cT,Tis,T1mi,1
+AJCC8th,Phi-4 14B,decomposition-only,cN,N0,N0,249
+AJCC8th,Phi-4 14B,decomposition-only,cN,N0,N1,46
+AJCC8th,Phi-4 14B,decomposition-only,cN,N0,N2,30
+AJCC8th,Phi-4 14B,decomposition-only,cN,N0,N3,11
+AJCC8th,Phi-4 14B,decomposition-only,cN,N1,N0,2
+AJCC8th,Phi-4 14B,decomposition-only,cN,N1,N1,28
+AJCC8th,Phi-4 14B,decomposition-only,cN,N1,N2,17
+AJCC8th,Phi-4 14B,decomposition-only,cN,N2,N0,5
+AJCC8th,Phi-4 14B,decomposition-only,cN,N2,N1,10
+AJCC8th,Phi-4 14B,decomposition-only,cN,N2,N2,56
+AJCC8th,Phi-4 14B,decomposition-only,cN,N2,N3,7
+AJCC8th,Phi-4 14B,decomposition-only,cN,N3,N2,6
+AJCC8th,Phi-4 14B,decomposition-only,cN,N3,N3,28
+AJCC8th,Phi-4 14B,decomposition-only,cM,M0,M0,275
+AJCC8th,Phi-4 14B,decomposition-only,cM,M0,M1a,58
+AJCC8th,Phi-4 14B,decomposition-only,cM,M0,M1b,71
+AJCC8th,Phi-4 14B,decomposition-only,cM,M0,M1c,9
+AJCC8th,Phi-4 14B,decomposition-only,cM,M0,Mx,1
+AJCC8th,Phi-4 14B,decomposition-only,cM,M1a,M0,5
+AJCC8th,Phi-4 14B,decomposition-only,cM,M1a,M1a,20
+AJCC8th,Phi-4 14B,decomposition-only,cM,M1a,M1c,2
+AJCC8th,Phi-4 14B,decomposition-only,cM,M1b,M0,2
+AJCC8th,Phi-4 14B,decomposition-only,cM,M1b,M1a,7
+AJCC8th,Phi-4 14B,decomposition-only,cM,M1b,M1b,8
+AJCC8th,Phi-4 14B,decomposition-only,cM,M1b,M1c,6
+AJCC8th,Phi-4 14B,decomposition-only,cM,M1c,M1a,3
+AJCC8th,Phi-4 14B,decomposition-only,cM,M1c,M1b,4
+AJCC8th,Phi-4 14B,decomposition-only,cM,M1c,M1c,24
+AJCC8th,Phi-4 14B,decomposition-only,stage group,0,IA1,2
+AJCC8th,Phi-4 14B,decomposition-only,stage group,0,IIB,1
+AJCC8th,Phi-4 14B,decomposition-only,stage group,0,IVA,1
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA1,IA1,10
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA1,IA2,3
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA1,IIB,1
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA1,IIIA,1
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA1,IVA,8
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA2,IA1,13
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA2,IA2,40
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA2,IA3,2
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA2,IB,1
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA2,IIB,8
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA2,IIIA,5
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA2,IVA,17
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA3,IA2,14
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA3,IA3,26
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA3,IB,3
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA3,IIB,8
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA3,IIIA,4
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA3,IIIB,3
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA3,IVA,26
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IA3,IVB,1
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IB,IA2,1
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IB,IA3,3
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IB,IB,31
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IB,IIB,4
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IB,IIIA,8
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IB,IIIB,2
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IB,IVA,11
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIA,IB,3
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIA,IIA,8
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIA,IIB,1
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIA,IIIA,1
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIA,IIIB,1
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIA,IVA,5
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIB,IB,2
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIB,IIB,20
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIB,IIIA,6
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIB,IIIB,1
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIB,IVA,21
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIB,IVB,2
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIIA,IA3,2
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIIA,IB,1
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIIA,IIB,9
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIIA,IIIA,16
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIIA,IIIB,3
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIIA,IIIC,1
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIIA,IVA,25
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIIA,IVB,3
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIIB,IIIA,1
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIIB,IIIB,4
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIIB,IVA,13
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIIB,IVB,2
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIIC,IIIB,1
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIIC,IIIC,1
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIIC,IVA,2
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IIIC,IVB,1
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IVA,IIA,1
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IVA,IIIA,3
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IVA,IIIB,3
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IVA,IVA,35
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IVA,IVB,8
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IVB,IVA,7
+AJCC8th,Phi-4 14B,decomposition-only,stage group,IVB,IVB,24
+AJCC8th,Phi-4 14B,MAA,cT,T1a,T1a,14
+AJCC8th,Phi-4 14B,MAA,cT,T1a,T1b,5
+AJCC8th,Phi-4 14B,MAA,cT,T1b,T1a,16
+AJCC8th,Phi-4 14B,MAA,cT,T1b,T1b,82
+AJCC8th,Phi-4 14B,MAA,cT,T1b,T1c,2
+AJCC8th,Phi-4 14B,MAA,cT,T1b,T2a,5
+AJCC8th,Phi-4 14B,MAA,cT,T1c,T1b,37
+AJCC8th,Phi-4 14B,MAA,cT,T1c,T1c,74
+AJCC8th,Phi-4 14B,MAA,cT,T1c,T2a,10
+AJCC8th,Phi-4 14B,MAA,cT,T1c,T3,1
+AJCC8th,Phi-4 14B,MAA,cT,T1mi,T1a,2
+AJCC8th,Phi-4 14B,MAA,cT,T1mi,T1b,1
+AJCC8th,Phi-4 14B,MAA,cT,T1mi,T1mi,1
+AJCC8th,Phi-4 14B,MAA,cT,T2a,T1b,2
+AJCC8th,Phi-4 14B,MAA,cT,T2a,T1c,3
+AJCC8th,Phi-4 14B,MAA,cT,T2a,T2,1
+AJCC8th,Phi-4 14B,MAA,cT,T2a,T2a,91
+AJCC8th,Phi-4 14B,MAA,cT,T2a,T3,5
+AJCC8th,Phi-4 14B,MAA,cT,T2a,T4,3
+AJCC8th,Phi-4 14B,MAA,cT,T2b,T1c,1
+AJCC8th,Phi-4 14B,MAA,cT,T2b,T2a,10
+AJCC8th,Phi-4 14B,MAA,cT,T2b,T2b,25
+AJCC8th,Phi-4 14B,MAA,cT,T2b,T3,1
+AJCC8th,Phi-4 14B,MAA,cT,T3,T2a,6
+AJCC8th,Phi-4 14B,MAA,cT,T3,T2b,7
+AJCC8th,Phi-4 14B,MAA,cT,T3,T3,48
+AJCC8th,Phi-4 14B,MAA,cT,T3,T4,1
+AJCC8th,Phi-4 14B,MAA,cT,T4,T1c,2
+AJCC8th,Phi-4 14B,MAA,cT,T4,T2a,2
+AJCC8th,Phi-4 14B,MAA,cT,T4,T2b,1
+AJCC8th,Phi-4 14B,MAA,cT,T4,T3,3
+AJCC8th,Phi-4 14B,MAA,cT,T4,T4,29
+AJCC8th,Phi-4 14B,MAA,cT,Tis,T1a,3
+AJCC8th,Phi-4 14B,MAA,cT,Tis,T1mi,1
+AJCC8th,Phi-4 14B,MAA,cN,N0,N0,245
+AJCC8th,Phi-4 14B,MAA,cN,N0,N1,49
+AJCC8th,Phi-4 14B,MAA,cN,N0,N2,31
+AJCC8th,Phi-4 14B,MAA,cN,N0,N3,11
+AJCC8th,Phi-4 14B,MAA,cN,N1,N0,4
+AJCC8th,Phi-4 14B,MAA,cN,N1,N1,24
+AJCC8th,Phi-4 14B,MAA,cN,N1,N2,18
+AJCC8th,Phi-4 14B,MAA,cN,N1,N3,1
+AJCC8th,Phi-4 14B,MAA,cN,N2,N0,4
+AJCC8th,Phi-4 14B,MAA,cN,N2,N1,11
+AJCC8th,Phi-4 14B,MAA,cN,N2,N2,55
+AJCC8th,Phi-4 14B,MAA,cN,N2,N3,8
+AJCC8th,Phi-4 14B,MAA,cN,N3,N2,5
+AJCC8th,Phi-4 14B,MAA,cN,N3,N3,29
+AJCC8th,Phi-4 14B,MAA,cM,M0,M0,285
+AJCC8th,Phi-4 14B,MAA,cM,M0,M1a,41
+AJCC8th,Phi-4 14B,MAA,cM,M0,M1b,80
+AJCC8th,Phi-4 14B,MAA,cM,M0,M1c,7
+AJCC8th,Phi-4 14B,MAA,cM,M0,Mx,1
+AJCC8th,Phi-4 14B,MAA,cM,M1a,M0,2
+AJCC8th,Phi-4 14B,MAA,cM,M1a,M1a,22
+AJCC8th,Phi-4 14B,MAA,cM,M1a,M1b,2
+AJCC8th,Phi-4 14B,MAA,cM,M1a,M1c,1
+AJCC8th,Phi-4 14B,MAA,cM,M1b,M0,1
+AJCC8th,Phi-4 14B,MAA,cM,M1b,M1a,5
+AJCC8th,Phi-4 14B,MAA,cM,M1b,M1b,13
+AJCC8th,Phi-4 14B,MAA,cM,M1b,M1c,4
+AJCC8th,Phi-4 14B,MAA,cM,M1c,M0,1
+AJCC8th,Phi-4 14B,MAA,cM,M1c,M1a,5
+AJCC8th,Phi-4 14B,MAA,cM,M1c,M1b,6
+AJCC8th,Phi-4 14B,MAA,cM,M1c,M1c,19
+AJCC8th,Phi-4 14B,MAA,stage group,0,IA1,2
+AJCC8th,Phi-4 14B,MAA,stage group,0,IIB,1
+AJCC8th,Phi-4 14B,MAA,stage group,0,IVA,1
+AJCC8th,Phi-4 14B,MAA,stage group,IA1,IA1,8
+AJCC8th,Phi-4 14B,MAA,stage group,IA1,IA2,4
+AJCC8th,Phi-4 14B,MAA,stage group,IA1,IIB,1
+AJCC8th,Phi-4 14B,MAA,stage group,IA1,IIIA,1
+AJCC8th,Phi-4 14B,MAA,stage group,IA1,IVA,9
+AJCC8th,Phi-4 14B,MAA,stage group,IA2,IA1,14
+AJCC8th,Phi-4 14B,MAA,stage group,IA2,IA2,39
+AJCC8th,Phi-4 14B,MAA,stage group,IA2,IA3,1
+AJCC8th,Phi-4 14B,MAA,stage group,IA2,IB,3
+AJCC8th,Phi-4 14B,MAA,stage group,IA2,IIB,10
+AJCC8th,Phi-4 14B,MAA,stage group,IA2,IIIA,3
+AJCC8th,Phi-4 14B,MAA,stage group,IA2,IVA,15
+AJCC8th,Phi-4 14B,MAA,stage group,IA2,IVB,1
+AJCC8th,Phi-4 14B,MAA,stage group,IA3,IA2,18
+AJCC8th,Phi-4 14B,MAA,stage group,IA3,IA3,25
+AJCC8th,Phi-4 14B,MAA,stage group,IA3,IB,3
+AJCC8th,Phi-4 14B,MAA,stage group,IA3,IIB,11
+AJCC8th,Phi-4 14B,MAA,stage group,IA3,IIIA,4
+AJCC8th,Phi-4 14B,MAA,stage group,IA3,IIIB,3
+AJCC8th,Phi-4 14B,MAA,stage group,IA3,IVA,21
+AJCC8th,Phi-4 14B,MAA,stage group,IB,IA2,1
+AJCC8th,Phi-4 14B,MAA,stage group,IB,IA3,2
+AJCC8th,Phi-4 14B,MAA,stage group,IB,IB,34
+AJCC8th,Phi-4 14B,MAA,stage group,IB,IIB,3
+AJCC8th,Phi-4 14B,MAA,stage group,IB,IIIA,6
+AJCC8th,Phi-4 14B,MAA,stage group,IB,IIIB,2
+AJCC8th,Phi-4 14B,MAA,stage group,IB,IVA,12
+AJCC8th,Phi-4 14B,MAA,stage group,IIA,IB,3
+AJCC8th,Phi-4 14B,MAA,stage group,IIA,IIA,7
+AJCC8th,Phi-4 14B,MAA,stage group,IIA,IIB,2
+AJCC8th,Phi-4 14B,MAA,stage group,IIA,IIIA,1
+AJCC8th,Phi-4 14B,MAA,stage group,IIA,IIIB,1
+AJCC8th,Phi-4 14B,MAA,stage group,IIA,IVA,5
+AJCC8th,Phi-4 14B,MAA,stage group,IIB,IA2,1
+AJCC8th,Phi-4 14B,MAA,stage group,IIB,IB,3
+AJCC8th,Phi-4 14B,MAA,stage group,IIB,IIB,19
+AJCC8th,Phi-4 14B,MAA,stage group,IIB,IIIA,6
+AJCC8th,Phi-4 14B,MAA,stage group,IIB,IIIB,3
+AJCC8th,Phi-4 14B,MAA,stage group,IIB,IVA,18
+AJCC8th,Phi-4 14B,MAA,stage group,IIB,IVB,2
+AJCC8th,Phi-4 14B,MAA,stage group,IIIA,IA3,3
+AJCC8th,Phi-4 14B,MAA,stage group,IIIA,IB,2
+AJCC8th,Phi-4 14B,MAA,stage group,IIIA,IIB,8
+AJCC8th,Phi-4 14B,MAA,stage group,IIIA,IIIA,16
+AJCC8th,Phi-4 14B,MAA,stage group,IIIA,IIIB,5
+AJCC8th,Phi-4 14B,MAA,stage group,IIIA,IVA,25
+AJCC8th,Phi-4 14B,MAA,stage group,IIIA,IVB,1
+AJCC8th,Phi-4 14B,MAA,stage group,IIIB,IIIA,1
+AJCC8th,Phi-4 14B,MAA,stage group,IIIB,IIIB,4
+AJCC8th,Phi-4 14B,MAA,stage group,IIIB,IIIC,1
+AJCC8th,Phi-4 14B,MAA,stage group,IIIB,IVA,12
+AJCC8th,Phi-4 14B,MAA,stage group,IIIB,IVB,2
+AJCC8th,Phi-4 14B,MAA,stage group,IIIC,IIIC,1
+AJCC8th,Phi-4 14B,MAA,stage group,IIIC,IVA,3
+AJCC8th,Phi-4 14B,MAA,stage group,IIIC,IVB,1
+AJCC8th,Phi-4 14B,MAA,stage group,IVA,IIB,1
+AJCC8th,Phi-4 14B,MAA,stage group,IVA,IIIA,1
+AJCC8th,Phi-4 14B,MAA,stage group,IVA,IIIB,1
+AJCC8th,Phi-4 14B,MAA,stage group,IVA,IVA,42
+AJCC8th,Phi-4 14B,MAA,stage group,IVA,IVB,5
+AJCC8th,Phi-4 14B,MAA,stage group,IVB,IIB,1
+AJCC8th,Phi-4 14B,MAA,stage group,IVB,IVA,11
+AJCC8th,Phi-4 14B,MAA,stage group,IVB,IVB,19
+AJCC9th,GPT-4o,baseline,cT,T1a,T1a,8
+AJCC9th,GPT-4o,baseline,cT,T1a,T1b,10
+AJCC9th,GPT-4o,baseline,cT,T1a,T1c,1
+AJCC9th,GPT-4o,baseline,cT,T1b,T1b,99
+AJCC9th,GPT-4o,baseline,cT,T1b,T1c,4
+AJCC9th,GPT-4o,baseline,cT,T1b,T2a,2
+AJCC9th,GPT-4o,baseline,cT,T1c,T1b,26
+AJCC9th,GPT-4o,baseline,cT,T1c,T1c,88
+AJCC9th,GPT-4o,baseline,cT,T1c,T2a,7
+AJCC9th,GPT-4o,baseline,cT,T1c,T2b,1
+AJCC9th,GPT-4o,baseline,cT,T1mi,T1a,1
+AJCC9th,GPT-4o,baseline,cT,T1mi,T1mi,3
+AJCC9th,GPT-4o,baseline,cT,T2a,T1b,2
+AJCC9th,GPT-4o,baseline,cT,T2a,T1c,5
+AJCC9th,GPT-4o,baseline,cT,T2a,T2a,96
+AJCC9th,GPT-4o,baseline,cT,T2a,T3,1
+AJCC9th,GPT-4o,baseline,cT,T2a,T4,1
+AJCC9th,GPT-4o,baseline,cT,T2b,T2a,6
+AJCC9th,GPT-4o,baseline,cT,T2b,T2b,30
+AJCC9th,GPT-4o,baseline,cT,T2b,T3,1
+AJCC9th,GPT-4o,baseline,cT,T3,T1b,1
+AJCC9th,GPT-4o,baseline,cT,T3,T2a,3
+AJCC9th,GPT-4o,baseline,cT,T3,T2b,3
+AJCC9th,GPT-4o,baseline,cT,T3,T3,55
+AJCC9th,GPT-4o,baseline,cT,T4,T1c,3
+AJCC9th,GPT-4o,baseline,cT,T4,T2a,2
+AJCC9th,GPT-4o,baseline,cT,T4,T2b,1
+AJCC9th,GPT-4o,baseline,cT,T4,T3,3
+AJCC9th,GPT-4o,baseline,cT,T4,T4,28
+AJCC9th,GPT-4o,baseline,cT,Tis,T1a,1
+AJCC9th,GPT-4o,baseline,cT,Tis,Tis,3
+AJCC9th,GPT-4o,baseline,cN,N0,N0,282
+AJCC9th,GPT-4o,baseline,cN,N0,N1,26
+AJCC9th,GPT-4o,baseline,cN,N0,N2a,5
+AJCC9th,GPT-4o,baseline,cN,N0,N2b,10
+AJCC9th,GPT-4o,baseline,cN,N0,N3,13
+AJCC9th,GPT-4o,baseline,cN,N1,N0,3
+AJCC9th,GPT-4o,baseline,cN,N1,N1,30
+AJCC9th,GPT-4o,baseline,cN,N1,N2a,4
+AJCC9th,GPT-4o,baseline,cN,N1,N2b,8
+AJCC9th,GPT-4o,baseline,cN,N1,N3,2
+AJCC9th,GPT-4o,baseline,cN,N2a,N0,2
+AJCC9th,GPT-4o,baseline,cN,N2a,N1,6
+AJCC9th,GPT-4o,baseline,cN,N2a,N2a,17
+AJCC9th,GPT-4o,baseline,cN,N2a,N2b,13
+AJCC9th,GPT-4o,baseline,cN,N2a,N3,4
+AJCC9th,GPT-4o,baseline,cN,N2b,N1,1
+AJCC9th,GPT-4o,baseline,cN,N2b,N2a,1
+AJCC9th,GPT-4o,baseline,cN,N2b,N2b,28
+AJCC9th,GPT-4o,baseline,cN,N2b,N3,6
+AJCC9th,GPT-4o,baseline,cN,N3,N2b,6
+AJCC9th,GPT-4o,baseline,cN,N3,N3,28
+AJCC9th,GPT-4o,baseline,cM,M0,M0,395
+AJCC9th,GPT-4o,baseline,cM,M0,M1a,5
+AJCC9th,GPT-4o,baseline,cM,M0,M1b,12
+AJCC9th,GPT-4o,baseline,cM,M0,M1c1,1
+AJCC9th,GPT-4o,baseline,cM,M0,M1c2,1
+AJCC9th,GPT-4o,baseline,cM,M1a,M0,12
+AJCC9th,GPT-4o,baseline,cM,M1a,M1a,15
+AJCC9th,GPT-4o,baseline,cM,M1b,M0,4
+AJCC9th,GPT-4o,baseline,cM,M1b,M1b,18
+AJCC9th,GPT-4o,baseline,cM,M1b,M1c1,1
+AJCC9th,GPT-4o,baseline,cM,M1c1,M0,1
+AJCC9th,GPT-4o,baseline,cM,M1c1,M1b,2
+AJCC9th,GPT-4o,baseline,cM,M1c1,M1c1,3
+AJCC9th,GPT-4o,baseline,cM,M1c1,M1c2,2
+AJCC9th,GPT-4o,baseline,cM,M1c2,M1a,3
+AJCC9th,GPT-4o,baseline,cM,M1c2,M1b,3
+AJCC9th,GPT-4o,baseline,cM,M1c2,M1c1,1
+AJCC9th,GPT-4o,baseline,cM,M1c2,M1c2,16
+AJCC9th,GPT-4o,baseline,stage group,0,0,3
+AJCC9th,GPT-4o,baseline,stage group,0,IA1,1
+AJCC9th,GPT-4o,baseline,stage group,IA1,IA1,11
+AJCC9th,GPT-4o,baseline,stage group,IA1,IA2,9
+AJCC9th,GPT-4o,baseline,stage group,IA1,IIA,1
+AJCC9th,GPT-4o,baseline,stage group,IA1,IIIA,1
+AJCC9th,GPT-4o,baseline,stage group,IA1,IIIB,1
+AJCC9th,GPT-4o,baseline,stage group,IA2,IA2,69
+AJCC9th,GPT-4o,baseline,stage group,IA2,IA3,2
+AJCC9th,GPT-4o,baseline,stage group,IA2,IB,2
+AJCC9th,GPT-4o,baseline,stage group,IA2,IIA,5
+AJCC9th,GPT-4o,baseline,stage group,IA2,IIB,1
+AJCC9th,GPT-4o,baseline,stage group,IA2,IIIA,2
+AJCC9th,GPT-4o,baseline,stage group,IA2,IIIB,1
+AJCC9th,GPT-4o,baseline,stage group,IA2,IVA,3
+AJCC9th,GPT-4o,baseline,stage group,IA2,IVB,1
+AJCC9th,GPT-4o,baseline,stage group,IA3,IA2,11
+AJCC9th,GPT-4o,baseline,stage group,IA3,IA3,49
+AJCC9th,GPT-4o,baseline,stage group,IA3,IB,3
+AJCC9th,GPT-4o,baseline,stage group,IA3,IIA,6
+AJCC9th,GPT-4o,baseline,stage group,IA3,IIB,3
+AJCC9th,GPT-4o,baseline,stage group,IA3,IIIA,4
+AJCC9th,GPT-4o,baseline,stage group,IA3,IIIB,2
+AJCC9th,GPT-4o,baseline,stage group,IA3,IVA,6
+AJCC9th,GPT-4o,baseline,stage group,IA3,IVB,1
+AJCC9th,GPT-4o,baseline,stage group,IB,IA2,2
+AJCC9th,GPT-4o,baseline,stage group,IB,IA3,2
+AJCC9th,GPT-4o,baseline,stage group,IB,IB,45
+AJCC9th,GPT-4o,baseline,stage group,IB,IIB,5
+AJCC9th,GPT-4o,baseline,stage group,IB,IIIA,1
+AJCC9th,GPT-4o,baseline,stage group,IB,IIIB,3
+AJCC9th,GPT-4o,baseline,stage group,IB,IVA,2
+AJCC9th,GPT-4o,baseline,stage group,IIA,IB,1
+AJCC9th,GPT-4o,baseline,stage group,IIA,IIA,19
+AJCC9th,GPT-4o,baseline,stage group,IIA,IIB,4
+AJCC9th,GPT-4o,baseline,stage group,IIA,IIIA,2
+AJCC9th,GPT-4o,baseline,stage group,IIA,IIIB,3
+AJCC9th,GPT-4o,baseline,stage group,IIA,IVA,2
+AJCC9th,GPT-4o,baseline,stage group,IIB,IA2,1
+AJCC9th,GPT-4o,baseline,stage group,IIB,IA3,1
+AJCC9th,GPT-4o,baseline,stage group,IIB,IB,2
+AJCC9th,GPT-4o,baseline,stage group,IIB,IIA,2
+AJCC9th,GPT-4o,baseline,stage group,IIB,IIB,29
+AJCC9th,GPT-4o,baseline,stage group,IIB,IIIA,9
+AJCC9th,GPT-4o,baseline,stage group,IIB,IIIB,5
+AJCC9th,GPT-4o,baseline,stage group,IIB,IIIC,1
+AJCC9th,GPT-4o,baseline,stage group,IIB,IVA,2
+AJCC9th,GPT-4o,baseline,stage group,IIIA,IA3,2
+AJCC9th,GPT-4o,baseline,stage group,IIIA,IIA,1
+AJCC9th,GPT-4o,baseline,stage group,IIIA,IIB,3
+AJCC9th,GPT-4o,baseline,stage group,IIIA,IIIA,28
+AJCC9th,GPT-4o,baseline,stage group,IIIA,IIIB,9
+AJCC9th,GPT-4o,baseline,stage group,IIIA,IVA,1
+AJCC9th,GPT-4o,baseline,stage group,IIIB,IIIA,1
+AJCC9th,GPT-4o,baseline,stage group,IIIB,IIIB,22
+AJCC9th,GPT-4o,baseline,stage group,IIIB,IVA,1
+AJCC9th,GPT-4o,baseline,stage group,IIIC,IIIB,2
+AJCC9th,GPT-4o,baseline,stage group,IIIC,IIIC,3
+AJCC9th,GPT-4o,baseline,stage group,IVA,IA3,1
+AJCC9th,GPT-4o,baseline,stage group,IVA,IB,1
+AJCC9th,GPT-4o,baseline,stage group,IVA,IIA,1
+AJCC9th,GPT-4o,baseline,stage group,IVA,IIB,1
+AJCC9th,GPT-4o,baseline,stage group,IVA,IIIA,1
+AJCC9th,GPT-4o,baseline,stage group,IVA,IIIB,8
+AJCC9th,GPT-4o,baseline,stage group,IVA,IIIC,3
+AJCC9th,GPT-4o,baseline,stage group,IVA,IVA,33
+AJCC9th,GPT-4o,baseline,stage group,IVA,IVB,1
+AJCC9th,GPT-4o,baseline,stage group,IVB,IA3,1
+AJCC9th,GPT-4o,baseline,stage group,IVB,IVA,8
+AJCC9th,GPT-4o,baseline,stage group,IVB,IVB,22
+AJCC9th,GPT-4o,decomposition-only,cT,T1a,T1a,12
+AJCC9th,GPT-4o,decomposition-only,cT,T1a,T1b,4
+AJCC9th,GPT-4o,decomposition-only,cT,T1a,T1c,3
+AJCC9th,GPT-4o,decomposition-only,cT,T1b,T1b,100
+AJCC9th,GPT-4o,decomposition-only,cT,T1b,T1c,4
+AJCC9th,GPT-4o,decomposition-only,cT,T1b,T2a,1
+AJCC9th,GPT-4o,decomposition-only,cT,T1c,T1b,3
+AJCC9th,GPT-4o,decomposition-only,cT,T1c,T1c,115
+AJCC9th,GPT-4o,decomposition-only,cT,T1c,T2a,4
+AJCC9th,GPT-4o,decomposition-only,cT,T1mi,T1a,2
+AJCC9th,GPT-4o,decomposition-only,cT,T1mi,T1mi,2
+AJCC9th,GPT-4o,decomposition-only,cT,T2a,T1b,1
+AJCC9th,GPT-4o,decomposition-only,cT,T2a,T1c,8
+AJCC9th,GPT-4o,decomposition-only,cT,T2a,T2a,93
+AJCC9th,GPT-4o,decomposition-only,cT,T2a,T2b,2
+AJCC9th,GPT-4o,decomposition-only,cT,T2a,T4,1
+AJCC9th,GPT-4o,decomposition-only,cT,T2b,T2a,2
+AJCC9th,GPT-4o,decomposition-only,cT,T2b,T2b,34
+AJCC9th,GPT-4o,decomposition-only,cT,T2b,T3,1
+AJCC9th,GPT-4o,decomposition-only,cT,T3,T1b,1
+AJCC9th,GPT-4o,decomposition-only,cT,T3,T2a,4
+AJCC9th,GPT-4o,decomposition-only,cT,T3,T2b,3
+AJCC9th,GPT-4o,decomposition-only,cT,T3,T3,54
+AJCC9th,GPT-4o,decomposition-only,cT,T4,T1c,4
+AJCC9th,GPT-4o,decomposition-only,cT,T4,T2a,4
+AJCC9th,GPT-4o,decomposition-only,cT,T4,T3,1
+AJCC9th,GPT-4o,decomposition-only,cT,T4,T4,27
+AJCC9th,GPT-4o,decomposition-only,cT,T4,Tis,1
+AJCC9th,GPT-4o,decomposition-only,cT,Tis,T1a,1
+AJCC9th,GPT-4o,decomposition-only,cT,Tis,T1mi,1
+AJCC9th,GPT-4o,decomposition-only,cT,Tis,Tis,2
+AJCC9th,GPT-4o,decomposition-only,cN,N0,N0,334
+AJCC9th,GPT-4o,decomposition-only,cN,N0,N1,1
+AJCC9th,GPT-4o,decomposition-only,cN,N0,N2b,1
+AJCC9th,GPT-4o,decomposition-only,cN,N1,N0,30
+AJCC9th,GPT-4o,decomposition-only,cN,N1,N1,17
+AJCC9th,GPT-4o,decomposition-only,cN,N2a,N0,17
+AJCC9th,GPT-4o,decomposition-only,cN,N2a,N1,1
+AJCC9th,GPT-4o,decomposition-only,cN,N2a,N2a,17
+AJCC9th,GPT-4o,decomposition-only,cN,N2a,N2b,6
+AJCC9th,GPT-4o,decomposition-only,cN,N2a,N3,1
+AJCC9th,GPT-4o,decomposition-only,cN,N2b,N0,6
+AJCC9th,GPT-4o,decomposition-only,cN,N2b,N2a,7
+AJCC9th,GPT-4o,decomposition-only,cN,N2b,N2b,23
+AJCC9th,GPT-4o,decomposition-only,cN,N3,N0,1
+AJCC9th,GPT-4o,decomposition-only,cN,N3,N2a,1
+AJCC9th,GPT-4o,decomposition-only,cN,N3,N2b,10
+AJCC9th,GPT-4o,decomposition-only,cN,N3,N3,22
+AJCC9th,GPT-4o,decomposition-only,cM,M0,M0,412
+AJCC9th,GPT-4o,decomposition-only,cM,M0,M1c1,1
+AJCC9th,GPT-4o,decomposition-only,cM,M0,M1c2,1
+AJCC9th,GPT-4o,decomposition-only,cM,M1a,M0,20
+AJCC9th,GPT-4o,decomposition-only,cM,M1a,M1a,7
+AJCC9th,GPT-4o,decomposition-only,cM,M1b,M0,16
+AJCC9th,GPT-4o,decomposition-only,cM,M1b,M1b,7
+AJCC9th,GPT-4o,decomposition-only,cM,M1c1,M0,5
+AJCC9th,GPT-4o,decomposition-only,cM,M1c1,M1b,1
+AJCC9th,GPT-4o,decomposition-only,cM,M1c1,M1c2,2
+AJCC9th,GPT-4o,decomposition-only,cM,M1c2,M0,3
+AJCC9th,GPT-4o,decomposition-only,cM,M1c2,M1a,3
+AJCC9th,GPT-4o,decomposition-only,cM,M1c2,M1b,4
+AJCC9th,GPT-4o,decomposition-only,cM,M1c2,M1c1,4
+AJCC9th,GPT-4o,decomposition-only,cM,M1c2,M1c2,9
+AJCC9th,GPT-4o,decomposition-only,stage group,0,0,2
+AJCC9th,GPT-4o,decomposition-only,stage group,0,IA1,2
+AJCC9th,GPT-4o,decomposition-only,stage group,IA1,IA1,16
+AJCC9th,GPT-4o,decomposition-only,stage group,IA1,IA2,4
+AJCC9th,GPT-4o,decomposition-only,stage group,IA1,IA3,3
+AJCC9th,GPT-4o,decomposition-only,stage group,IA2,IA2,82
+AJCC9th,GPT-4o,decomposition-only,stage group,IA2,IA3,3
+AJCC9th,GPT-4o,decomposition-only,stage group,IA2,IB,1
+AJCC9th,GPT-4o,decomposition-only,stage group,IA3,IA2,3
+AJCC9th,GPT-4o,decomposition-only,stage group,IA3,IA3,78
+AJCC9th,GPT-4o,decomposition-only,stage group,IA3,IB,3
+AJCC9th,GPT-4o,decomposition-only,stage group,IA3,IVB,1
+AJCC9th,GPT-4o,decomposition-only,stage group,IB,IA2,1
+AJCC9th,GPT-4o,decomposition-only,stage group,IB,IA3,4
+AJCC9th,GPT-4o,decomposition-only,stage group,IB,IB,52
+AJCC9th,GPT-4o,decomposition-only,stage group,IB,IIA,2
+AJCC9th,GPT-4o,decomposition-only,stage group,IB,IIB,1
+AJCC9th,GPT-4o,decomposition-only,stage group,IIA,IA2,2
+AJCC9th,GPT-4o,decomposition-only,stage group,IIA,IA3,6
+AJCC9th,GPT-4o,decomposition-only,stage group,IIA,IIA,22
+AJCC9th,GPT-4o,decomposition-only,stage group,IIA,IIB,1
+AJCC9th,GPT-4o,decomposition-only,stage group,IIB,IA2,3
+AJCC9th,GPT-4o,decomposition-only,stage group,IIB,IA3,2
+AJCC9th,GPT-4o,decomposition-only,stage group,IIB,IB,8
+AJCC9th,GPT-4o,decomposition-only,stage group,IIB,IIA,5
+AJCC9th,GPT-4o,decomposition-only,stage group,IIB,IIB,31
+AJCC9th,GPT-4o,decomposition-only,stage group,IIB,IIIA,1
+AJCC9th,GPT-4o,decomposition-only,stage group,IIB,IIIB,2
+AJCC9th,GPT-4o,decomposition-only,stage group,IIIA,IA3,4
+AJCC9th,GPT-4o,decomposition-only,stage group,IIIA,IB,3
+AJCC9th,GPT-4o,decomposition-only,stage group,IIIA,IIA,2
+AJCC9th,GPT-4o,decomposition-only,stage group,IIIA,IIB,9
+AJCC9th,GPT-4o,decomposition-only,stage group,IIIA,IIIA,24
+AJCC9th,GPT-4o,decomposition-only,stage group,IIIA,IIIB,2
+AJCC9th,GPT-4o,decomposition-only,stage group,IIIB,IB,3
+AJCC9th,GPT-4o,decomposition-only,stage group,IIIB,IIB,1
+AJCC9th,GPT-4o,decomposition-only,stage group,IIIB,IIIA,6
+AJCC9th,GPT-4o,decomposition-only,stage group,IIIB,IIIB,13
+AJCC9th,GPT-4o,decomposition-only,stage group,IIIB,IVB,1
+AJCC9th,GPT-4o,decomposition-only,stage group,IIIC,IIIB,3
+AJCC9th,GPT-4o,decomposition-only,stage group,IIIC,IIIC,2
+AJCC9th,GPT-4o,decomposition-only,stage group,IVA,IA3,5
+AJCC9th,GPT-4o,decomposition-only,stage group,IVA,IB,6
+AJCC9th,GPT-4o,decomposition-only,stage group,IVA,IIA,2
+AJCC9th,GPT-4o,decomposition-only,stage group,IVA,IIB,1
+AJCC9th,GPT-4o,decomposition-only,stage group,IVA,IIIA,7
+AJCC9th,GPT-4o,decomposition-only,stage group,IVA,IIIB,13
+AJCC9th,GPT-4o,decomposition-only,stage group,IVA,IIIC,2
+AJCC9th,GPT-4o,decomposition-only,stage group,IVA,IVA,14
+AJCC9th,GPT-4o,decomposition-only,stage group,IVB,IA2,1
+AJCC9th,GPT-4o,decomposition-only,stage group,IVB,IA3,3
+AJCC9th,GPT-4o,decomposition-only,stage group,IVB,IIB,2
+AJCC9th,GPT-4o,decomposition-only,stage group,IVB,IIIB,2
+AJCC9th,GPT-4o,decomposition-only,stage group,IVB,IVA,8
+AJCC9th,GPT-4o,decomposition-only,stage group,IVB,IVB,15
+AJCC9th,GPT-4o,MAA,cT,T1a,T1a,15
+AJCC9th,GPT-4o,MAA,cT,T1a,T1b,3
+AJCC9th,GPT-4o,MAA,cT,T1a,T1c,1
+AJCC9th,GPT-4o,MAA,cT,T1b,T1b,97
+AJCC9th,GPT-4o,MAA,cT,T1b,T1c,6
+AJCC9th,GPT-4o,MAA,cT,T1b,T1mi,1
+AJCC9th,GPT-4o,MAA,cT,T1b,Tis,1
+AJCC9th,GPT-4o,MAA,cT,T1c,T1c,120
+AJCC9th,GPT-4o,MAA,cT,T1c,T2a,2
+AJCC9th,GPT-4o,MAA,cT,T1mi,T1a,1
+AJCC9th,GPT-4o,MAA,cT,T1mi,T1mi,3
+AJCC9th,GPT-4o,MAA,cT,T2a,T1b,1
+AJCC9th,GPT-4o,MAA,cT,T2a,T1c,7
+AJCC9th,GPT-4o,MAA,cT,T2a,T2a,94
+AJCC9th,GPT-4o,MAA,cT,T2a,T2b,2
+AJCC9th,GPT-4o,MAA,cT,T2a,T4,1
+AJCC9th,GPT-4o,MAA,cT,T2b,T2a,1
+AJCC9th,GPT-4o,MAA,cT,T2b,T2b,35
+AJCC9th,GPT-4o,MAA,cT,T2b,T3,1
+AJCC9th,GPT-4o,MAA,cT,T3,T1b,1
+AJCC9th,GPT-4o,MAA,cT,T3,T2a,3
+AJCC9th,GPT-4o,MAA,cT,T3,T2b,3
+AJCC9th,GPT-4o,MAA,cT,T3,T3,54
+AJCC9th,GPT-4o,MAA,cT,T3,T4,1
+AJCC9th,GPT-4o,MAA,cT,T4,T0,1
+AJCC9th,GPT-4o,MAA,cT,T4,T1c,5
+AJCC9th,GPT-4o,MAA,cT,T4,T2a,4
+AJCC9th,GPT-4o,MAA,cT,T4,T3,1
+AJCC9th,GPT-4o,MAA,cT,T4,T4,26
+AJCC9th,GPT-4o,MAA,cT,Tis,T1a,1
+AJCC9th,GPT-4o,MAA,cT,Tis,T1mi,1
+AJCC9th,GPT-4o,MAA,cT,Tis,Tis,2
+AJCC9th,GPT-4o,MAA,cN,N0,N0,290
+AJCC9th,GPT-4o,MAA,cN,N0,N1,3
+AJCC9th,GPT-4o,MAA,cN,N0,N2a,1
+AJCC9th,GPT-4o,MAA,cN,N0,N2b,6
+AJCC9th,GPT-4o,MAA,cN,N0,N3,2
+AJCC9th,GPT-4o,MAA,cN,N0,Nx,34
+AJCC9th,GPT-4o,MAA,cN,N1,N0,4
+AJCC9th,GPT-4o,MAA,cN,N1,N1,26
+AJCC9th,GPT-4o,MAA,cN,N1,N2a,1
+AJCC9th,GPT-4o,MAA,cN,N1,N2b,5
+AJCC9th,GPT-4o,MAA,cN,N1,Nx,11
+AJCC9th,GPT-4o,MAA,cN,N2a,N0,3
+AJCC9th,GPT-4o,MAA,cN,N2a,N1,4
+AJCC9th,GPT-4o,MAA,cN,N2a,N2a,20
+AJCC9th,GPT-4o,MAA,cN,N2a,N2b,11
+AJCC9th,GPT-4o,MAA,cN,N2a,N3,1
+AJCC9th,GPT-4o,MAA,cN,N2a,Nx,3
+AJCC9th,GPT-4o,MAA,cN,N2b,N2a,4
+AJCC9th,GPT-4o,MAA,cN,N2b,N2b,31
+AJCC9th,GPT-4o,MAA,cN,N2b,Nx,1
+AJCC9th,GPT-4o,MAA,cN,N3,N2a,1
+AJCC9th,GPT-4o,MAA,cN,N3,N2b,8
+AJCC9th,GPT-4o,MAA,cN,N3,N3,25
+AJCC9th,GPT-4o,MAA,cM,M0,M0,405
+AJCC9th,GPT-4o,MAA,cM,M0,M1a,4
+AJCC9th,GPT-4o,MAA,cM,M0,M1b,4
+AJCC9th,GPT-4o,MAA,cM,M0,M1c1,1
+AJCC9th,GPT-4o,MAA,cM,M1a,M0,14
+AJCC9th,GPT-4o,MAA,cM,M1a,M1a,13
+AJCC9th,GPT-4o,MAA,cM,M1b,M0,11
+AJCC9th,GPT-4o,MAA,cM,M1b,M1b,12
+AJCC9th,GPT-4o,MAA,cM,M1c1,M0,3
+AJCC9th,GPT-4o,MAA,cM,M1c1,M1b,2
+AJCC9th,GPT-4o,MAA,cM,M1c1,M1c1,1
+AJCC9th,GPT-4o,MAA,cM,M1c1,M1c2,2
+AJCC9th,GPT-4o,MAA,cM,M1c2,M1a,3
+AJCC9th,GPT-4o,MAA,cM,M1c2,M1b,4
+AJCC9th,GPT-4o,MAA,cM,M1c2,M1c1,3
+AJCC9th,GPT-4o,MAA,cM,M1c2,M1c2,13
+AJCC9th,GPT-4o,MAA,stage group,0,0,2
+AJCC9th,GPT-4o,MAA,stage group,0,IA1,2
+AJCC9th,GPT-4o,MAA,stage group,IA1,IA1,16
+AJCC9th,GPT-4o,MAA,stage group,IA1,IA2,3
+AJCC9th,GPT-4o,MAA,stage group,IA1,IA3,1
+AJCC9th,GPT-4o,MAA,stage group,IA1,IIA,1
+AJCC9th,GPT-4o,MAA,stage group,IA1,IIIA,1
+AJCC9th,GPT-4o,MAA,stage group,IA1,Unknown,1
+AJCC9th,GPT-4o,MAA,stage group,IA2,0,1
+AJCC9th,GPT-4o,MAA,stage group,IA2,IA1,1
+AJCC9th,GPT-4o,MAA,stage group,IA2,IA2,69
+AJCC9th,GPT-4o,MAA,stage group,IA2,IA3,5
+AJCC9th,GPT-4o,MAA,stage group,IA2,IIIA,1
+AJCC9th,GPT-4o,MAA,stage group,IA2,IVA,1
+AJCC9th,GPT-4o,MAA,stage group,IA2,Unknown,8
+AJCC9th,GPT-4o,MAA,stage group,IA3,IA3,68
+AJCC9th,GPT-4o,MAA,stage group,IA3,IB,1
+AJCC9th,GPT-4o,MAA,stage group,IA3,IIB,1
+AJCC9th,GPT-4o,MAA,stage group,IA3,IIIA,1
+AJCC9th,GPT-4o,MAA,stage group,IA3,IVA,4
+AJCC9th,GPT-4o,MAA,stage group,IA3,IVB,1
+AJCC9th,GPT-4o,MAA,stage group,IA3,Unknown,9
+AJCC9th,GPT-4o,MAA,stage group,IB,IA2,1
+AJCC9th,GPT-4o,MAA,stage group,IB,IA3,3
+AJCC9th,GPT-4o,MAA,stage group,IB,IB,47
+AJCC9th,GPT-4o,MAA,stage group,IB,IIA,2
+AJCC9th,GPT-4o,MAA,stage group,IB,IIB,1
+AJCC9th,GPT-4o,MAA,stage group,IB,IIIB,1
+AJCC9th,GPT-4o,MAA,stage group,IB,IVA,1
+AJCC9th,GPT-4o,MAA,stage group,IB,Unknown,4
+AJCC9th,GPT-4o,MAA,stage group,IIA,IA3,2
+AJCC9th,GPT-4o,MAA,stage group,IIA,IIA,23
+AJCC9th,GPT-4o,MAA,stage group,IIA,IIIA,1
+AJCC9th,GPT-4o,MAA,stage group,IIA,Unknown,5
+AJCC9th,GPT-4o,MAA,stage group,IIB,IA2,1
+AJCC9th,GPT-4o,MAA,stage group,IIB,IA3,1
+AJCC9th,GPT-4o,MAA,stage group,IIB,IB,2
+AJCC9th,GPT-4o,MAA,stage group,IIB,IIA,1
+AJCC9th,GPT-4o,MAA,stage group,IIB,IIB,31
+AJCC9th,GPT-4o,MAA,stage group,IIB,IIIA,5
+AJCC9th,GPT-4o,MAA,stage group,IIB,IIIB,4
+AJCC9th,GPT-4o,MAA,stage group,IIB,Unknown,7
+AJCC9th,GPT-4o,MAA,stage group,IIIA,IA3,2
+AJCC9th,GPT-4o,MAA,stage group,IIIA,IB,1
+AJCC9th,GPT-4o,MAA,stage group,IIIA,IIB,3
+AJCC9th,GPT-4o,MAA,stage group,IIIA,IIIA,27
+AJCC9th,GPT-4o,MAA,stage group,IIIA,IIIB,6
+AJCC9th,GPT-4o,MAA,stage group,IIIA,IVA,1
+AJCC9th,GPT-4o,MAA,stage group,IIIA,Unknown,4
+AJCC9th,GPT-4o,MAA,stage group,IIIB,IIIA,5
+AJCC9th,GPT-4o,MAA,stage group,IIIB,IIIB,17
+AJCC9th,GPT-4o,MAA,stage group,IIIB,IVA,1
+AJCC9th,GPT-4o,MAA,stage group,IIIB,Unknown,1
+AJCC9th,GPT-4o,MAA,stage group,IIIC,IIIB,2
+AJCC9th,GPT-4o,MAA,stage group,IIIC,IIIC,3
+AJCC9th,GPT-4o,MAA,stage group,IVA,IA3,3
+AJCC9th,GPT-4o,MAA,stage group,IVA,IB,1
+AJCC9th,GPT-4o,MAA,stage group,IVA,IIA,1
+AJCC9th,GPT-4o,MAA,stage group,IVA,IIIA,5
+AJCC9th,GPT-4o,MAA,stage group,IVA,IIIB,10
+AJCC9th,GPT-4o,MAA,stage group,IVA,IIIC,1
+AJCC9th,GPT-4o,MAA,stage group,IVA,IVA,25
+AJCC9th,GPT-4o,MAA,stage group,IVA,Unknown,4
+AJCC9th,GPT-4o,MAA,stage group,IVB,IA2,1
+AJCC9th,GPT-4o,MAA,stage group,IVB,IA3,1
+AJCC9th,GPT-4o,MAA,stage group,IVB,IIB,1
+AJCC9th,GPT-4o,MAA,stage group,IVB,IVA,9
+AJCC9th,GPT-4o,MAA,stage group,IVB,IVB,19
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T1a,T1a,18
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T1a,T1b,1
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T1b,T1a,25
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T1b,T1b,76
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T1b,T1c,1
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T1b,T1mi,2
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T1b,T2a,1
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T1c,T1a,2
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T1c,T1b,35
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T1c,T1c,75
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T1c,T2a,10
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T1mi,T1a,1
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T1mi,T1mi,3
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T2a,T1b,4
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T2a,T1c,3
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T2a,T2,1
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T2a,T2a,94
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T2a,T3,1
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T2a,T4,2
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T2b,T1c,1
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T2b,T2a,9
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T2b,T2b,27
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T3,T1b,1
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T3,T2a,2
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T3,T2b,8
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T3,T3,48
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T3,T4,3
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T4,T2a,4
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T4,T2b,1
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T4,T3,2
+AJCC9th,LLaMA 3.3 70B,baseline,cT,T4,T4,30
+AJCC9th,LLaMA 3.3 70B,baseline,cT,Tis,T1a,1
+AJCC9th,LLaMA 3.3 70B,baseline,cT,Tis,T1mi,2
+AJCC9th,LLaMA 3.3 70B,baseline,cT,Tis,Tis,1
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N0,N0,256
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N0,N1,58
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N0,N2a,4
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N0,N2b,1
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N0,N3,17
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N1,N0,2
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N1,N1,30
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N1,N2a,4
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N1,N2b,7
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N1,N3,4
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N2a,N0,1
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N2a,N1,9
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N2a,N2a,19
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N2a,N2b,10
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N2a,N3,3
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N2b,N2,1
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N2b,N2a,7
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N2b,N2b,16
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N2b,N3,12
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N3,N2b,1
+AJCC9th,LLaMA 3.3 70B,baseline,cN,N3,N3,33
+AJCC9th,LLaMA 3.3 70B,baseline,cM,M0,M0,341
+AJCC9th,LLaMA 3.3 70B,baseline,cM,M0,M1a,12
+AJCC9th,LLaMA 3.3 70B,baseline,cM,M0,M1b,44
+AJCC9th,LLaMA 3.3 70B,baseline,cM,M0,M1c1,1
+AJCC9th,LLaMA 3.3 70B,baseline,cM,M0,M1c2,16
+AJCC9th,LLaMA 3.3 70B,baseline,cM,M1a,M0,6
+AJCC9th,LLaMA 3.3 70B,baseline,cM,M1a,M1a,18
+AJCC9th,LLaMA 3.3 70B,baseline,cM,M1a,M1b,2
+AJCC9th,LLaMA 3.3 70B,baseline,cM,M1a,M1c2,1
+AJCC9th,LLaMA 3.3 70B,baseline,cM,M1b,M0,2
+AJCC9th,LLaMA 3.3 70B,baseline,cM,M1b,M1b,9
+AJCC9th,LLaMA 3.3 70B,baseline,cM,M1b,M1c2,12
+AJCC9th,LLaMA 3.3 70B,baseline,cM,M1c1,M0,1
+AJCC9th,LLaMA 3.3 70B,baseline,cM,M1c1,M1b,1
+AJCC9th,LLaMA 3.3 70B,baseline,cM,M1c1,M1c2,6
+AJCC9th,LLaMA 3.3 70B,baseline,cM,M1c2,M1a,5
+AJCC9th,LLaMA 3.3 70B,baseline,cM,M1c2,M1b,3
+AJCC9th,LLaMA 3.3 70B,baseline,cM,M1c2,M1c2,15
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,0,0,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,0,IA1,2
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,0,IVB,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA1,IA1,18
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA1,IIA,4
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA1,IVA,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA2,IA1,18
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA2,IA2,43
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA2,IB,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA2,IIA,10
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA2,IIB,2
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA2,IIIB,2
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA2,IVA,8
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA2,IVB,2
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA3,IA1,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA3,IA2,19
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA3,IA3,31
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA3,IB,4
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA3,IIA,9
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA3,IIB,3
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA3,IIIB,3
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA3,IVA,11
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IA3,IVB,4
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IB,IA2,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IB,IA3,2
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IB,IB,33
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IB,IIB,11
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IB,IIIA,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IB,IIIB,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IB,IVA,10
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IB,IVB,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIA,IB,3
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIA,IIA,14
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIA,IIB,3
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIA,IIIA,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIA,IIIB,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIA,IVA,6
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIA,IVB,3
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIB,IA2,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIB,IA3,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIB,IB,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIB,IIA,4
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIB,IIB,23
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIB,IIIA,10
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIB,IIIB,5
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIB,IIIC,2
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIB,IVA,5
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIIA,IB,2
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIIA,IIB,9
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIIA,IIIA,19
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIIA,IIIB,7
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIIA,IIIC,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIIA,IVA,4
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIIA,IVB,2
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIIB,IIIA,3
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIIB,IIIB,9
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIIB,IIIC,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIIB,IVA,7
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIIB,IVB,4
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIIC,IIIC,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IIIC,IVA,4
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IVA,IIA,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IVA,IIB,2
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IVA,IIIA,2
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IVA,IIIB,3
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IVA,IVA,29
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IVA,IVB,13
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IVB,IA3,1
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IVB,IVA,9
+AJCC9th,LLaMA 3.3 70B,baseline,stage group,IVB,IVB,21
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T1a,T1a,12
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T1a,T1b,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T1a,T1c,4
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T1a,T2a,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T1b,T1a,4
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T1b,T1b,94
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T1b,T1c,5
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T1b,T2a,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T1c,T1b,8
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T1c,T1c,105
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T1c,T2a,8
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T1c,T2b,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T1mi,T1a,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T1mi,T1mi,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T2a,T1b,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T2a,T1c,12
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T2a,T2a,88
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T2a,T2b,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T2a,T4,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T2b,T2a,13
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T2b,T2b,24
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T3,T1b,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T3,T2a,5
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T3,T2b,4
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T3,T3,49
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T3,T4,3
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T4,T1c,3
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T4,T2a,7
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T4,T2b,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T4,T3,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,T4,T4,23
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cT,Tis,T1a,4
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N0,N0,329
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N0,N1,4
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N0,N2b,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N0,N3,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N1,N0,19
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N1,N1,12
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N1,N2a,9
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N1,N2b,7
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N2a,N0,17
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N2a,N1,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N2a,N2a,12
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N2a,N2b,11
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N2b,N0,6
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N2b,N1,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N2b,N2a,4
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N2b,N2b,22
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N2b,N3,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N3,N0,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N3,N2b,8
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cN,N3,N3,24
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M0,M0,394
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M0,M1a,6
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M0,M1b,11
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M0,M1c1,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M0,M1c2,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M1a,M0,11
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M1a,M1a,15
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M1a,M1b,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M1b,M0,10
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M1b,M1b,13
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M1c1,M0,4
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M1c1,M1b,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M1c1,M1c1,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M1c1,M1c2,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M1c2,M0,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M1c2,M1a,3
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M1c2,M1b,6
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M1c2,M1c1,3
+AJCC9th,LLaMA 3.3 70B,decomposition-only,cM,M1c2,M1c2,10
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,0,IA1,4
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IA1,IA1,16
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IA1,IA2,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IA1,IA3,3
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IA1,IB,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IA1,IIA,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IA2,IA1,4
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IA2,IA2,74
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IA2,IA3,4
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IA2,IB,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IA2,IIIA,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IA2,IVA,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IA3,IA2,5
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IA3,IA3,68
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IA3,IB,7
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IA3,IIA,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IA3,IVA,4
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IB,IA2,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IB,IA3,4
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IB,IB,51
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IB,IIA,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IB,IIB,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIA,IA3,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIA,IB,5
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIA,IIA,19
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIA,IIB,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIA,IVA,3
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIB,IA2,3
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIB,IA3,3
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIB,IB,10
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIB,IIA,3
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIB,IIB,17
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIB,IIIA,10
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIB,IIIB,3
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIB,IVA,3
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIIA,IA3,3
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIIA,IB,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIIA,IIA,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIIA,IIB,8
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIIA,IIIA,21
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIIA,IIIB,6
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIIA,IVA,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIIA,IVB,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIIB,IB,3
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIIB,IIB,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIIB,IIIA,5
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIIB,IIIB,7
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIIB,IVA,5
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIIB,IVB,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIIC,IIIB,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IIIC,IIIC,3
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IVA,IA3,3
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IVA,IB,3
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IVA,IIA,2
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IVA,IIB,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IVA,IIIA,5
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IVA,IIIB,6
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IVA,IIIC,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IVA,IVA,29
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IVB,IA2,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IVB,IA3,3
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IVB,IIB,1
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IVB,IVA,10
+AJCC9th,LLaMA 3.3 70B,decomposition-only,stage group,IVB,IVB,16
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T1a,T1a,13
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T1a,T1b,1
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T1a,T1c,5
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T1b,T1a,2
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T1b,T1b,99
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T1b,T1c,3
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T1b,T2a,1
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T1c,T1b,9
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T1c,T1c,108
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T1c,T2a,5
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T1mi,T1a,2
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T1mi,T1b,2
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T2a,T1b,1
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T2a,T1c,12
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T2a,T2a,89
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T2a,T2b,1
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T2a,T4,2
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T2b,T2a,12
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T2b,T2b,24
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T2b,T3,1
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T3,T1b,1
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T3,T2a,4
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T3,T2b,4
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T3,T3,50
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T3,T4,3
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T4,T1c,4
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T4,T2a,5
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T4,T2b,2
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T4,T3,2
+AJCC9th,LLaMA 3.3 70B,MAA,cT,T4,T4,24
+AJCC9th,LLaMA 3.3 70B,MAA,cT,Tis,T1a,4
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N0,N0,291
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N0,N1,26
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N0,N2a,7
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N0,N2b,6
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N0,N3,6
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N1,N0,3
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N1,N1,28
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N1,N2a,7
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N1,N2b,9
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N2a,N0,4
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N2a,N1,6
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N2a,N2a,18
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N2a,N2b,12
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N2a,N3,2
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N2b,N0,1
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N2b,N2a,4
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N2b,N2b,29
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N2b,N3,2
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N3,N2a,1
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N3,N2b,8
+AJCC9th,LLaMA 3.3 70B,MAA,cN,N3,N3,25
+AJCC9th,LLaMA 3.3 70B,MAA,cM,M0,M0,381
+AJCC9th,LLaMA 3.3 70B,MAA,cM,M0,M1a,11
+AJCC9th,LLaMA 3.3 70B,MAA,cM,M0,M1b,20
+AJCC9th,LLaMA 3.3 70B,MAA,cM,M0,M1c2,2
+AJCC9th,LLaMA 3.3 70B,MAA,cM,M1a,M0,10
+AJCC9th,LLaMA 3.3 70B,MAA,cM,M1a,M1a,17
+AJCC9th,LLaMA 3.3 70B,MAA,cM,M1b,M0,3
+AJCC9th,LLaMA 3.3 70B,MAA,cM,M1b,M1b,20
+AJCC9th,LLaMA 3.3 70B,MAA,cM,M1c1,M0,1
+AJCC9th,LLaMA 3.3 70B,MAA,cM,M1c1,M1b,3
+AJCC9th,LLaMA 3.3 70B,MAA,cM,M1c1,M1c1,1
+AJCC9th,LLaMA 3.3 70B,MAA,cM,M1c1,M1c2,3
+AJCC9th,LLaMA 3.3 70B,MAA,cM,M1c2,M1a,4
+AJCC9th,LLaMA 3.3 70B,MAA,cM,M1c2,M1b,5
+AJCC9th,LLaMA 3.3 70B,MAA,cM,M1c2,M1c1,3
+AJCC9th,LLaMA 3.3 70B,MAA,cM,M1c2,M1c2,11
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,0,IA1,4
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA1,IA1,12
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA1,IA2,3
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA1,IA3,4
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA1,IIA,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA1,IIIA,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA1,IVA,2
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA2,IA1,2
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA2,IA2,71
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA2,IA3,3
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA2,IB,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA2,IIA,2
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA2,IIIA,2
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA2,IIIB,2
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA2,IVA,3
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA3,IA2,4
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA3,IA3,60
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA3,IB,3
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA3,IIA,8
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA3,IIB,2
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA3,IIIA,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA3,IIIB,2
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IA3,IVA,5
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IB,IA2,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IB,IA3,5
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IB,IB,40
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IB,IIA,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IB,IIB,7
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IB,IIIA,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IB,IVA,5
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIA,IA2,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIA,IB,4
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIA,IIA,16
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIA,IIB,3
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIA,IIIA,2
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIA,IIIB,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIA,IVA,4
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIB,IA2,2
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIB,IA3,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIB,IB,2
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIB,IIA,2
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIB,IIB,29
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIB,IIIA,8
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIB,IIIB,5
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIB,IIIC,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIB,IVA,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIB,IVB,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIIA,IA3,2
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIIA,IB,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIIA,IIA,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIIA,IIB,4
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIIA,IIIA,22
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIIA,IIIB,8
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIIA,IVA,5
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIIA,IVB,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIIB,IB,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIIB,IIIA,5
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIIB,IIIB,13
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIIB,IVA,5
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIIC,IIIB,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIIC,IIIC,3
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IIIC,IVA,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IVA,IA3,2
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IVA,IIA,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IVA,IIB,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IVA,IIIB,7
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IVA,IIIC,2
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IVA,IVA,37
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IVB,IA3,1
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IVB,IVA,12
+AJCC9th,LLaMA 3.3 70B,MAA,stage group,IVB,IVB,18
+AJCC9th,Phi-4 14B,baseline,cT,T1a,T1a,17
+AJCC9th,Phi-4 14B,baseline,cT,T1a,T1b,1
+AJCC9th,Phi-4 14B,baseline,cT,T1a,T1c,1
+AJCC9th,Phi-4 14B,baseline,cT,T1b,T1a,14
+AJCC9th,Phi-4 14B,baseline,cT,T1b,T1b,87
+AJCC9th,Phi-4 14B,baseline,cT,T1b,T1c,2
+AJCC9th,Phi-4 14B,baseline,cT,T1b,T1mi,1
+AJCC9th,Phi-4 14B,baseline,cT,T1b,T2a,1
+AJCC9th,Phi-4 14B,baseline,cT,T1c,T1a,2
+AJCC9th,Phi-4 14B,baseline,cT,T1c,T1b,37
+AJCC9th,Phi-4 14B,baseline,cT,T1c,T1c,77
+AJCC9th,Phi-4 14B,baseline,cT,T1c,T2,1
+AJCC9th,Phi-4 14B,baseline,cT,T1c,T2a,3
+AJCC9th,Phi-4 14B,baseline,cT,T1c,T4,1
+AJCC9th,Phi-4 14B,baseline,cT,T1c,Tis,1
+AJCC9th,Phi-4 14B,baseline,cT,T1mi,T1mi,4
+AJCC9th,Phi-4 14B,baseline,cT,T2a,T1b,3
+AJCC9th,Phi-4 14B,baseline,cT,T2a,T1c,4
+AJCC9th,Phi-4 14B,baseline,cT,T2a,T2a,95
+AJCC9th,Phi-4 14B,baseline,cT,T2a,T2b,1
+AJCC9th,Phi-4 14B,baseline,cT,T2a,T3,1
+AJCC9th,Phi-4 14B,baseline,cT,T2a,T4,1
+AJCC9th,Phi-4 14B,baseline,cT,T2b,T1c,1
+AJCC9th,Phi-4 14B,baseline,cT,T2b,T2a,10
+AJCC9th,Phi-4 14B,baseline,cT,T2b,T2b,26
+AJCC9th,Phi-4 14B,baseline,cT,T3,(no label),1
+AJCC9th,Phi-4 14B,baseline,cT,T3,T2a,3
+AJCC9th,Phi-4 14B,baseline,cT,T3,T2b,7
+AJCC9th,Phi-4 14B,baseline,cT,T3,T3,50
+AJCC9th,Phi-4 14B,baseline,cT,T3,T4,1
+AJCC9th,Phi-4 14B,baseline,cT,T4,T1c,3
+AJCC9th,Phi-4 14B,baseline,cT,T4,T2a,3
+AJCC9th,Phi-4 14B,baseline,cT,T4,T2b,1
+AJCC9th,Phi-4 14B,baseline,cT,T4,T3,2
+AJCC9th,Phi-4 14B,baseline,cT,T4,T4,28
+AJCC9th,Phi-4 14B,baseline,cT,Tis,T1mi,4
+AJCC9th,Phi-4 14B,baseline,cN,N0,N0,304
+AJCC9th,Phi-4 14B,baseline,cN,N0,N1,10
+AJCC9th,Phi-4 14B,baseline,cN,N0,N2,1
+AJCC9th,Phi-4 14B,baseline,cN,N0,N2a,10
+AJCC9th,Phi-4 14B,baseline,cN,N0,N2b,7
+AJCC9th,Phi-4 14B,baseline,cN,N0,N3,4
+AJCC9th,Phi-4 14B,baseline,cN,N1,N0,8
+AJCC9th,Phi-4 14B,baseline,cN,N1,N1,17
+AJCC9th,Phi-4 14B,baseline,cN,N1,N2,1
+AJCC9th,Phi-4 14B,baseline,cN,N1,N2a,10
+AJCC9th,Phi-4 14B,baseline,cN,N1,N2b,11
+AJCC9th,Phi-4 14B,baseline,cN,N2a,(no label),1
+AJCC9th,Phi-4 14B,baseline,cN,N2a,N0,6
+AJCC9th,Phi-4 14B,baseline,cN,N2a,N1,4
+AJCC9th,Phi-4 14B,baseline,cN,N2a,N2,1
+AJCC9th,Phi-4 14B,baseline,cN,N2a,N2a,15
+AJCC9th,Phi-4 14B,baseline,cN,N2a,N2b,13
+AJCC9th,Phi-4 14B,baseline,cN,N2a,N3,2
+AJCC9th,Phi-4 14B,baseline,cN,N2b,N0,1
+AJCC9th,Phi-4 14B,baseline,cN,N2b,N1,3
+AJCC9th,Phi-4 14B,baseline,cN,N2b,N2a,7
+AJCC9th,Phi-4 14B,baseline,cN,N2b,N2b,22
+AJCC9th,Phi-4 14B,baseline,cN,N2b,N3,3
+AJCC9th,Phi-4 14B,baseline,cN,N3,N2,2
+AJCC9th,Phi-4 14B,baseline,cN,N3,N2a,1
+AJCC9th,Phi-4 14B,baseline,cN,N3,N2b,10
+AJCC9th,Phi-4 14B,baseline,cN,N3,N3,21
+AJCC9th,Phi-4 14B,baseline,cM,M0,(no label),1
+AJCC9th,Phi-4 14B,baseline,cM,M0,M0,310
+AJCC9th,Phi-4 14B,baseline,cM,M0,M1a,2
+AJCC9th,Phi-4 14B,baseline,cM,M0,M1b,5
+AJCC9th,Phi-4 14B,baseline,cM,M0,M1c1,12
+AJCC9th,Phi-4 14B,baseline,cM,M0,M1c2,7
+AJCC9th,Phi-4 14B,baseline,cM,M0,Mx,77
+AJCC9th,Phi-4 14B,baseline,cM,M1a,M0,8
+AJCC9th,Phi-4 14B,baseline,cM,M1a,M1a,16
+AJCC9th,Phi-4 14B,baseline,cM,M1a,M1c1,1
+AJCC9th,Phi-4 14B,baseline,cM,M1a,M1c2,1
+AJCC9th,Phi-4 14B,baseline,cM,M1a,Mx,1
+AJCC9th,Phi-4 14B,baseline,cM,M1b,M0,6
+AJCC9th,Phi-4 14B,baseline,cM,M1b,M1a,3
+AJCC9th,Phi-4 14B,baseline,cM,M1b,M1b,4
+AJCC9th,Phi-4 14B,baseline,cM,M1b,M1c1,3
+AJCC9th,Phi-4 14B,baseline,cM,M1b,M1c2,7
+AJCC9th,Phi-4 14B,baseline,cM,M1c1,M0,2
+AJCC9th,Phi-4 14B,baseline,cM,M1c1,M1c2,6
+AJCC9th,Phi-4 14B,baseline,cM,M1c2,M0,1
+AJCC9th,Phi-4 14B,baseline,cM,M1c2,M1a,4
+AJCC9th,Phi-4 14B,baseline,cM,M1c2,M1b,1
+AJCC9th,Phi-4 14B,baseline,cM,M1c2,M1c1,1
+AJCC9th,Phi-4 14B,baseline,cM,M1c2,M1c2,16
+AJCC9th,Phi-4 14B,baseline,stage group,0,IA1,4
+AJCC9th,Phi-4 14B,baseline,stage group,IA1,IA1,21
+AJCC9th,Phi-4 14B,baseline,stage group,IA1,IA2,1
+AJCC9th,Phi-4 14B,baseline,stage group,IA1,IA3,1
+AJCC9th,Phi-4 14B,baseline,stage group,IA2,IA1,14
+AJCC9th,Phi-4 14B,baseline,stage group,IA2,IA2,65
+AJCC9th,Phi-4 14B,baseline,stage group,IA2,IA3,2
+AJCC9th,Phi-4 14B,baseline,stage group,IA2,IIA,2
+AJCC9th,Phi-4 14B,baseline,stage group,IA2,IIB,1
+AJCC9th,Phi-4 14B,baseline,stage group,IA2,IVA,1
+AJCC9th,Phi-4 14B,baseline,stage group,IA2,IVB,1
+AJCC9th,Phi-4 14B,baseline,stage group,IA3,0,1
+AJCC9th,Phi-4 14B,baseline,stage group,IA3,IA1,2
+AJCC9th,Phi-4 14B,baseline,stage group,IA3,IA2,22
+AJCC9th,Phi-4 14B,baseline,stage group,IA3,IA3,44
+AJCC9th,Phi-4 14B,baseline,stage group,IA3,IB,2
+AJCC9th,Phi-4 14B,baseline,stage group,IA3,IIA,4
+AJCC9th,Phi-4 14B,baseline,stage group,IA3,IIB,6
+AJCC9th,Phi-4 14B,baseline,stage group,IA3,IIIA,1
+AJCC9th,Phi-4 14B,baseline,stage group,IA3,IVA,1
+AJCC9th,Phi-4 14B,baseline,stage group,IA3,IVB,2
+AJCC9th,Phi-4 14B,baseline,stage group,IB,IA2,1
+AJCC9th,Phi-4 14B,baseline,stage group,IB,IA3,3
+AJCC9th,Phi-4 14B,baseline,stage group,IB,IB,46
+AJCC9th,Phi-4 14B,baseline,stage group,IB,IIB,3
+AJCC9th,Phi-4 14B,baseline,stage group,IB,IIIA,1
+AJCC9th,Phi-4 14B,baseline,stage group,IB,IIIB,2
+AJCC9th,Phi-4 14B,baseline,stage group,IB,IVA,2
+AJCC9th,Phi-4 14B,baseline,stage group,IB,IVB,2
+AJCC9th,Phi-4 14B,baseline,stage group,IIA,IA2,2
+AJCC9th,Phi-4 14B,baseline,stage group,IIA,IB,3
+AJCC9th,Phi-4 14B,baseline,stage group,IIA,IIA,12
+AJCC9th,Phi-4 14B,baseline,stage group,IIA,IIB,6
+AJCC9th,Phi-4 14B,baseline,stage group,IIA,IIIA,2
+AJCC9th,Phi-4 14B,baseline,stage group,IIA,IIIB,1
+AJCC9th,Phi-4 14B,baseline,stage group,IIA,IVA,3
+AJCC9th,Phi-4 14B,baseline,stage group,IIA,IVB,2
+AJCC9th,Phi-4 14B,baseline,stage group,IIB,IA1,1
+AJCC9th,Phi-4 14B,baseline,stage group,IIB,IA2,1
+AJCC9th,Phi-4 14B,baseline,stage group,IIB,IB,3
+AJCC9th,Phi-4 14B,baseline,stage group,IIB,IIA,3
+AJCC9th,Phi-4 14B,baseline,stage group,IIB,IIB,34
+AJCC9th,Phi-4 14B,baseline,stage group,IIB,IIIA,1
+AJCC9th,Phi-4 14B,baseline,stage group,IIB,IIIB,5
+AJCC9th,Phi-4 14B,baseline,stage group,IIB,IVB,4
+AJCC9th,Phi-4 14B,baseline,stage group,IIIA,(no label),1
+AJCC9th,Phi-4 14B,baseline,stage group,IIIA,IA3,2
+AJCC9th,Phi-4 14B,baseline,stage group,IIIA,IB,1
+AJCC9th,Phi-4 14B,baseline,stage group,IIIA,IIA,2
+AJCC9th,Phi-4 14B,baseline,stage group,IIIA,IIB,8
+AJCC9th,Phi-4 14B,baseline,stage group,IIIA,IIIA,14
+AJCC9th,Phi-4 14B,baseline,stage group,IIIA,IIIB,13
+AJCC9th,Phi-4 14B,baseline,stage group,IIIA,IVB,3
+AJCC9th,Phi-4 14B,baseline,stage group,IIIB,IA3,1
+AJCC9th,Phi-4 14B,baseline,stage group,IIIB,IIIA,1
+AJCC9th,Phi-4 14B,baseline,stage group,IIIB,IIIB,17
+AJCC9th,Phi-4 14B,baseline,stage group,IIIB,IVB,5
+AJCC9th,Phi-4 14B,baseline,stage group,IIIC,IIIB,3
+AJCC9th,Phi-4 14B,baseline,stage group,IIIC,IIIC,2
+AJCC9th,Phi-4 14B,baseline,stage group,IVA,IB,1
+AJCC9th,Phi-4 14B,baseline,stage group,IVA,IIA,1
+AJCC9th,Phi-4 14B,baseline,stage group,IVA,IIB,3
+AJCC9th,Phi-4 14B,baseline,stage group,IVA,IIIA,2
+AJCC9th,Phi-4 14B,baseline,stage group,IVA,IIIB,6
+AJCC9th,Phi-4 14B,baseline,stage group,IVA,IIIC,2
+AJCC9th,Phi-4 14B,baseline,stage group,IVA,IVA,23
+AJCC9th,Phi-4 14B,baseline,stage group,IVA,IVB,12
+AJCC9th,Phi-4 14B,baseline,stage group,IVB,IA2,1
+AJCC9th,Phi-4 14B,baseline,stage group,IVB,IA3,1
+AJCC9th,Phi-4 14B,baseline,stage group,IVB,IIB,1
+AJCC9th,Phi-4 14B,baseline,stage group,IVB,IVA,5
+AJCC9th,Phi-4 14B,baseline,stage group,IVB,IVB,23
+AJCC9th,Phi-4 14B,decomposition-only,cT,T1a,T1a,13
+AJCC9th,Phi-4 14B,decomposition-only,cT,T1a,T1b,6
+AJCC9th,Phi-4 14B,decomposition-only,cT,T1b,T1a,16
+AJCC9th,Phi-4 14B,decomposition-only,cT,T1b,T1b,82
+AJCC9th,Phi-4 14B,decomposition-only,cT,T1b,T1c,1
+AJCC9th,Phi-4 14B,decomposition-only,cT,T1b,T2a,6
+AJCC9th,Phi-4 14B,decomposition-only,cT,T1c,T1b,36
+AJCC9th,Phi-4 14B,decomposition-only,cT,T1c,T1c,75
+AJCC9th,Phi-4 14B,decomposition-only,cT,T1c,T2a,10
+AJCC9th,Phi-4 14B,decomposition-only,cT,T1c,T3,1
+AJCC9th,Phi-4 14B,decomposition-only,cT,T1mi,T1a,2
+AJCC9th,Phi-4 14B,decomposition-only,cT,T1mi,T1b,1
+AJCC9th,Phi-4 14B,decomposition-only,cT,T1mi,T1mi,1
+AJCC9th,Phi-4 14B,decomposition-only,cT,T2a,T1b,2
+AJCC9th,Phi-4 14B,decomposition-only,cT,T2a,T1c,3
+AJCC9th,Phi-4 14B,decomposition-only,cT,T2a,T2a,93
+AJCC9th,Phi-4 14B,decomposition-only,cT,T2a,T3,4
+AJCC9th,Phi-4 14B,decomposition-only,cT,T2a,T4,3
+AJCC9th,Phi-4 14B,decomposition-only,cT,T2b,T1c,1
+AJCC9th,Phi-4 14B,decomposition-only,cT,T2b,T2a,10
+AJCC9th,Phi-4 14B,decomposition-only,cT,T2b,T2b,25
+AJCC9th,Phi-4 14B,decomposition-only,cT,T2b,T3,1
+AJCC9th,Phi-4 14B,decomposition-only,cT,T3,T2a,3
+AJCC9th,Phi-4 14B,decomposition-only,cT,T3,T2b,5
+AJCC9th,Phi-4 14B,decomposition-only,cT,T3,T3,52
+AJCC9th,Phi-4 14B,decomposition-only,cT,T3,T4,2
+AJCC9th,Phi-4 14B,decomposition-only,cT,T4,T1c,2
+AJCC9th,Phi-4 14B,decomposition-only,cT,T4,T2a,3
+AJCC9th,Phi-4 14B,decomposition-only,cT,T4,T2b,2
+AJCC9th,Phi-4 14B,decomposition-only,cT,T4,T3,4
+AJCC9th,Phi-4 14B,decomposition-only,cT,T4,T4,26
+AJCC9th,Phi-4 14B,decomposition-only,cT,Tis,T1a,1
+AJCC9th,Phi-4 14B,decomposition-only,cT,Tis,T1mi,3
+AJCC9th,Phi-4 14B,decomposition-only,cN,N0,N0,306
+AJCC9th,Phi-4 14B,decomposition-only,cN,N0,N1,21
+AJCC9th,Phi-4 14B,decomposition-only,cN,N0,N2a,4
+AJCC9th,Phi-4 14B,decomposition-only,cN,N0,N3,5
+AJCC9th,Phi-4 14B,decomposition-only,cN,N1,N0,15
+AJCC9th,Phi-4 14B,decomposition-only,cN,N1,N1,17
+AJCC9th,Phi-4 14B,decomposition-only,cN,N1,N2a,11
+AJCC9th,Phi-4 14B,decomposition-only,cN,N1,N2b,4
+AJCC9th,Phi-4 14B,decomposition-only,cN,N2a,N0,7
+AJCC9th,Phi-4 14B,decomposition-only,cN,N2a,N1,4
+AJCC9th,Phi-4 14B,decomposition-only,cN,N2a,N2a,20
+AJCC9th,Phi-4 14B,decomposition-only,cN,N2a,N2b,9
+AJCC9th,Phi-4 14B,decomposition-only,cN,N2a,N3,2
+AJCC9th,Phi-4 14B,decomposition-only,cN,N2b,N0,5
+AJCC9th,Phi-4 14B,decomposition-only,cN,N2b,N1,1
+AJCC9th,Phi-4 14B,decomposition-only,cN,N2b,N2a,2
+AJCC9th,Phi-4 14B,decomposition-only,cN,N2b,N2b,23
+AJCC9th,Phi-4 14B,decomposition-only,cN,N2b,N3,5
+AJCC9th,Phi-4 14B,decomposition-only,cN,N3,N0,1
+AJCC9th,Phi-4 14B,decomposition-only,cN,N3,N2a,3
+AJCC9th,Phi-4 14B,decomposition-only,cN,N3,N2b,4
+AJCC9th,Phi-4 14B,decomposition-only,cN,N3,N3,26
+AJCC9th,Phi-4 14B,decomposition-only,cM,M0,M0,279
+AJCC9th,Phi-4 14B,decomposition-only,cM,M0,M1a,27
+AJCC9th,Phi-4 14B,decomposition-only,cM,M0,M1b,66
+AJCC9th,Phi-4 14B,decomposition-only,cM,M0,M1c1,12
+AJCC9th,Phi-4 14B,decomposition-only,cM,M0,M1c2,30
+AJCC9th,Phi-4 14B,decomposition-only,cM,M1a,M0,1
+AJCC9th,Phi-4 14B,decomposition-only,cM,M1a,M1a,18
+AJCC9th,Phi-4 14B,decomposition-only,cM,M1a,M1b,3
+AJCC9th,Phi-4 14B,decomposition-only,cM,M1a,M1c2,5
+AJCC9th,Phi-4 14B,decomposition-only,cM,M1b,M0,1
+AJCC9th,Phi-4 14B,decomposition-only,cM,M1b,M1a,1
+AJCC9th,Phi-4 14B,decomposition-only,cM,M1b,M1b,7
+AJCC9th,Phi-4 14B,decomposition-only,cM,M1b,M1c,1
+AJCC9th,Phi-4 14B,decomposition-only,cM,M1b,M1c1,3
+AJCC9th,Phi-4 14B,decomposition-only,cM,M1b,M1c2,10
+AJCC9th,Phi-4 14B,decomposition-only,cM,M1c1,M1c1,2
+AJCC9th,Phi-4 14B,decomposition-only,cM,M1c1,M1c2,6
+AJCC9th,Phi-4 14B,decomposition-only,cM,M1c2,M1a,3
+AJCC9th,Phi-4 14B,decomposition-only,cM,M1c2,M1b,1
+AJCC9th,Phi-4 14B,decomposition-only,cM,M1c2,M1c1,2
+AJCC9th,Phi-4 14B,decomposition-only,cM,M1c2,M1c2,17
+AJCC9th,Phi-4 14B,decomposition-only,stage group,0,IA1,4
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA1,IA1,11
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA1,IA2,5
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA1,IIA,1
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA1,IVA,4
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA1,IVB,2
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA2,IA1,13
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA2,IA2,46
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA2,IA3,1
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA2,IB,2
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA2,IIA,1
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA2,IVA,20
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA2,IVB,3
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA3,IA2,16
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA3,IA3,37
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA3,IB,5
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA3,IIA,4
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA3,IIB,1
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA3,IVA,17
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IA3,IVB,5
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IB,IA2,1
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IB,IA3,2
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IB,IB,41
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IB,IIB,4
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IB,IIIA,1
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IB,IIIB,1
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IB,IVA,5
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IB,IVB,5
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIA,IA2,3
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIA,IA3,1
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIA,IB,3
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIA,IIA,13
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIA,IIB,1
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIA,IIIB,1
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIA,IVA,7
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIA,IVB,2
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIB,IA3,2
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIB,IB,6
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIB,IIA,1
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIB,IIB,18
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIB,IIIA,5
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIB,IVA,9
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIB,IVB,11
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIIA,IA3,1
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIIA,IB,1
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIIA,IIB,3
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIIA,IIIA,9
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIIA,IIIB,3
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIIA,IVA,20
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIIA,IVB,7
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIIB,IB,2
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIIB,IIIA,4
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIIB,IIIB,2
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIIB,IIIC,1
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIIB,IVA,11
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIIB,IVB,4
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIIC,IIIB,2
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IIIC,IVB,3
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IVA,IIIB,2
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IVA,IVA,29
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IVA,IVB,19
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IVB,IVA,4
+AJCC9th,Phi-4 14B,decomposition-only,stage group,IVB,IVB,27
+AJCC9th,Phi-4 14B,MAA,cT,T1a,T1a,13
+AJCC9th,Phi-4 14B,MAA,cT,T1a,T1b,6
+AJCC9th,Phi-4 14B,MAA,cT,T1b,T1a,17
+AJCC9th,Phi-4 14B,MAA,cT,T1b,T1b,81
+AJCC9th,Phi-4 14B,MAA,cT,T1b,T1c,2
+AJCC9th,Phi-4 14B,MAA,cT,T1b,T2a,5
+AJCC9th,Phi-4 14B,MAA,cT,T1c,T1b,35
+AJCC9th,Phi-4 14B,MAA,cT,T1c,T1c,73
+AJCC9th,Phi-4 14B,MAA,cT,T1c,T2a,13
+AJCC9th,Phi-4 14B,MAA,cT,T1c,T3,1
+AJCC9th,Phi-4 14B,MAA,cT,T1mi,T1a,2
+AJCC9th,Phi-4 14B,MAA,cT,T1mi,T1b,1
+AJCC9th,Phi-4 14B,MAA,cT,T1mi,T1mi,1
+AJCC9th,Phi-4 14B,MAA,cT,T2a,T1b,2
+AJCC9th,Phi-4 14B,MAA,cT,T2a,T1c,3
+AJCC9th,Phi-4 14B,MAA,cT,T2a,T2,1
+AJCC9th,Phi-4 14B,MAA,cT,T2a,T2a,90
+AJCC9th,Phi-4 14B,MAA,cT,T2a,T2b,1
+AJCC9th,Phi-4 14B,MAA,cT,T2a,T3,5
+AJCC9th,Phi-4 14B,MAA,cT,T2a,T4,3
+AJCC9th,Phi-4 14B,MAA,cT,T2b,T1c,1
+AJCC9th,Phi-4 14B,MAA,cT,T2b,T2a,10
+AJCC9th,Phi-4 14B,MAA,cT,T2b,T2b,26
+AJCC9th,Phi-4 14B,MAA,cT,T3,T2a,4
+AJCC9th,Phi-4 14B,MAA,cT,T3,T2b,7
+AJCC9th,Phi-4 14B,MAA,cT,T3,T3,50
+AJCC9th,Phi-4 14B,MAA,cT,T3,T4,1
+AJCC9th,Phi-4 14B,MAA,cT,T4,T1c,2
+AJCC9th,Phi-4 14B,MAA,cT,T4,T2a,2
+AJCC9th,Phi-4 14B,MAA,cT,T4,T2b,1
+AJCC9th,Phi-4 14B,MAA,cT,T4,T3,3
+AJCC9th,Phi-4 14B,MAA,cT,T4,T4,29
+AJCC9th,Phi-4 14B,MAA,cT,Tis,T1a,3
+AJCC9th,Phi-4 14B,MAA,cT,Tis,T1mi,1
+AJCC9th,Phi-4 14B,MAA,cN,N0,N0,252
+AJCC9th,Phi-4 14B,MAA,cN,N0,N1,53
+AJCC9th,Phi-4 14B,MAA,cN,N0,N2a,19
+AJCC9th,Phi-4 14B,MAA,cN,N0,N2b,3
+AJCC9th,Phi-4 14B,MAA,cN,N0,N3,9
+AJCC9th,Phi-4 14B,MAA,cN,N1,N0,5
+AJCC9th,Phi-4 14B,MAA,cN,N1,N1,23
+AJCC9th,Phi-4 14B,MAA,cN,N1,N2a,14
+AJCC9th,Phi-4 14B,MAA,cN,N1,N2b,5
+AJCC9th,Phi-4 14B,MAA,cN,N2a,N0,3
+AJCC9th,Phi-4 14B,MAA,cN,N2a,N1,5
+AJCC9th,Phi-4 14B,MAA,cN,N2a,N2a,20
+AJCC9th,Phi-4 14B,MAA,cN,N2a,N2b,13
+AJCC9th,Phi-4 14B,MAA,cN,N2a,N3,1
+AJCC9th,Phi-4 14B,MAA,cN,N2b,N0,1
+AJCC9th,Phi-4 14B,MAA,cN,N2b,N1,1
+AJCC9th,Phi-4 14B,MAA,cN,N2b,N2a,3
+AJCC9th,Phi-4 14B,MAA,cN,N2b,N2b,26
+AJCC9th,Phi-4 14B,MAA,cN,N2b,N3,5
+AJCC9th,Phi-4 14B,MAA,cN,N3,N2a,2
+AJCC9th,Phi-4 14B,MAA,cN,N3,N2b,5
+AJCC9th,Phi-4 14B,MAA,cN,N3,N3,27
+AJCC9th,Phi-4 14B,MAA,cM,M0,M0,210
+AJCC9th,Phi-4 14B,MAA,cM,M0,M1a,31
+AJCC9th,Phi-4 14B,MAA,cM,M0,M1b,100
+AJCC9th,Phi-4 14B,MAA,cM,M0,M1c1,18
+AJCC9th,Phi-4 14B,MAA,cM,M0,M1c2,55
+AJCC9th,Phi-4 14B,MAA,cM,M1a,M1a,17
+AJCC9th,Phi-4 14B,MAA,cM,M1a,M1b,4
+AJCC9th,Phi-4 14B,MAA,cM,M1a,M1c2,6
+AJCC9th,Phi-4 14B,MAA,cM,M1b,M0,1
+AJCC9th,Phi-4 14B,MAA,cM,M1b,M1b,7
+AJCC9th,Phi-4 14B,MAA,cM,M1b,M1c1,3
+AJCC9th,Phi-4 14B,MAA,cM,M1b,M1c2,12
+AJCC9th,Phi-4 14B,MAA,cM,M1c1,M1b,1
+AJCC9th,Phi-4 14B,MAA,cM,M1c1,M1c1,2
+AJCC9th,Phi-4 14B,MAA,cM,M1c1,M1c2,5
+AJCC9th,Phi-4 14B,MAA,cM,M1c2,M1a,3
+AJCC9th,Phi-4 14B,MAA,cM,M1c2,M1c1,2
+AJCC9th,Phi-4 14B,MAA,cM,M1c2,M1c2,18
+AJCC9th,Phi-4 14B,MAA,stage group,0,IA1,3
+AJCC9th,Phi-4 14B,MAA,stage group,0,IVA,1
+AJCC9th,Phi-4 14B,MAA,stage group,IA1,IA1,10
+AJCC9th,Phi-4 14B,MAA,stage group,IA1,IA2,5
+AJCC9th,Phi-4 14B,MAA,stage group,IA1,IIA,2
+AJCC9th,Phi-4 14B,MAA,stage group,IA1,IVA,5
+AJCC9th,Phi-4 14B,MAA,stage group,IA1,IVB,1
+AJCC9th,Phi-4 14B,MAA,stage group,IA2,IA1,13
+AJCC9th,Phi-4 14B,MAA,stage group,IA2,IA2,31
+AJCC9th,Phi-4 14B,MAA,stage group,IA2,IA3,1
+AJCC9th,Phi-4 14B,MAA,stage group,IA2,IB,1
+AJCC9th,Phi-4 14B,MAA,stage group,IA2,IIA,5
+AJCC9th,Phi-4 14B,MAA,stage group,IA2,IVA,26
+AJCC9th,Phi-4 14B,MAA,stage group,IA2,IVB,9
+AJCC9th,Phi-4 14B,MAA,stage group,IA3,IA2,14
+AJCC9th,Phi-4 14B,MAA,stage group,IA3,IA3,24
+AJCC9th,Phi-4 14B,MAA,stage group,IA3,IB,2
+AJCC9th,Phi-4 14B,MAA,stage group,IA3,IIA,4
+AJCC9th,Phi-4 14B,MAA,stage group,IA3,IIB,1
+AJCC9th,Phi-4 14B,MAA,stage group,IA3,IIIA,1
+AJCC9th,Phi-4 14B,MAA,stage group,IA3,IIIB,1
+AJCC9th,Phi-4 14B,MAA,stage group,IA3,IVA,23
+AJCC9th,Phi-4 14B,MAA,stage group,IA3,IVB,15
+AJCC9th,Phi-4 14B,MAA,stage group,IB,IA2,1
+AJCC9th,Phi-4 14B,MAA,stage group,IB,IA3,2
+AJCC9th,Phi-4 14B,MAA,stage group,IB,IB,25
+AJCC9th,Phi-4 14B,MAA,stage group,IB,IIB,4
+AJCC9th,Phi-4 14B,MAA,stage group,IB,IIIA,4
+AJCC9th,Phi-4 14B,MAA,stage group,IB,IIIB,1
+AJCC9th,Phi-4 14B,MAA,stage group,IB,IVA,17
+AJCC9th,Phi-4 14B,MAA,stage group,IB,IVB,6
+AJCC9th,Phi-4 14B,MAA,stage group,IIA,IB,2
+AJCC9th,Phi-4 14B,MAA,stage group,IIA,IIA,7
+AJCC9th,Phi-4 14B,MAA,stage group,IIA,IIB,2
+AJCC9th,Phi-4 14B,MAA,stage group,IIA,IIIB,1
+AJCC9th,Phi-4 14B,MAA,stage group,IIA,IVA,15
+AJCC9th,Phi-4 14B,MAA,stage group,IIA,IVB,4
+AJCC9th,Phi-4 14B,MAA,stage group,IIB,IA3,1
+AJCC9th,Phi-4 14B,MAA,stage group,IIB,IB,4
+AJCC9th,Phi-4 14B,MAA,stage group,IIB,IIA,2
+AJCC9th,Phi-4 14B,MAA,stage group,IIB,IIB,13
+AJCC9th,Phi-4 14B,MAA,stage group,IIB,IIIA,4
+AJCC9th,Phi-4 14B,MAA,stage group,IIB,IIIB,1
+AJCC9th,Phi-4 14B,MAA,stage group,IIB,IVA,14
+AJCC9th,Phi-4 14B,MAA,stage group,IIB,IVB,13
+AJCC9th,Phi-4 14B,MAA,stage group,IIIA,IB,1
+AJCC9th,Phi-4 14B,MAA,stage group,IIIA,IIB,1
+AJCC9th,Phi-4 14B,MAA,stage group,IIIA,IIIA,8
+AJCC9th,Phi-4 14B,MAA,stage group,IIIA,IIIB,4
+AJCC9th,Phi-4 14B,MAA,stage group,IIIA,IVA,16
+AJCC9th,Phi-4 14B,MAA,stage group,IIIA,IVB,14
+AJCC9th,Phi-4 14B,MAA,stage group,IIIB,IB,1
+AJCC9th,Phi-4 14B,MAA,stage group,IIIB,IIIA,1
+AJCC9th,Phi-4 14B,MAA,stage group,IIIB,IIIB,1
+AJCC9th,Phi-4 14B,MAA,stage group,IIIB,IVA,14
+AJCC9th,Phi-4 14B,MAA,stage group,IIIB,IVB,7
+AJCC9th,Phi-4 14B,MAA,stage group,IIIC,IIIB,1
+AJCC9th,Phi-4 14B,MAA,stage group,IIIC,IVB,4
+AJCC9th,Phi-4 14B,MAA,stage group,IVA,IIB,1
+AJCC9th,Phi-4 14B,MAA,stage group,IVA,IVA,28
+AJCC9th,Phi-4 14B,MAA,stage group,IVA,IVB,21
+AJCC9th,Phi-4 14B,MAA,stage group,IVB,IVA,4
+AJCC9th,Phi-4 14B,MAA,stage group,IVB,IVB,27

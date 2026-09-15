@@ -252,8 +252,11 @@ def extract_n_classification(text: str) -> Optional[Dict[str, Any]]:
         text: Medical report text to analyze
 
     Returns:
-        Dictionary with 'classification' key containing N stage,
-        or None if no valid classification found (defaults to N0)
+        Dictionary with 'classification' key containing N stage, or None if
+        no pattern matches. Callers record an unmatched result as ``Unknown``;
+        the previous behaviour of defaulting to N0 (the majority class) is
+        removed so that unparseable output is never coerced into a negative
+        nodal status.
     """
     try:
         text = str(text).strip()
@@ -305,12 +308,12 @@ def extract_n_classification(text: str) -> Optional[Dict[str, Any]]:
                 if not has_exclusion_pattern(context):
                     return {'classification': n_class}
 
-        # Default to N0 if no clear evidence
-        return {'classification': 'N0'}
+        # No pattern matched: report no result rather than defaulting to N0.
+        return None
 
     except Exception as e:
         logger.error(f"Error in N classification extraction: {str(e)}")
-        return {'classification': 'N0'}  # Safe default
+        return None
 
 
 def extract_m_classification(text: str) -> Optional[Dict[str, Any]]:
@@ -320,7 +323,11 @@ def extract_m_classification(text: str) -> Optional[Dict[str, Any]]:
         text: Medical report text to analyze
 
     Returns:
-        Dictionary with 'classification' key containing M stage
+        Dictionary with 'classification' key containing M stage, or None if
+        no pattern matches. Callers record an unmatched result as ``Unknown``;
+        the previous behaviour of defaulting to M0 (the majority class) is
+        removed so that unparseable output is never coerced into a negative
+        metastatic status.
     """
     text = str(text).strip()
 
@@ -424,6 +431,6 @@ def extract_m_classification(text: str) -> Optional[Dict[str, Any]]:
     elif len(metastatic_sites) == 1:
         return {'classification': 'M1b'}
 
-    # Default: no clear evidence of distant metastasis
-    return {'classification': 'M0'}
+    # No pattern matched: report no result rather than defaulting to M0.
+    return None
 

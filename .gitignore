@@ -135,6 +135,8 @@ zenodo_github_guide_complete.md
 # input/*.csv
 # input/*.xlsx
 tnm_config_*.yaml
+# Exception: the ablation run configurations are tracked (see config/runs/README.md).
+!config/runs/tnm_config_*.yaml
 
 # Model files (if large)
 *.pkl
@@ -156,8 +158,8 @@ logs/
 # Output files
 input/*
 # keep the small synthetic example-format files (verify they are synthetic before publishing)
-!input/single_excel_ajcc_8th.xlsx
-!input/single_excel_ajcc_9th.xlsx
+!input/synthetic_single_excel_ajcc_8th.xlsx
+!input/synthetic_single_excel_ajcc_9th.xlsx
 output/
 !output/.gitkeep
 *.csv
@@ -170,6 +172,13 @@ output/
 !config/ajcc9th/tnm_classification.json
 *.backup
 
+# analysis outputs (regenerated from the run JSON; keep them out of the history)
+analysis/results*/
+
+# the aggregate deposit tables ARE published - the blanket *.csv rule above must
+# not swallow them (see analysis/README.md, Deposit)
+!analysis/deposit/*.csv
+
 # session backups
 .backup/
 
@@ -181,3 +190,11 @@ output/
 /run_local_matrix.sh
 /run_gpt4o_matrix.sh
 /run_repro_matrix.sh
+
+# Multimedia appendix workbooks are journal submission artifacts, rebuilt by
+# analysis/make_appendices.py from the deposit and from analysis/results*/.
+analysis/appendices/
+
+# Fictional example provenance and generator
+!input/README.md
+!input/generate_synthetic_examples.py

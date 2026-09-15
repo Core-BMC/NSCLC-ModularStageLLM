@@ -77,6 +77,52 @@ Examples:
     return parser.parse_args()
 
 
+# Markers that flag an unresolved editing decision left inside a config file.
+# A prompt is sent to the model verbatim, so an unresolved marker becomes part
+# of the instruction text. Runs are refused until the marker is resolved.
+UNRESOLVED_CONFIG_MARKERS = (
+    "[AUTHORS:",
+    "TODO",
+    "FIXME",
+    "confirm before re-run",
+)
+
+
+def check_config_for_unresolved_markers(config_path: str) -> None:
+    """Refuse to run when the config still carries an unresolved-edit marker.
+
+    Args:
+        config_path: Path to the YAML configuration file used for this run.
+
+    Raises:
+        SystemExit: If any marker is present, listing the offending lines.
+    """
+    try:
+        with open(config_path, encoding="utf-8") as handle:
+            lines = handle.readlines()
+    except OSError:
+        return
+
+    hits = [
+        (number, marker, text.strip())
+        for number, text in enumerate(lines, start=1)
+        for marker in UNRESOLVED_CONFIG_MARKERS
+        if marker in text
+    ]
+    if not hits:
+        return
+
+    print(f"Error: unresolved marker(s) in {config_path}:")
+    for number, marker, text in hits:
+        print(f"  line {number}: {marker} -> {text[:120]}")
+    print(
+        "Resolve these before running. Prompt text is sent to the model "
+        "verbatim, so an editing note left in place becomes part of the "
+        "instruction the model follows."
+    )
+    sys.exit(1)
+
+
 def setup_output_paths(config: Config, output_prefix: str, log_file: str = None):
     """Setup output file paths in config.
     
@@ -117,6 +163,9 @@ def main():
         print(f"Error: Input file not found: {args.input_file}")
         sys.exit(1)
     
+    # Refuse to run on a config that still carries an unresolved-edit marker.
+    check_config_for_unresolved_markers(args.config_path)
+
     try:
         # Load configuration
         config = Config(config_path=args.config_path)
