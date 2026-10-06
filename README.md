@@ -1,12 +1,16 @@
 # Lung Cancer Clinical TNM Staging with Modular Agent Architecture
 
-A modular, agent-based system for automated TNM staging classification of Non-Small Cell Lung Cancer (NSCLC) using Large Language Models (LLMs). This system processes medical reports and automatically classifies cancer stages according to AJCC (American Joint Committee on Cancer) guidelines.
+A modular, agent-based system for automated clinical TNM staging of lung cancer using Large Language Models (LLMs). This system processes medical reports and automatically classifies cancer stages according to AJCC (American Joint Committee on Cancer) guidelines.
 
 ## What you can check
 
 1. **Recompute the reported tables:** Run `python3 analysis/recompute_tables.py` from the repository root. It uses the three deposited aggregate files and the Python standard library; no model API or patient records are required. See the [analysis README](analysis/README.md).
 2. **Run a fictional example:** Install the inference dependencies and configure your model/API, then use the included synthetic Excel files in the examples below. These examples demonstrate execution and do not reproduce the study results.
 3. **Re-evaluate the original cohort:** This cannot be done from the public files alone because the patient-level inputs are not distributed. Aggregate table recomputation does not re-run patient-level inference.
+
+## Default template and evaluated configurations
+
+The default template in `config/tnm_config.yaml` has not been evaluated on the study cohort. Its performance on that cohort is unknown. The reported results apply to the preserved single-prompt and full MAA configurations and the deposited decomposition-only run configurations, not to the current default template. Sections 8 and 9 of Multimedia Appendix 1 describe the configuration differences and reproduce the preserved single-prompt and full MAA prompts with internal review annotations redacted.
 
 ## Analysis and aggregate data
 
