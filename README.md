@@ -503,7 +503,7 @@ Please use the citation metadata in [CITATION.cff](CITATION.cff) or the "Cite th
 
 ## Contact
 
-**Corresponding Author**:  
+**Primary Author**:\
 Shinkyo Yoon, MD, PhD  
 Email: <shinkyoyoon@amc.seoul.kr>  
 Affiliation: Asan Medical Center
@@ -516,4 +516,4 @@ Affiliation: Asan Medical Center
 
 ## Acknowledgments
 
-This work was supported by [Grant information to be added].
+This work was supported by a grant from the Korean Society of Medical Oncology (KSMO-2025-02) and by the Korea Health Technology R&D Project through the Korea Health Industry Development Institute, funded by the Ministry of Health and Welfare, Republic of Korea (RS-2018-KH049509).
